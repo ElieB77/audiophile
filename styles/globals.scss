@@ -41,6 +41,11 @@ body {
 }
 
 // Typography
+a {
+  text-decoration: none;
+  color: var(--lightest-color);
+  font-size: 13px;
+}
 h1,
 h2,
 h3,

@@ -1,0 +1,18 @@
+.__navbar {
+  background-color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 165px;
+
+  .__links {
+    text-transform: uppercase;
+    font-family: "Manrope", sans-serif;
+    & a:not(:last-child) {
+      margin-right: 34px;
+    }
+  }
+
+  & img {
+    cursor: pointer;
+  }
+}
