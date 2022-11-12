@@ -1,0 +1,19 @@
+.__card {
+  width: 350px;
+  height: 205px;
+  background-color: var(--light-color);
+  position: relative;
+  .__photo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: -60px;
+  }
+
+  .__content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+  }
+}
