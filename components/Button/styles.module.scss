@@ -1,0 +1,37 @@
+.__button {
+  padding: 10px 30px;
+  background-color: var(--brightest-color);
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--lightest-color);
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+
+  &:hover {
+    background-color: var(--bright-color);
+  }
+
+  .__btn_icon {
+    margin-left: 13px;
+  }
+}
+
+.__borderless {
+  background: transparent;
+  color: var(--dark-color);
+  opacity: 0.5;
+  &:hover {
+    background-color: transparent;
+    color: var(--brightest-color);
+  }
+}
+.__outlined {
+  border: solid 2px var(--dark-color);
+  color: var(--dark-color);
+  background: unset;
+  &:hover {
+    background-color: var(--dark-color);
+    color: var(--lightest-color);
+  }
+}

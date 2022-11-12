@@ -2,13 +2,14 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
+const navbarLinks = [
+  { text: "home", href: "/" },
+  { text: "headphones", href: "/headphones" },
+  { text: "speakers", href: "/speakers" },
+  { text: "earphones", href: "/earphones" },
+];
+
 const Navbar = () => {
-  const navbarLinks = [
-    { text: "home", href: "/" },
-    { text: "headphones", href: "/headphones" },
-    { text: "speakers", href: "/speakers" },
-    { text: "earphones", href: "/earphones" },
-  ];
   return (
     <div className={styles.__navbar}>
       <Link href="/">
