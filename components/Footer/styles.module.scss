@@ -1,0 +1,36 @@
+.__footer {
+  background: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  color: var(--lightest-color);
+  padding: 75px 165px 48px 165px;
+
+  .__left_block {
+    width: 540px;
+    & img {
+      margin-bottom: 36px;
+    }
+    & p:nth-child(n + 2) {
+      opacity: 0.5;
+    }
+    & p:not(:last-child) {
+      margin-bottom: 56px;
+    }
+  }
+
+  .__right_block {
+    .__links {
+      margin-bottom: 105px;
+      text-transform: uppercase;
+      font-family: "Manrope", sans-serif;
+      & a:not(:last-child) {
+        margin-right: 34px;
+      }
+    }
+    .__socials_icons {
+      & img:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+  }
+}
