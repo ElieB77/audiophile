@@ -25,6 +25,7 @@ const Navbar = () => {
         })}
       </div>
       <Image src="/cart.svg" alt="Cart" width={23} height={20} />
+      <div className={styles.__divider}></div>
     </div>
   );
 };

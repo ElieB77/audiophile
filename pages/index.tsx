@@ -1,5 +1,6 @@
 import CardCategories from "../components/CardCategories";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import styles from "../styles/pages/home.module.scss";
 
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className={styles.__card_categories}>
+      {/* <div className={styles.__card_categories}>
         {cardCategoryData.map((card: any, index: number) => {
           console.log(card.imageUrl);
           return (
@@ -44,7 +45,8 @@ export default function Home() {
             />
           );
         })}
-      </div>
+      </div> */}
+      <Hero />
       {/* <Footer
         textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
         imageSrc="/logo-audiophile.svg"
