@@ -3,18 +3,20 @@
   height: 205px;
   background-color: var(--light-color);
   position: relative;
+  border-radius: 8px;
   .__photo {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     margin-top: -60px;
+    object-fit: cover;
   }
 
   .__content {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    bottom: 0;
+    bottom: 15px;
     text-align: center;
   }
 }

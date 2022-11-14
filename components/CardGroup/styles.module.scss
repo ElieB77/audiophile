@@ -1,0 +1,95 @@
+.__card_group {
+  margin-top: 168px;
+  .__first_block {
+    background-color: var(--brightest-color);
+    width: 1110px;
+    height: 560px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 48px;
+    & img:first-child {
+      margin-left: -14%;
+      position: absolute;
+      object-fit: cover;
+    }
+    .__second_img_container {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      bottom: -10px;
+      left: 150px;
+    }
+    .__content {
+      position: absolute;
+      right: 65px;
+      z-index: 100;
+      width: 350px;
+      color: var(--lightest-color);
+      top: 50%;
+      transform: translateY(-50%);
+      & p {
+        opacity: 0.75;
+        margin: 24px 0 40px 0;
+      }
+
+      & div {
+        background-color: var(--dark-color);
+        color: var(--lightest-color);
+      }
+    }
+  }
+
+  .__second_block {
+    width: 1110px;
+    height: 320px;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 48px;
+    & img {
+      border-radius: 8px;
+    }
+    .__content {
+      position: absolute;
+      left: 95px;
+      top: 50%;
+      transform: translateY(-50%);
+      & h4 {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  .__third_block {
+    width: 1110px;
+    height: 320px;
+    display: flex;
+    justify-content: space-between;
+    & div:first-child {
+      position: relative;
+      width: 540px;
+      height: 320px;
+      & img {
+        border-radius: 8px;
+      }
+    }
+    .__content {
+      width: 540px;
+      height: 320px;
+      background-color: var(--light-color);
+      position: relative;
+      border-radius: 8px;
+      & div:first-child {
+        position: absolute;
+        top: 50%;
+        left: 95px;
+        transform: translateY(-50%);
+        width: fit-content;
+        height: fit-content;
+      }
+      & h4 {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}

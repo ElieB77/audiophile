@@ -13,7 +13,7 @@ const Button = ({ btnContent, btnType, btnIcon }: Props) => {
       ? styles.__borderless
       : btnType === "outlined"
       ? styles.__outlined
-      : "";
+      : null;
   return (
     <div className={`${styles.__button} ${selectedBtnType}`}>
       {btnContent}

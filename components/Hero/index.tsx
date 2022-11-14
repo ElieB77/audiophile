@@ -2,7 +2,13 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../Button";
 
-const Hero = () => {
+interface Props {
+  heroOverline?: string;
+  heroTitle?: string;
+  heroParagraph?: string;
+}
+
+const Hero = ({ heroOverline, heroTitle, heroParagraph }: Props) => {
   return (
     <div className={styles.__hero}>
       <div className={styles.__background}>
@@ -14,12 +20,9 @@ const Hero = () => {
         />
       </div>
       <div className={styles.__content}>
-        <p className="overline">new product</p>
-        <h1>XX99 Mark II Headphones</h1>
-        <p>
-          Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast.
-        </p>
+        <p className="overline">{heroOverline}</p>
+        <h1>{heroTitle}</h1>
+        <p>{heroParagraph}</p>
         <Button btnContent="see product" />
       </div>
     </div>
