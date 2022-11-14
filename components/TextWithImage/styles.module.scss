@@ -1,0 +1,25 @@
+.__text_with_image {
+  display: flex;
+  align-items: center;
+  margin-top: 200px;
+  .__text {
+    width: 445px;
+    margin-right: 125px;
+    & span {
+      color: var(--brightest-color);
+    }
+    & p {
+      opacity: 0.5;
+      margin-top: 32px;
+    }
+  }
+
+  .__image {
+    width: 540px;
+    height: 588px;
+    position: relative;
+    & img {
+      border-radius: 8px;
+    }
+  }
+}

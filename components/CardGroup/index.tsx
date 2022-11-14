@@ -2,7 +2,19 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../Button";
 
-const CardGroup = () => {
+interface Props {
+  firstBlockTitle?: string;
+  firstBlockParagraph?: string;
+  secondBlockTitle?: string;
+  thirdBlockTitle?: string;
+}
+
+const CardGroup = ({
+  firstBlockTitle,
+  firstBlockParagraph,
+  secondBlockTitle,
+  thirdBlockTitle,
+}: Props) => {
   return (
     <div className={styles.__card_group}>
       <div className={styles.__first_block}>
@@ -21,11 +33,8 @@ const CardGroup = () => {
           />
         </div>
         <div className={styles.__content}>
-          <h1>zx9 speaker</h1>
-          <p>
-            Upgrade to premium speakers that are phenomenally built to deliver
-            truly remarkable sound.
-          </p>
+          <h1>{firstBlockTitle}</h1>
+          <p>{firstBlockParagraph}</p>
           <Button btnContent={"see product"} btnType="outlined" />
         </div>
       </div>
@@ -37,7 +46,7 @@ const CardGroup = () => {
           alt="speaker"
         />
         <div className={styles.__content}>
-          <h4>zx7 speaker</h4>
+          <h4>{secondBlockTitle}</h4>
           <Button btnContent={"see product"} btnType="outlined" />
         </div>
       </div>
@@ -52,7 +61,7 @@ const CardGroup = () => {
         </div>
         <div className={styles.__content}>
           <div>
-            <h4>yx1 earphones</h4>
+            <h4>{thirdBlockTitle}</h4>
             <Button btnContent={"see product"} btnType="outlined" />
           </div>
         </div>

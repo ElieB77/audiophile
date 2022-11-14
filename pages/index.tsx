@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import CardCategories from "../components/CardCategories";
 import CardGroup from "../components/CardGroup";
+import TextWithImage from "../components/TextWithImage";
 
 export default function Home() {
   const cardCategoryData = [
@@ -55,7 +56,14 @@ export default function Home() {
             );
           })}
         </div>
-        <CardGroup />
+        <CardGroup
+          firstBlockTitle="zx9 speaker"
+          firstBlockParagraph="Upgrade to premium speakers that are phenomenally built to deliver
+            truly remarkable sound."
+          secondBlockTitle="zx7 speaker"
+          thirdBlockTitle="yx1 earphone"
+        />
+        <TextWithImage />
       </div>
       <Footer
         textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
