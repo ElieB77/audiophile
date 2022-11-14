@@ -1,3 +1,4 @@
+// Styles
 import styles from "../styles/pages/home.module.scss";
 // Components
 import Navbar from "../components/Navbar";
@@ -8,32 +9,9 @@ import CardGroup from "../components/CardGroup";
 import TextWithImage from "../components/TextWithImage";
 
 export default function Home() {
-  const cardCategoryData = [
-    {
-      imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
-      categoryName: "headphones",
-      categoryHref: "/headphones",
-      width: 200,
-      height: 200,
-    },
-    {
-      imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
-      categoryName: "speakers",
-      categoryHref: "/speakers",
-      width: 200,
-      height: 200,
-    },
-    {
-      imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
-      categoryName: "earphones",
-      categoryHref: "/earphones",
-      width: 200,
-      height: 200,
-    },
-  ];
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero
         heroOverline="new product"
         heroTitle="XX99 Mark II Headphones"
@@ -41,9 +19,8 @@ export default function Home() {
           for the passionate music enthusiast."
       />
       <div className="container">
-        <div className={styles.__card_categories}>
+        {/* <div className={styles.__card_categories}>
           {cardCategoryData.map((card: any, index: number) => {
-            console.log(card.imageUrl);
             return (
               <CardCategories
                 key={index}
@@ -55,7 +32,7 @@ export default function Home() {
               />
             );
           })}
-        </div>
+        </div> */}
         <CardGroup
           firstBlockTitle="zx9 speaker"
           firstBlockParagraph="Upgrade to premium speakers that are phenomenally built to deliver
@@ -63,13 +40,7 @@ export default function Home() {
           secondBlockTitle="zx7 speaker"
           thirdBlockTitle="yx1 earphone"
         />
-        <TextWithImage />
       </div>
-      <Footer
-        textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
-        imageSrc="/logo-audiophile.svg"
-        copyrightContent="Copyright 2021. All Rights Reserved"
-      />
     </>
   );
 }

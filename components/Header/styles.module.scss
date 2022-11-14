@@ -1,0 +1,12 @@
+.__header {
+  background-color: var(--dark-color);
+  width: 100%;
+  height: 336px;
+  color: var(--lightest-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  & h2 {
+    margin-bottom: 96px;
+  }
+}
