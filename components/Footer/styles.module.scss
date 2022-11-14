@@ -28,10 +28,19 @@
       & a:not(:last-child) {
         margin-right: 34px;
       }
+      & a:hover {
+        color: var(--brightest-color);
+      }
     }
     .__socials_icons {
       & img:not(:last-child) {
         margin-right: 16px;
+      }
+
+      & img:hover {
+        filter: brightness(0) saturate(100%) invert(83%) sepia(32%)
+          saturate(4598%) hue-rotate(320deg) brightness(85%) contrast(100%);
+        cursor: pointer;
       }
     }
   }

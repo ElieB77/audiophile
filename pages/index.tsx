@@ -1,12 +1,30 @@
-// Styles
-import styles from "../styles/pages/home.module.scss";
-// Components
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer";
 import CardCategories from "../components/CardCategories";
 import CardGroup from "../components/CardGroup";
-import TextWithImage from "../components/TextWithImage";
+
+const cardCategoryData = [
+  {
+    imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
+    categoryName: "headphones",
+    categoryHref: "/headphones",
+    width: 200,
+    height: 200,
+  },
+  {
+    imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
+    categoryName: "speakers",
+    categoryHref: "/speakers",
+    width: 200,
+    height: 200,
+  },
+  {
+    imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
+    categoryName: "earphones",
+    categoryHref: "/earphones",
+    width: 200,
+    height: 200,
+  },
+];
 
 export default function Home() {
   return (
@@ -19,7 +37,7 @@ export default function Home() {
           for the passionate music enthusiast."
       />
       <div className="container">
-        {/* <div className={styles.__card_categories}>
+        <div className="__card_categories">
           {cardCategoryData.map((card: any, index: number) => {
             return (
               <CardCategories
@@ -32,7 +50,8 @@ export default function Home() {
               />
             );
           })}
-        </div> */}
+        </div>
+
         <CardGroup
           firstBlockTitle="zx9 speaker"
           firstBlockParagraph="Upgrade to premium speakers that are phenomenally built to deliver

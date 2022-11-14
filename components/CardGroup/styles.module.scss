@@ -37,6 +37,10 @@
         background-color: var(--dark-color);
         color: var(--lightest-color);
       }
+      & div:nth-child(3):hover {
+        background-color: #4c4c4c;
+        border-color: transparent;
+      }
     }
   }
 

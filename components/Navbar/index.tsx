@@ -9,9 +9,13 @@ const navbarLinks = [
   { text: "earphones", href: "/earphones" },
 ];
 
-const Navbar = () => {
+interface Props {
+  overrideClassname?: React.CSSProperties | string;
+}
+
+const Navbar = ({ overrideClassname }: Props) => {
   return (
-    <div className={styles.__navbar}>
+    <div className={`${styles.__navbar} ${overrideClassname}`}>
       <Link href="/">
         <Image src="/logo-audiophile.svg" alt="Logo" width={143} height={25} />
       </Link>

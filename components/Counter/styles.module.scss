@@ -1,0 +1,30 @@
+.__counter {
+  width: 120px;
+  height: 48px;
+  background-color: var(--light-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & div {
+    display: flex;
+    & p {
+      width: fit-content;
+      height: fit-content;
+    }
+    .__counter {
+      margin-inline: 21px;
+      font-family: "Manrope", sans-serif;
+      font-style: 13px;
+    }
+    .__prev_btn,
+    .__next_btn {
+      cursor: pointer;
+      opacity: 0.25 !important;
+      color: var(--dark-color) !important;
+      &:hover {
+        color: var(--brightest-color) !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+}

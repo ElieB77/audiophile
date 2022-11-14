@@ -44,26 +44,33 @@ export default function App({ Component, pageProps }: AppProps) {
     return setPageTitle(router.pathname.slice(1));
   }, [router.pathname]);
 
+  const navbarColor =
+    router.pathname === "/product/[id]" ? "__dark_navbar" : undefined;
+
   return (
     <>
-      <Navbar />
-      {router.pathname !== "/" && <Header title={pageTitle} />}
+      <Navbar overrideClassname={navbarColor} />
+      {router.pathname !== "/" && router.pathname !== "/product/[id]" && (
+        <Header title={pageTitle} />
+      )}
       <Component {...pageProps} />
       <div className="container">
-        <div className="__card_categories">
-          {cardCategoryData.map((card: any, index: number) => {
-            return (
-              <CardCategories
-                key={index}
-                categoryName={card.categoryName}
-                categoryImage={card.imageUrl!}
-                categoryHref={card.categoryHref}
-                width={card.width}
-                height={card.height}
-              />
-            );
-          })}
-        </div>
+        {router.pathname !== "/" && (
+          <div className="__card_categories">
+            {cardCategoryData.map((card: any, index: number) => {
+              return (
+                <CardCategories
+                  key={index}
+                  categoryName={card.categoryName}
+                  categoryImage={card.imageUrl!}
+                  categoryHref={card.categoryHref}
+                  width={card.width}
+                  height={card.height}
+                />
+              );
+            })}
+          </div>
+        )}
         <TextWithImage />
       </div>
       <Footer

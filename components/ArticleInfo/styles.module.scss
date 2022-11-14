@@ -12,6 +12,9 @@
     height: 560px;
     position: relative;
     margin-right: 125px;
+    & img {
+      border-radius: 8px;
+    }
   }
   .__info {
     width: 445px;
@@ -23,6 +26,18 @@
     & p:last-of-type {
       margin: 32px 0 40px 0;
       opacity: 0.5;
+    }
+    & h6 {
+      margin-bottom: 47px;
+      font-family: "Manrope", sans-serif;
+    }
+    .__add_to_cart {
+      display: flex;
+      gap: 16px;
+      & p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -4,6 +4,8 @@
   background-color: var(--light-color);
   position: relative;
   border-radius: 8px;
+  cursor: pointer;
+  color: var(--dark-color);
   .__photo {
     position: absolute;
     left: 50%;

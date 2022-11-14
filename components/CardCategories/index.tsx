@@ -19,21 +19,23 @@ const CardCategories = ({
   height,
 }: Props) => {
   return (
-    <div className={styles.__card}>
-      <Image
-        className={styles.__photo}
-        src={categoryImage!}
-        alt=""
-        width={width}
-        height={height}
-      />
-      <div className={styles.__content}>
-        <h6>{categoryName}</h6>
-        <Link href={categoryHref!}>
-          <Button btnContent={"SHOP"} btnType="borderless" btnIcon />
-        </Link>
-      </div>
-    </div>
+    <>
+      <Link href={categoryHref!}>
+        <div className={styles.__card}>
+          <Image
+            className={styles.__photo}
+            src={categoryImage!}
+            alt=""
+            width={width}
+            height={height}
+          />
+          <div className={styles.__content}>
+            <h6>{categoryName}</h6>
+            <Button btnContent={"SHOP"} btnType="borderless" btnIcon />
+          </div>
+        </div>
+      </Link>
+    </>
   );
 };
 

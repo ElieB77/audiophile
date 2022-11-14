@@ -17,6 +17,9 @@
     & a:not(:last-child) {
       margin-right: 34px;
     }
+    & a:hover {
+      color: var(--brightest-color);
+    }
   }
   & img {
     cursor: pointer;

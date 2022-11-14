@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../Button";
+import Link from "next/link";
 
 interface Props {
   heroOverline?: string;
@@ -23,7 +24,9 @@ const Hero = ({ heroOverline, heroTitle, heroParagraph }: Props) => {
         <p className="overline">{heroOverline}</p>
         <h1>{heroTitle}</h1>
         <p>{heroParagraph}</p>
-        <Button btnContent="see product" />
+        <Link href="/product/1">
+          <Button btnContent="see product" />
+        </Link>
       </div>
     </div>
   );
