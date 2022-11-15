@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import ArticleAccessories from "../../components/ArticleAccessories";
 import ArticleInfo from "../../components/ArticleInfo";
+import CardGroup from "../../components/CardGroup";
+import ProductRecommendation from "../../components/ProductRecommendation";
 
 const headphonesData = [
   {
@@ -28,9 +30,31 @@ const headphonesData = [
         quantity: 1,
       },
     ],
+    product_posters: [
+      "/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg",
+      "/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg",
+      "/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg",
+    ],
   },
 ];
-console.log(headphonesData[0].product_accessories);
+
+const recommendedProducts = [
+  {
+    productImage:
+      "/product-xx59-headphones/desktop/image-category-page-preview.jpg",
+    productName: "xx59",
+  },
+  {
+    productImage:
+      "/product-zx9-speaker/desktop/image-category-page-preview.jpg",
+    productName: "zx9",
+  },
+  {
+    productImage: "/product-xx99-mark-two-headphones/desktop/image-product.jpg",
+    productName: "xx99",
+  },
+];
+
 const Product = () => {
   const router = useRouter();
   const { id } = router.query;
@@ -47,6 +71,21 @@ const Product = () => {
         content={headphonesData[0].product_content}
         accessories={headphonesData[0].product_accessories}
       />
+      <CardGroup posters={headphonesData[0].product_posters} />
+      <h3 style={{ textAlign: "center", marginTop: "160px" }}>
+        you may also like
+      </h3>
+      <div style={{ display: "flex", gap: "30px" }}>
+        {recommendedProducts.map((product: any, index: number) => {
+          return (
+            <ProductRecommendation
+              key={index}
+              productImage={product.productImage}
+              productName={product.productName}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

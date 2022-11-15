@@ -1,3 +1,28 @@
+.__posters {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  position: relative;
+  margin-top: 160px;
+  & div {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    width: 445px;
+    height: 280px;
+
+    & img {
+      border-radius: 8px;
+    }
+  }
+  & div:last-child {
+    width: 635px;
+    height: 592px;
+    position: absolute;
+    right: 0;
+  }
+}
+
 .__card_group {
   margin-top: 168px;
   .__first_block {

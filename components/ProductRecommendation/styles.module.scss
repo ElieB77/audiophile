@@ -1,0 +1,16 @@
+.__product_recommendation {
+  text-align: center;
+  width: fit-content;
+  margin-top: 64px;
+  h5 {
+    margin: 40px 0 32px 0;
+  }
+  & div:first-child {
+    width: 350px;
+    height: 318px;
+    position: relative;
+    & img {
+      border-radius: 8px;
+    }
+  }
+}

@@ -2,11 +2,10 @@ import styles from "./styles.module.scss";
 
 interface Props {
   content?: string;
-  //   accessories?: {
-  //     quantity: number;
-  //     accessory: string;
-  //   }[];
-  accessories: any;
+  accessories?: {
+    quantity: number;
+    accessory: string;
+  }[];
 }
 
 const ArticleAccessories = ({ content, accessories }: Props) => {

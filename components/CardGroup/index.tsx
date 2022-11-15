@@ -7,6 +7,7 @@ interface Props {
   firstBlockParagraph?: string;
   secondBlockTitle?: string;
   thirdBlockTitle?: string;
+  posters?: string[];
 }
 
 const CardGroup = ({
@@ -14,7 +15,22 @@ const CardGroup = ({
   firstBlockParagraph,
   secondBlockTitle,
   thirdBlockTitle,
+  posters,
 }: Props) => {
+  if (posters) {
+    return (
+      <div className={styles.__posters}>
+        {posters.map((poster: any, index: number) => {
+          return (
+            <div key={index}>
+              <Image src={poster} alt="poster" fill objectFit="cover" />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className={styles.__card_group}>
       <div className={styles.__first_block}>
