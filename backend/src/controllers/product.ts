@@ -1,0 +1,19 @@
+const sql = require("../models/db");
+
+export const getProducts = (req: any, res: any) => {
+  sql.query("SELECT * from products", (err: any, rows: any) => {
+    if (err) throw err;
+    res.json({ status: 200, rows });
+  });
+};
+
+export const getProductById = (req: any, res: any) => {
+  const productId = req.params.id;
+  sql.query(
+    `SELECT * from products WHERE id=${productId}`,
+    (err: any, rows: any) => {
+      if (err) throw err;
+      res.json({ status: 200, rows });
+    }
+  );
+};
