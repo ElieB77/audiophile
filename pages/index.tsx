@@ -29,12 +29,12 @@ const cardCategoryData = [
 export default function Home() {
   return (
     <>
-      {/* <Navbar /> */}
       <Hero
         heroOverline="new product"
         heroTitle="XX99 Mark II Headphones"
         heroParagraph=" Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast."
+        productId="4"
       />
       <div className="container">
         <div className="__card_categories">
@@ -56,8 +56,11 @@ export default function Home() {
           firstBlockTitle="zx9 speaker"
           firstBlockParagraph="Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound."
+          firstBlockProductId="6"
           secondBlockTitle="zx7 speaker"
+          secondBlockProductId="5"
           thirdBlockTitle="yx1 earphone"
+          thirdBlockProductId="1"
         />
       </div>
     </>

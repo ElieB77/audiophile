@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import ArticleInfo from "../components/ArticleInfo";
+import Navbar from "../../components/Navbar";
+import ArticleInfo from "../../components/ArticleInfo";
 
 const headphonesData = [
   {
