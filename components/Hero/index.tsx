@@ -7,9 +7,10 @@ interface Props {
   heroOverline?: string;
   heroTitle?: string;
   heroParagraph?: string;
+  productId?: string;
 }
 
-const Hero = ({ heroOverline, heroTitle, heroParagraph }: Props) => {
+const Hero = ({ heroOverline, heroTitle, heroParagraph, productId }: Props) => {
   return (
     <div className={styles.__hero}>
       <div className={styles.__background}>
@@ -24,7 +25,7 @@ const Hero = ({ heroOverline, heroTitle, heroParagraph }: Props) => {
         <p className="overline">{heroOverline}</p>
         <h1>{heroTitle}</h1>
         <p>{heroParagraph}</p>
-        <Link href="/product/1">
+        <Link href={`/product/${productId}`}>
           <Button btnContent="see product" />
         </Link>
       </div>

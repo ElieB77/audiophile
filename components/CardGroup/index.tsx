@@ -1,20 +1,27 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../Button";
+import Link from "next/link";
 
 interface Props {
   firstBlockTitle?: string;
   firstBlockParagraph?: string;
+  firstBlockProductId?: string;
   secondBlockTitle?: string;
+  secondBlockProductId?: string;
   thirdBlockTitle?: string;
+  thirdBlockProductId?: string;
   posters?: string[];
 }
 
 const CardGroup = ({
   firstBlockTitle,
   firstBlockParagraph,
+  firstBlockProductId,
   secondBlockTitle,
+  secondBlockProductId,
   thirdBlockTitle,
+  thirdBlockProductId,
   posters,
 }: Props) => {
   if (posters) {
@@ -51,7 +58,9 @@ const CardGroup = ({
         <div className={styles.__content}>
           <h1>{firstBlockTitle}</h1>
           <p>{firstBlockParagraph}</p>
-          <Button btnContent={"see product"} btnType="outlined" />
+          <Link href={`product/${firstBlockProductId}`}>
+            <Button btnContent={"see product"} btnType="outlined" />
+          </Link>
         </div>
       </div>
       <div className={styles.__second_block}>
@@ -63,7 +72,9 @@ const CardGroup = ({
         />
         <div className={styles.__content}>
           <h4>{secondBlockTitle}</h4>
-          <Button btnContent={"see product"} btnType="outlined" />
+          <Link href={`product/${secondBlockProductId}`}>
+            <Button btnContent={"see product"} btnType="outlined" />
+          </Link>
         </div>
       </div>
       <div className={styles.__third_block}>
@@ -78,7 +89,9 @@ const CardGroup = ({
         <div className={styles.__content}>
           <div>
             <h4>{thirdBlockTitle}</h4>
-            <Button btnContent={"see product"} btnType="outlined" />
+            <Link href={`product/${thirdBlockProductId}`}>
+              <Button btnContent={"see product"} btnType="outlined" />
+            </Link>
           </div>
         </div>
       </div>

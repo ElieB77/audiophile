@@ -1,0 +1,21 @@
+.__cart_modal {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: var(--dark-color);
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 100;
+  .__cart {
+    width: 377px;
+    height: 200px;
+    background: var(--lightest-color);
+    position: absolute;
+    right: 0;
+    border: solid 2px red;
+    border-radius: 8px;
+    z-index: 1999;
+  }
+}

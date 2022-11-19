@@ -21,7 +21,7 @@ const ArticleAccessories = ({ content, accessories }: Props) => {
           return (
             <div key={index}>
               <span>{item.quantity}x</span>
-              <p>{item.accessory}</p>
+              <p>{item.item}</p>
             </div>
           );
         })}

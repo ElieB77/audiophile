@@ -106,18 +106,16 @@
       width: 540px;
       height: 320px;
       background-color: var(--light-color);
-      position: relative;
       border-radius: 8px;
-      & div:first-child {
-        position: absolute;
-        top: 50%;
-        left: 95px;
-        transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      padding-left: 95px;
+      & div {
         width: fit-content;
         height: fit-content;
-      }
-      & h4 {
-        margin-bottom: 32px;
+        & h4 {
+          margin-bottom: 32px;
+        }
       }
     }
   }

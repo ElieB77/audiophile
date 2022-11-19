@@ -1,129 +1,125 @@
-// import { useRouter } from "next/router";
-// import ArticleAccessories from "../../components/ArticleAccessories";
-// import ArticleInfo from "../../components/ArticleInfo";
-// import CardGroup from "../../components/CardGroup";
-// import ProductRecommendation from "../../components/ProductRecommendation";
-
-// const headphonesData = [
-//   {
-//     isNew: true,
-//     product_name: "zx9 speaker",
-//     product_description:
-//       "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
-//     product_image:
-//       "/product-zx9-speaker/desktop/image-category-page-preview.jpg",
-//     price: 1750,
-//     product_content: `These headphones have been created from durable, high-quality materials tough enough to take anywhere. Its compact folding design fuses comfort and minimalist style making it perfect for travel. Flawless transmission is assured by the latest wireless technology engineered for audio synchronization with videos.
-
-//     More than a simple pair of headphones, this headset features a pair of built-in microphones for clear, hands-free calling when paired with a compatible smartphone. Controlling music and calls is also intuitive thanks to easy-access touch buttons on the earcups. Regardless of how you use the XX59 headphones, you can do so all day thanks to an impressive 30-hour battery life that can be rapidly recharged via USB-C.`,
-//     product_accessories: [
-//       {
-//         accessory: "headphone unit",
-//         quantity: 2,
-//       },
-//       {
-//         accessory: "Replacement Earcups",
-//         quantity: 3,
-//       },
-//       {
-//         accessory: "user manual",
-//         quantity: 1,
-//       },
-//     ],
-//     product_posters: [
-//       "/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg",
-//       "/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg",
-//       "/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg",
-//     ],
-//   },
-// ];
-
-// const recommendedProducts = [
-//   {
-//     productImage:
-//       "/product-xx59-headphones/desktop/image-category-page-preview.jpg",
-//     productName: "xx59",
-//   },
-//   {
-//     productImage:
-//       "/product-zx9-speaker/desktop/image-category-page-preview.jpg",
-//     productName: "zx9",
-//   },
-//   {
-//     productImage: "/product-xx99-mark-two-headphones/desktop/image-product.jpg",
-//     productName: "xx99",
-//   },
-// ];
-
-// const Product = () => {
-//   const router = useRouter();
-//   const { id } = router.query;
-//   return (
-//     <div className="container">
-//       <ArticleInfo
-//         image={headphonesData[0].product_image}
-//         name={headphonesData[0].product_name}
-//         description={headphonesData[0].product_description}
-//         price={headphonesData[0].price}
-//         showCounterQuantity
-//       />
-//       <ArticleAccessories
-//         content={headphonesData[0].product_content}
-//         accessories={headphonesData[0].product_accessories}
-//       />
-//       <CardGroup posters={headphonesData[0].product_posters} />
-//       <h3 style={{ textAlign: "center", marginTop: "160px" }}>
-//         you may also like
-//       </h3>
-//       <div style={{ display: "flex", gap: "30px" }}>
-//         {recommendedProducts.map((product: any, index: number) => {
-//           return (
-//             <ProductRecommendation
-//               key={index}
-//               productImage={product.productImage}
-//               productName={product.productName}
-//             />
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Product;
+// Modules
+import { useEffect, useState } from "react";
+// Components
+import ArticleAccessories from "../../components/ArticleAccessories";
+import ArticleInfo from "../../components/ArticleInfo";
+import CardGroup from "../../components/CardGroup";
+import ProductRecommendation from "../../components/ProductRecommendation";
+// Utils
+import { parseData, replaceString } from "../../utils";
 
 interface Props {
-  productData: any;
+  product: any;
+  products: any;
 }
 
-const Product = ({ productData }: Props) => {
-  console.log(productData);
-  return <div>Data:</div>;
+const Product = ({ product, products }: Props) => {
+  const [data, setData] = useState<{ [key: string]: any }>({});
+
+  const productData = product.rows;
+  const productsData = products.rows;
+
+  let productRecommendedList: any[] = [];
+  let galleryList: any[] = [];
+
+  const productImages = parseData(productData[0].images);
+  const productImage = replaceString(productImages[0].desktop, "./assets", "");
+  const accessoriesList = parseData(productData[0].includes);
+  const gallery = parseData(productData[0].gallery);
+
+  Object.keys(gallery).map((item, index) => {
+    galleryList.push(replaceString(gallery[item].desktop, "./assets", ""));
+  });
+
+  productsData
+    .sort(() => 0.5 - Math.random())
+    .filter((product: any) => product.id !== productData[0].id)
+    .slice(0, 3)
+    .map((el: any) => {
+      let images = parseData(el.images);
+      let image = replaceString(images[0].desktop, "./assets", "");
+      const obj = {
+        name: el.name,
+        id: el.id,
+        image: image,
+      };
+      productRecommendedList.push(obj);
+    });
+
+  useEffect(() => {
+    setData({
+      name: productData[0].name,
+      image: productImage,
+      description: productData[0].description,
+      features: productData[0].features,
+      price: productData[0].price,
+      accessories: accessoriesList,
+      gallery: galleryList,
+      recommended: productRecommendedList,
+    });
+  }, [productData]);
+
+  return (
+    <div className="container">
+      <ArticleInfo
+        image={data.image}
+        name={data.name}
+        description={data.description}
+        price={data.price}
+        showCounterQuantity
+      />
+      <ArticleAccessories
+        content={data.features}
+        accessories={data.accessories}
+      />
+      <CardGroup posters={data.gallery} />
+      <h3 style={{ textAlign: "center", marginTop: "160px" }}>
+        you may also like
+      </h3>
+      <div style={{ display: "flex", gap: "30px" }}>
+        {data.recommended &&
+          data.recommended.map((product: any, index: number) => {
+            return (
+              <ProductRecommendation
+                key={index}
+                productImage={product.image}
+                productName={product.name}
+                productSlug={product.id}
+              />
+            );
+          })}
+      </div>
+    </div>
+  );
 };
 
 export async function getStaticProps(params: any) {
-  const productId = params.productId;
-  const results = await fetch(
-    // `https://last-airbender-api.herokuapp.com/api/v1/characters?name=${characterId}`
-    `http://localhost:3001/product`
-  ).then((res) => res.json());
+  const productData1 = await fetch(
+    `http://localhost:3001/product/${params.params.id}`
+  );
+  const response1 = await productData1.json();
+
+  const productData2 = await fetch("http://localhost:3001/products");
+  const response2 = await productData2.json();
+
   return {
     props: {
-      character: results[0],
+      product: response1,
+      products: response2,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const products = await fetch("http://localhost:3001/product").then((res) =>
-    res.json()
-  );
+  const productData = await fetch("http://localhost:3001/products");
+  const response = await productData.json();
+
   return {
-    paths: products.rows.map((product: any) => {
-      const productId = product.id;
+    paths: response.rows.map((product: any) => {
+      const id = product.id.toString();
       return {
         params: {
-          productId,
+          id,
         },
       };
     }),

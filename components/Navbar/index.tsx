@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+// import CartModal from "../CartModal";
 
 const navbarLinks = [
   { text: "home", href: "/" },
@@ -16,6 +17,7 @@ interface Props {
 const Navbar = ({ overrideClassname }: Props) => {
   return (
     <div className={`${styles.__navbar} ${overrideClassname}`}>
+      {/* <CartModal /> */}
       <Link href="/">
         <Image src="/logo-audiophile.svg" alt="Logo" width={143} height={25} />
       </Link>

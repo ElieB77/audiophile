@@ -20,9 +20,9 @@ const ProductRecommendation = ({
         <Image src={productImage!} alt="Product" fill objectFit="cover" />
       </div>
       <h5>{productName}</h5>
-      {/* <Link href={productSlug}> */}
-      <Button btnContent="see product" />
-      {/* </Link> */}
+      <Link href={`${productSlug}`}>
+        <Button btnContent="see product" />
+      </Link>
     </div>
   );
 };

@@ -13,4 +13,8 @@
       border-radius: 8px;
     }
   }
+  & div:last-child {
+    width: inherit;
+    height: inherit;
+  }
 }

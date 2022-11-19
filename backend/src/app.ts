@@ -10,8 +10,8 @@ const corsOptions = {
   credentials: true,
   optionSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
 
+app.use(cors(corsOptions));
 app.use(routes);
 
 const port = process.env.PORT;

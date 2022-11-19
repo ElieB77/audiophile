@@ -81,3 +81,14 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export async function getStaticProps() {
+  const data = await fetch("http://localhost:3001/products");
+  const response = await data.json();
+
+  return {
+    props: {
+      response,
+    },
+  };
+}
