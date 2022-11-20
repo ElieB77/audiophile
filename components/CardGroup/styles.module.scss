@@ -33,6 +33,10 @@
     border-radius: 8px;
     position: relative;
     margin-bottom: 48px;
+    & div:last-child div:hover {
+      background-color: #4c4c4c;
+      border: solid 2px transparent;
+    }
     & img:first-child {
       margin-left: -14%;
       position: absolute;
