@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 interface Props {
@@ -10,9 +11,9 @@ interface Props {
 
 const footerLinks = [
   { text: "home", href: "/" },
-  { text: "headphones", href: "/headphones" },
-  { text: "speakers", href: "/speakers" },
-  { text: "earphones", href: "/earphones" },
+  { text: "headphones", href: "/category/headphones" },
+  { text: "speakers", href: "/category/speakers" },
+  { text: "earphones", href: "/category/earphones" },
 ];
 
 const footerSocials = [
@@ -22,6 +23,7 @@ const footerSocials = [
 ];
 
 const Footer = ({ textContent, imageSrc, copyrightContent }: Props) => {
+  const router = useRouter();
   return (
     <div className={styles.__footer}>
       <div className={styles.__left_block}>
@@ -33,7 +35,7 @@ const Footer = ({ textContent, imageSrc, copyrightContent }: Props) => {
         <div className={styles.__links}>
           {footerLinks.map((link: any, index: number) => {
             return (
-              <Link href={link.href} key={index}>
+              <Link key={index} href={link.href}>
                 {link.text}
               </Link>
             );

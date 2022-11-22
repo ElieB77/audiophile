@@ -27,7 +27,7 @@ const Product = ({ product, products }: Props) => {
   const accessoriesList = parseData(productData[0].includes);
   const gallery = parseData(productData[0].gallery);
 
-  Object.keys(gallery).map((item, index) => {
+  Object.keys(gallery).map((item) => {
     galleryList.push(replaceString(gallery[item].desktop, "./assets", ""));
   });
 
@@ -38,6 +38,7 @@ const Product = ({ product, products }: Props) => {
     .map((el: any) => {
       let images = parseData(el.images);
       let image = replaceString(images[0].desktop, "./assets", "");
+
       const obj = {
         name: el.name,
         id: el.id,
@@ -56,8 +57,11 @@ const Product = ({ product, products }: Props) => {
       accessories: accessoriesList,
       gallery: galleryList,
       recommended: productRecommendedList,
+      new: productData[0].new,
     });
   }, [productData]);
+
+  console.log(data);
 
   return (
     <div className="container">
@@ -67,6 +71,7 @@ const Product = ({ product, products }: Props) => {
         description={data.description}
         price={data.price}
         showCounterQuantity
+        isNew={data.new === 1 ? true : false}
       />
       <ArticleAccessories
         content={data.features}

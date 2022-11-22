@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../Button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface Props {
   categoryName?: string;
@@ -18,9 +19,10 @@ const CardCategories = ({
   width,
   height,
 }: Props) => {
+  const router = useRouter();
   return (
     <>
-      <Link href={categoryHref!}>
+      <div onClick={() => router.push(categoryHref!)}>
         <div className={styles.__card}>
           <Image
             className={styles.__photo}
@@ -34,7 +36,7 @@ const CardCategories = ({
             <Button btnContent={"SHOP"} btnType="borderless" btnIcon />
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

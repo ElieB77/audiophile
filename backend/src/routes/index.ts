@@ -8,5 +8,6 @@ const router = Router();
 router.get("/", home);
 router.get("/products", product.getProducts);
 router.get("/product/:id", product.getProductById);
+router.get("/category/:category", product.getProductByCategory);
 
 module.exports = router;

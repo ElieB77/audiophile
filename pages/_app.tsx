@@ -10,27 +10,26 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TextWithImage from "../components/TextWithImage";
 import CardCategories from "../components/CardCategories";
-import Header from "../components/Header";
 
 const cardCategoryData = [
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
     categoryName: "headphones",
-    categoryHref: "/headphones",
+    categoryHref: "/category/headphones",
     width: 200,
     height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
     categoryName: "speakers",
-    categoryHref: "/speakers",
+    categoryHref: "/category/speakers",
     width: 200,
     height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
     categoryName: "earphones",
-    categoryHref: "/earphones",
+    categoryHref: "/category/earphones",
     width: 200,
     height: 200,
   },
@@ -50,9 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar overrideClassname={navbarColor} />
-      {router.pathname !== "/" && router.pathname !== "/product/[id]" && (
-        <Header title={pageTitle} />
-      )}
+
       <Component {...pageProps} />
       <div className="container">
         {router.pathname !== "/" && (

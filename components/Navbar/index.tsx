@@ -1,23 +1,24 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // import CartModal from "../CartModal";
-
-const navbarLinks = [
-  { text: "home", href: "/" },
-  { text: "headphones", href: "/headphones" },
-  { text: "speakers", href: "/speakers" },
-  { text: "earphones", href: "/earphones" },
-];
 
 interface Props {
   overrideClassname?: React.CSSProperties | string;
 }
 
 const Navbar = ({ overrideClassname }: Props) => {
+  const router = useRouter();
+  console.log("Navbar:", router.query);
+  const navbarLinks = [
+    { text: "home", href: "/" },
+    { text: "headphones", href: "/category/headphones" },
+    { text: "speakers", href: "/category/speakers" },
+    { text: "earphones", href: "/category/earphones" },
+  ];
   return (
     <div className={`${styles.__navbar} ${overrideClassname}`}>
-      {/* <CartModal /> */}
       <Link href="/">
         <Image src="/logo-audiophile.svg" alt="Logo" width={143} height={25} />
       </Link>

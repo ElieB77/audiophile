@@ -17,3 +17,15 @@ export const getProductById = (req: any, res: any) => {
     }
   );
 };
+
+export const getProductByCategory = (req: any, res: any) => {
+  const productCategory = req.params.category;
+  console.log(productCategory);
+  sql.query(
+    `SELECT * from products WHERE category="${productCategory}"`,
+    (err: any, rows: any) => {
+      if (err) throw err;
+      res.json({ status: 200, rows });
+    }
+  );
+};

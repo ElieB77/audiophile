@@ -2,6 +2,8 @@ import styles from "./styles.module.scss";
 import Button from "../Button";
 import Image from "next/image";
 import Counter from "../Counter";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface Props {
   image?: string;
@@ -11,6 +13,7 @@ interface Props {
   price?: number;
   index?: number;
   showCounterQuantity?: boolean;
+  id?: string;
 }
 
 const ArticleInfo = ({
@@ -21,6 +24,7 @@ const ArticleInfo = ({
   price,
   index,
   showCounterQuantity,
+  id,
 }: Props) => {
   const reverseClass = index && index % 2 !== 0 ? styles.__reverse : null;
   const showNewArticle = isNew ? <p className="overline">new product</p> : null;
@@ -30,7 +34,9 @@ const ArticleInfo = ({
       <Button btnContent="add to cart" />
     </div>
   ) : (
-    <Button btnContent="see product" />
+    <Link href={`/product/${id}`}>
+      <Button btnContent="see product" />
+    </Link>
   );
   return (
     <div className={styles.__article_info}>
