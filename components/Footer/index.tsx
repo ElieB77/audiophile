@@ -23,9 +23,9 @@ const footerSocials = [
 ];
 
 const Footer = ({ textContent, imageSrc, copyrightContent }: Props) => {
-  const router = useRouter();
   return (
     <div className={styles.__footer}>
+      {/* <div className="container"> */}
       <div className={styles.__left_block}>
         <Image src={imageSrc} alt="Logo" width={143} height={25} />
         <p>{textContent}</p>
@@ -56,6 +56,7 @@ const Footer = ({ textContent, imageSrc, copyrightContent }: Props) => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

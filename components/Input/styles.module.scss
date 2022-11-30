@@ -1,0 +1,45 @@
+.__input {
+  display: inline-flex;
+  flex-direction: column;
+  width: 309px;
+  & label {
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-family: "Manrope", sans-serif;
+  }
+  & input {
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    padding: 18px 0 18px 24px;
+    font-size: 14px;
+    width: 100%;
+    font-size: 14px;
+    outline-color: var(--brightest-color);
+    font-weight: 700;
+    font-family: "Manrope", sans-serif;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+.__checkbox {
+  border: 1px solid #cfcfcf;
+  width: 309px;
+  border-radius: 8px;
+  padding: 13px 0;
+  cursor: pointer;
+  & label {
+    width: 100%;
+    cursor: pointer;
+  }
+  & input {
+    margin: 0 16px;
+  }
+}
+
+.__full_width {
+  //   width: 100% !important;
+  width: 100%;
+}

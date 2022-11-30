@@ -44,7 +44,9 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.pathname]);
 
   const navbarColor =
-    router.pathname === "/product/[id]" ? "__dark_navbar" : undefined;
+    router.pathname === "/product/[id]" || router.pathname === "/checkout"
+      ? "__dark_navbar"
+      : undefined;
 
   return (
     <>
@@ -52,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Component {...pageProps} />
       <div className="container">
-        {router.pathname !== "/" && (
+        {router.pathname !== "/" && router.pathname !== "/checkout" && (
           <div className="__card_categories">
             {cardCategoryData.map((card: any, index: number) => {
               return (
@@ -68,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
             })}
           </div>
         )}
-        <TextWithImage />
+        {router.pathname !== "/checkout" && <TextWithImage />}
       </div>
       <Footer
         textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
