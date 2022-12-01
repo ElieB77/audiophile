@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-interface Props {
+interface InputProps {
   name?: string;
   placeholder?: string;
   isFullWidth?: boolean;
@@ -14,7 +14,7 @@ const Input = ({
   isFullWidth,
   label,
   isCheckbox,
-}: Props) => {
+}: InputProps) => {
   return isCheckbox ? (
     <div className={styles.__checkbox}>
       <label>

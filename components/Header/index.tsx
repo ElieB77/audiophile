@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
 
-interface Props {
+interface HeaderProps {
   title?: string;
 }
 
-const Header = ({ title }: Props) => {
+const Header = ({ title }: HeaderProps) => {
   return (
     <div className={styles.__header}>
       <h2>{title}</h2>

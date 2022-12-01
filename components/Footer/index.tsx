@@ -1,9 +1,8 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
-interface Props {
+interface footerLinksProps {
   textContent: string;
   imageSrc: string;
   copyrightContent: string;
@@ -22,7 +21,11 @@ const footerSocials = [
   "/insta-logo.svg",
 ];
 
-const Footer = ({ textContent, imageSrc, copyrightContent }: Props) => {
+const Footer = ({
+  textContent,
+  imageSrc,
+  copyrightContent,
+}: footerLinksProps) => {
   return (
     <div className={styles.__footer}>
       {/* <div className="container"> */}

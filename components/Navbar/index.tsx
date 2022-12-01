@@ -2,13 +2,13 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Modal from "../Modal";
-import { useModal } from "../../utils";
+import { useModal } from "../../utilities";
 
-interface Props {
+interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
 }
 
-const Navbar = ({ overrideClassname }: Props) => {
+const Navbar = ({ overrideClassname }: NavbarProps) => {
   const [isShowingModal, toggleModal] = useModal();
 
   const navbarLinks = [

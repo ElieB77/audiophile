@@ -3,13 +3,13 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Counter from "../Counter";
 
-interface Props {
+interface ModalProps {
   show: any;
   handleClick?: any;
   itemsLength: number;
 }
 
-const Modal = ({ show, handleClick, itemsLength = 1 }: Props) => {
+const Modal = ({ show, handleClick, itemsLength = 1 }: ModalProps) => {
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>

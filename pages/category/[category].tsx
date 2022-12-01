@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar";
 import ArticleInfo from "../../components/ArticleInfo";
 import { useEffect, useState } from "react";
-import { parseData, replaceString } from "../../utils";
+import { parseData, replaceString } from "../../utilities";
 import Header from "../../components/Header";
 
 interface Props {

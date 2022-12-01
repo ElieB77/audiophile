@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../Button";
 
-interface Props {
+interface ProductRecommendationProps {
   productImage?: string;
   productName?: string;
   productSlug?: string;
@@ -13,7 +13,7 @@ const ProductRecommendation = ({
   productImage,
   productName,
   productSlug,
-}: Props) => {
+}: ProductRecommendationProps) => {
   return (
     <div className={styles.__product_recommendation}>
       <div>

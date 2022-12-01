@@ -6,7 +6,7 @@ import ArticleInfo from "../../components/ArticleInfo";
 import CardGroup from "../../components/CardGroup";
 import ProductRecommendation from "../../components/ProductRecommendation";
 // Utils
-import { parseData, replaceString } from "../../utils";
+import { parseData, replaceString } from "../../utilities";
 
 interface Props {
   product: any;

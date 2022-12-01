@@ -3,14 +3,19 @@ import Image from "next/image";
 import Button from "../Button";
 import Link from "next/link";
 
-interface Props {
+interface HeroProps {
   heroOverline?: string;
   heroTitle?: string;
   heroParagraph?: string;
   productId?: string;
 }
 
-const Hero = ({ heroOverline, heroTitle, heroParagraph, productId }: Props) => {
+const Hero = ({
+  heroOverline,
+  heroTitle,
+  heroParagraph,
+  productId,
+}: HeroProps) => {
   return (
     <div className={styles.__hero}>
       <div className={styles.__background}>

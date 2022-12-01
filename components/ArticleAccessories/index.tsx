@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-interface Props {
+interface ArticleAccessoriesProps {
   content?: string;
   accessories?: {
     quantity: number;
@@ -8,7 +8,10 @@ interface Props {
   }[];
 }
 
-const ArticleAccessories = ({ content, accessories }: Props) => {
+const ArticleAccessories = ({
+  content,
+  accessories,
+}: ArticleAccessoriesProps) => {
   return (
     <div className={styles.__article_accessories}>
       <div className={styles.__left_block}>

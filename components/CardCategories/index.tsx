@@ -4,7 +4,7 @@ import Button from "../Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-interface Props {
+interface CardCategoriesProps {
   categoryName?: string;
   categoryImage?: string;
   categoryHref?: string;
@@ -18,7 +18,7 @@ const CardCategories = ({
   categoryHref,
   width,
   height,
-}: Props) => {
+}: CardCategoriesProps) => {
   const router = useRouter();
   return (
     <>

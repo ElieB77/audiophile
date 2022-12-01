@@ -5,7 +5,7 @@ import Counter from "../Counter";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-interface Props {
+interface ArticleInfoProps {
   image?: string;
   isNew?: boolean;
   name?: string;
@@ -25,7 +25,7 @@ const ArticleInfo = ({
   index,
   showCounterQuantity,
   id,
-}: Props) => {
+}: ArticleInfoProps) => {
   const reverseClass = index && index % 2 !== 0 ? styles.__reverse : null;
   const showNewArticle = isNew ? <p className="overline">new product</p> : null;
   const selectedButton = showCounterQuantity ? (

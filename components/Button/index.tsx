@@ -1,13 +1,13 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 
-interface Props {
+interface ButtonProps {
   btnContent: string | JSX.Element;
   btnType?: "outlined" | "borderless";
   btnIcon?: boolean;
 }
 
-const Button = ({ btnContent, btnType, btnIcon }: Props) => {
+const Button = ({ btnContent, btnType, btnIcon }: ButtonProps) => {
   const selectedBtnType =
     btnType === "borderless"
       ? styles.__borderless

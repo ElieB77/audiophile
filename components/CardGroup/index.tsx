@@ -3,7 +3,7 @@ import Image from "next/image";
 import Button from "../Button";
 import Link from "next/link";
 
-interface Props {
+interface CardGroupProps {
   firstBlockTitle?: string;
   firstBlockParagraph?: string;
   firstBlockProductId?: string;
@@ -23,7 +23,7 @@ const CardGroup = ({
   thirdBlockTitle,
   thirdBlockProductId,
   posters,
-}: Props) => {
+}: CardGroupProps) => {
   if (posters) {
     return (
       <div className={styles.__posters}>
