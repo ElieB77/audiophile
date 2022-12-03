@@ -40,7 +40,7 @@ const Product = ({ product, products }: Props) => {
       let image = replaceString(images[0].desktop, "./assets", "");
 
       const obj = {
-        name: el.name,
+        name: el.short_name,
         id: el.id,
         image: image,
       };
@@ -58,10 +58,11 @@ const Product = ({ product, products }: Props) => {
       gallery: galleryList,
       recommended: productRecommendedList,
       new: productData[0].new,
+      id: productData[0].id,
+      cartImage: productData[0].cart_image,
+      cartName: productData[0].short_name,
     });
   }, [productData]);
-
-  console.log(data);
 
   return (
     <div className="container">
@@ -72,6 +73,9 @@ const Product = ({ product, products }: Props) => {
         price={data.price}
         showCounterQuantity
         isNew={data.new === 1 ? true : false}
+        id={data.id}
+        cartImage={data.cartImage}
+        cartName={data.cartName}
       />
       <ArticleAccessories
         content={data.features}
