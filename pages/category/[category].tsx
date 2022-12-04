@@ -1,8 +1,9 @@
-import Navbar from "../../components/Navbar";
-import ArticleInfo from "../../components/ArticleInfo";
+import Navbar from "../../components/Layout/Navbar";
+import ArticleInfo from "../../components/Product/ProductInfo";
 import { useEffect, useState } from "react";
-import { parseData, replaceString } from "../../utilities";
-import Header from "../../components/Header";
+import { replaceString } from "../../utilities/replaceString";
+import { parseData } from "../../utilities/parseData";
+import Header from "../../components/Layout/Header";
 
 interface Props {
   products?: any;

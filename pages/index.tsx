@@ -1,6 +1,6 @@
-import Hero from "../components/Hero";
-import CardCategories from "../components/CardCategories";
-import CardGroup from "../components/CardGroup";
+import Hero from "../components/Layout/Hero";
+import CardCategories from "../components/Card/CardCategories";
+import CardGroup from "../components/Card/CardGroup";
 
 const cardCategoryData = [
   {

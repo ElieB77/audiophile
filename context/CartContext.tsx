@@ -14,11 +14,12 @@ interface CartItem {
 
 interface CartContext {
   addToCart: (id: number, image: string, name: string, price: number) => void;
-  getItemQuantity: (id: number) => number;
   cartQuantity: number;
   cartItems: CartItem[];
-  increaseItemQuantity: any;
+  getItemQuantity: any;
   clearCart: () => void;
+  cartTotalPrice: number;
+  removeItem: any;
 }
 
 const CartContext = createContext({} as CartContext);
@@ -29,6 +30,7 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [quantity, setQuantity] = useState<number>(0);
 
   const addToCart = (
     id: number,
@@ -38,12 +40,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   ) => {
     const alreadyExist = cartItems.find((item) => item.id === id);
     if (!alreadyExist) {
-      setCartItems([...cartItems, { id, image, name, price, quantity: 1 }]);
+      setCartItems([...cartItems, { id, image, name, price, quantity }]);
     }
-  };
-
-  const getItemQuantity = (id: number) => {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
 
   const cartQuantity = cartItems.reduce(
@@ -51,23 +49,33 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     0
   );
 
-  const increaseItemQuantity = () => {
-    return console.log("increase qty");
+  const getItemQuantity = (qty: number) => {
+    return setQuantity(qty);
   };
 
   const clearCart = () => {
     return setCartItems([]);
   };
 
+  const cartTotalPrice = cartItems.reduce(
+    (accumulator, current) => accumulator + current.price * current.quantity,
+    0
+  );
+
+  const removeItem = (id: number) => {
+    return setCartItems([...cartItems.filter((item) => item.id !== id)]);
+  };
+
   return (
     <CartContext.Provider
       value={{
         addToCart,
-        getItemQuantity,
         cartQuantity,
         cartItems,
-        increaseItemQuantity,
+        getItemQuantity,
         clearCart,
+        cartTotalPrice,
+        removeItem,
       }}
     >
       {children}

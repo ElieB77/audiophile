@@ -1,4 +1,4 @@
-import Input from "../../components/Input";
+import Input from "../../components/UI/Input";
 import styles from "../../styles/pages/checkout.module.scss";
 
 const Checkout = () => {

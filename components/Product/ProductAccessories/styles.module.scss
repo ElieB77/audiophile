@@ -1,0 +1,24 @@
+.__product_accessories {
+  display: flex;
+  h3 {
+    margin-bottom: 32px;
+  }
+  p {
+    opacity: 0.5;
+  }
+  .__left_block {
+    width: 635px;
+  }
+  .__right_block {
+    margin-left: 125px;
+    & div {
+      display: flex;
+    }
+    & span {
+      color: var(--brightest-color);
+      font-family: "Manrope", sans-serif;
+      margin-right: 20px;
+      opacity: 1;
+    }
+  }
+}

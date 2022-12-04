@@ -1,0 +1,1 @@
+UPDATE Products SET short_name="zx7" WHERE id=5;

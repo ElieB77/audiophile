@@ -1,12 +1,13 @@
 // Modules
 import { useEffect, useState } from "react";
 // Components
-import ArticleAccessories from "../../components/ArticleAccessories";
-import ArticleInfo from "../../components/ArticleInfo";
-import CardGroup from "../../components/CardGroup";
-import ProductRecommendation from "../../components/ProductRecommendation";
+import ArticleAccessories from "../../components/Product/ProductAccessories";
+import ArticleInfo from "../../components/Product/ProductInfo";
+import CardGroup from "../../components/Card/CardGroup";
+import ProductRecommendation from "../../components/Product/ProductRecommendation";
 // Utils
-import { parseData, replaceString } from "../../utilities";
+import { parseData } from "../../utilities/parseData";
+import { replaceString } from "../../utilities/replaceString";
 
 interface Props {
   product: any;

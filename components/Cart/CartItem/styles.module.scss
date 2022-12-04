@@ -1,0 +1,39 @@
+.__cart_item {
+  display: flex;
+  align-items: center;
+  margin: 32px 0;
+  .__image {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    & img {
+      border-radius: 8px;
+    }
+  }
+  .__details {
+    margin-left: 16px;
+    & p {
+      font-family: "Manrope", sans-serif;
+      font-weight: bolder;
+      text-transform: uppercase;
+    }
+    & p:last-child {
+      opacity: 0.5;
+    }
+  }
+  & div:nth-of-type(3) {
+    margin-left: auto;
+  }
+  .__trash {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    margin-left: 10px;
+    cursor: pointer;
+
+    & :hover {
+      filter: invert(48%) sepia(80%) saturate(363%) hue-rotate(338deg)
+        brightness(99%) contrast(93%);
+    }
+  }
+}
