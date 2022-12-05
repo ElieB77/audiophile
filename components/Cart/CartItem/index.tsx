@@ -21,7 +21,7 @@ interface CartItemProps {
 
 const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
   let cartImage = replaceString(image, "public", "");
-  const { removeItem } = useCart();
+  const { removeItem, increaseQuantity, decreaseQuantity } = useCart();
 
   return (
     <div className={styles.__cart_item}>
@@ -32,7 +32,12 @@ const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
         <p>{name}</p>
         <p>{price.toLocaleString()}</p>
       </div>
-      <Counter isCart value={quantity} />
+      <Counter
+        isCart
+        value={quantity}
+        increaseClick={() => increaseQuantity(id)}
+        decreaseClick={() => decreaseQuantity(id)}
+      />
       <div className={styles.__trash} onClick={() => removeItem(id)}>
         <Image src={TrashIcon} alt="article" fill objectFit="cover" />
       </div>

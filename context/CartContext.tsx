@@ -26,6 +26,8 @@ interface CartContext {
   clearCart: () => void;
   cartTotalPrice: number;
   removeItem: (id: number) => void;
+  increaseQuantity: any;
+  decreaseQuantity: any;
 }
 
 const CartContext = createContext({} as CartContext);
@@ -80,6 +82,24 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     return setCartItems([...cartItems.filter((item) => item.id !== id)]);
   };
 
+  const increaseQuantity = (id: number) => {
+    cartItems.map((item: any, index: number) => {
+      if (item.id === id) {
+        return cartItems[index].quantity++;
+      }
+    });
+    setForceRerender(!forceRerender);
+  };
+
+  const decreaseQuantity = (id: number) => {
+    cartItems.map((item: any, index: number) => {
+      if (item.id === id) {
+        return cartItems[index].quantity--;
+      }
+    });
+    setForceRerender(!forceRerender);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -90,6 +110,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         clearCart,
         cartTotalPrice,
         removeItem,
+        increaseQuantity,
+        decreaseQuantity,
       }}
     >
       {children}

@@ -6,9 +6,16 @@ import { useRouter } from "next/router";
 interface CounterProps {
   isCart?: boolean;
   value?: number;
+  increaseClick?: any;
+  decreaseClick?: any;
 }
 
-const Counter = ({ isCart, value }: CounterProps) => {
+const Counter = ({
+  isCart,
+  value,
+  increaseClick,
+  decreaseClick,
+}: CounterProps) => {
   const [count, setCount] = useState<number>(1);
   const { getItemQuantity, cartItems, cartQuantity } = useCart();
   const router = useRouter();
@@ -34,11 +41,17 @@ const Counter = ({ isCart, value }: CounterProps) => {
   return (
     <div className={`${styles.__counter} ${isCart ? styles.__is_small : null}`}>
       <div>
-        <p className={styles.__prev_btn} onClick={decreaseCounter}>
+        <p
+          className={styles.__prev_btn}
+          onClick={isCart ? decreaseClick : decreaseCounter}
+        >
           -
         </p>
         <p className={styles.__counter}>{isCart ? value : count}</p>
-        <p className={styles.__next_btn} onClick={increaseCounter}>
+        <p
+          className={styles.__next_btn}
+          onClick={isCart ? increaseClick : increaseCounter}
+        >
           +
         </p>
       </div>
