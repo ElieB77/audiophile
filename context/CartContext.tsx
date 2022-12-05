@@ -94,9 +94,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const decreaseQuantity = (id: number) => {
     cartItems.map((item: any, index: number) => {
       if (item.id === id) {
+        if (item.quantity < 2) removeItem(id);
+
         return cartItems[index].quantity--;
       }
     });
+
     setForceRerender(!forceRerender);
   };
 
