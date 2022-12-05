@@ -10,16 +10,16 @@ interface CounterProps {
 
 const Counter = ({ isCart, value }: CounterProps) => {
   const [count, setCount] = useState<number>(1);
-  const { getItemQuantity, cartItems } = useCart();
+  const { getItemQuantity, cartItems, cartQuantity } = useCart();
   const router = useRouter();
 
   useEffect(() => {
     getItemQuantity(count);
-  }, [count]);
+  }, [count, cartItems, getItemQuantity]);
 
   useEffect(() => {
     return setCount(1);
-  }, [router.asPath, cartItems]);
+  }, [router.asPath, cartItems, cartQuantity]);
 
   const increaseCounter = () => {
     return setCount(count + 1);

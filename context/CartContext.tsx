@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -16,10 +22,10 @@ interface CartContext {
   addToCart: (id: number, image: string, name: string, price: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
-  getItemQuantity: any;
+  getItemQuantity: (qty: number) => void;
   clearCart: () => void;
   cartTotalPrice: number;
-  removeItem: any;
+  removeItem: (id: number) => void;
 }
 
 const CartContext = createContext({} as CartContext);
@@ -31,6 +37,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
+  const [forceRerender, setForceRerender] = useState<boolean>(false);
 
   const addToCart = (
     id: number,
@@ -40,7 +47,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   ) => {
     const alreadyExist = cartItems.find((item) => item.id === id);
     if (!alreadyExist) {
-      setCartItems([...cartItems, { id, image, name, price, quantity }]);
+      return setCartItems([...cartItems, { id, image, name, price, quantity }]);
+    } else {
+      cartItems.map((item, index) => {
+        if (item.id === id) {
+          return (cartItems[index].quantity += quantity);
+        }
+      });
+      setForceRerender(!forceRerender);
     }
   };
 

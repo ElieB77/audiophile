@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 // Components
 import ArticleAccessories from "../../components/Product/ProductAccessories";
-import ArticleInfo from "../../components/Product/ProductInfo";
+import ProductInfo from "../../components/Product/ProductInfo";
 import CardGroup from "../../components/Card/CardGroup";
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
 // Utils
@@ -67,7 +67,7 @@ const Product = ({ product, products }: Props) => {
 
   return (
     <div className="container">
-      <ArticleInfo
+      <ProductInfo
         image={data.image}
         name={data.name}
         description={data.description}

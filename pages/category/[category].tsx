@@ -1,5 +1,5 @@
 import Navbar from "../../components/Layout/Navbar";
-import ArticleInfo from "../../components/Product/ProductInfo";
+import ProductInfo from "../../components/Product/ProductInfo";
 import { useEffect, useState } from "react";
 import { replaceString } from "../../utilities/replaceString";
 import { parseData } from "../../utilities/parseData";
@@ -28,7 +28,7 @@ const Category = ({ products, category }: Props) => {
             const image = replaceString(images[0].desktop, "./assets", "");
             const isNew = product.new === 1 ? true : false;
             return (
-              <ArticleInfo
+              <ProductInfo
                 key={index}
                 name={product.name}
                 image={image}

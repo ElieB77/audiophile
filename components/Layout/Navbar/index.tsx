@@ -6,6 +6,7 @@ import { useCartModal } from "../../../hooks/useCartModal";
 import { useCart } from "../../../context/CartContext";
 import CartIcon from "../../../assets/public/cart.svg";
 import Logo from "../../../assets/public/logo-audiophile.svg";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
@@ -21,6 +22,7 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
     { text: "speakers", href: "/category/speakers" },
     { text: "earphones", href: "/category/earphones" },
   ];
+
   return (
     <>
       <CartModal show={isShowingCartModal} handleClick={toggleCartModal} />
