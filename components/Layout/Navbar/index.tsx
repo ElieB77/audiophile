@@ -1,12 +1,18 @@
+// Styles
 import styles from "./styles.module.scss";
-import Image from "next/image";
-import Link from "next/link";
+// Component
 import CartModal from "../../Cart/CartModal";
+// Modules
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+// Hooks
 import { useCartModal } from "../../../hooks/useCartModal";
+// Context
 import { useCart } from "../../../context/CartContext";
+// Assets
 import CartIcon from "../../../assets/public/cart.svg";
 import Logo from "../../../assets/public/logo-audiophile.svg";
-import { useEffect, useState } from "react";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
@@ -15,12 +21,29 @@ interface NavbarProps {
 const Navbar = ({ overrideClassname }: NavbarProps) => {
   const [isShowingCartModal, toggleCartModal] = useCartModal();
   const { cartQuantity } = useCart();
+  const router = useRouter();
 
   const navbarLinks = [
-    { text: "home", href: "/" },
-    { text: "headphones", href: "/category/headphones" },
-    { text: "speakers", href: "/category/speakers" },
-    { text: "earphones", href: "/category/earphones" },
+    {
+      text: "home",
+      href: "/",
+      active: router.pathname === "/" ? styles.__active : "",
+    },
+    {
+      text: "headphones",
+      href: "/category/headphones",
+      active: router.query.category === "headphones" ? styles.__active : "",
+    },
+    {
+      text: "speakers",
+      href: "/category/speakers",
+      active: router.query.category === "speakers" ? styles.__active : "",
+    },
+    {
+      text: "earphones",
+      href: "/category/earphones",
+      active: router.query.category === "earphones" ? styles.__active : "",
+    },
   ];
 
   return (
@@ -33,7 +56,7 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
         <div className={styles.__links}>
           {navbarLinks.map((link: any, index: number) => {
             return (
-              <Link href={link.href} key={index}>
+              <Link href={link.href} key={index} className={link.active}>
                 {link.text}
               </Link>
             );
