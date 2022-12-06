@@ -17,8 +17,6 @@ interface CartModalProps {
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
 
-  console.log("cartModal", cartItems);
-
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>

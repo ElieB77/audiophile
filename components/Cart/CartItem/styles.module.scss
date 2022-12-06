@@ -6,6 +6,7 @@
     width: 64px;
     height: 64px;
     position: relative;
+    cursor: pointer;
     & img {
       border-radius: 8px;
     }
@@ -16,6 +17,9 @@
       font-family: "Manrope", sans-serif;
       font-weight: bolder;
       text-transform: uppercase;
+    }
+    & p:first-child {
+      cursor: pointer;
     }
     & p:last-child {
       opacity: 0.5;

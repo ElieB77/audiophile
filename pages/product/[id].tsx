@@ -1,13 +1,17 @@
 // Modules
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 // Components
 import ArticleAccessories from "../../components/Product/ProductAccessories";
 import ProductInfo from "../../components/Product/ProductInfo";
 import CardGroup from "../../components/Card/CardGroup";
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
+import Button from ".././../components/UI/Button";
 // Utils
 import { parseData } from "../../utilities/parseData";
 import { replaceString } from "../../utilities/replaceString";
+// Styles
+import styles from "../../assets/styles/pages/product.module.scss";
 
 interface Props {
   product: any;
@@ -16,6 +20,7 @@ interface Props {
 
 const Product = ({ product, products }: Props) => {
   const [data, setData] = useState<{ [key: string]: any }>({});
+  const router = useRouter();
 
   const productData = product.rows;
   const productsData = products.rows;
@@ -67,6 +72,9 @@ const Product = ({ product, products }: Props) => {
 
   return (
     <div className="container">
+      <div className={styles.__go_back_btn} onClick={() => router.back()}>
+        <Button btnContent="go back" btnType="borderless" />
+      </div>
       <ProductInfo
         image={data.image}
         name={data.name}

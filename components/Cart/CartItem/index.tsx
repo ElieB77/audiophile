@@ -2,6 +2,7 @@
 import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
+import { useRouter } from "next/router";
 // Components
 import Counter from "../../UI/Counter";
 // Utilities
@@ -22,14 +23,22 @@ interface CartItemProps {
 const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
   let cartImage = replaceString(image, "public", "");
   const { removeItem, increaseQuantity, decreaseQuantity } = useCart();
+  const router = useRouter();
+
+  const goToProductPage = () => {
+    return router.push(`/product/${id}`);
+  };
 
   return (
-    <div className={styles.__cart_item}>
-      <div className={styles.__image}>
+    <div
+      className={styles.__cart_item}
+      onClick={() => router.push(`/product/${id}`)}
+    >
+      <div className={styles.__image} onClick={goToProductPage}>
         <Image src={cartImage} alt="article" fill objectFit="cover" />
       </div>
       <div className={styles.__details}>
-        <p>{name}</p>
+        <p onClick={goToProductPage}>{name}</p>
         <p>{price.toLocaleString()}</p>
       </div>
       <Counter
