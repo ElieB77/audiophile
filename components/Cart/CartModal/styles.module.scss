@@ -50,4 +50,25 @@
       text-align: center;
     }
   }
+  .__empty_cart {
+    text-align: center;
+    & p:nth-of-type(2) {
+      font-size: 13px;
+      line-height: 130%;
+      opacity: 0.5;
+      margin-top: 15px;
+    }
+    .__links {
+      margin-top: 15px;
+      & a {
+        color: var(--brightest-color);
+        &:hover {
+          color: var(--bright-color);
+        }
+      }
+      & a:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
 }
