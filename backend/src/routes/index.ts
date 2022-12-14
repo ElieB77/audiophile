@@ -10,6 +10,6 @@ router.get("/", home);
 router.get("/products", product.getProducts);
 router.get("/product/:id", product.getProductById);
 router.get("/category/:category", product.getProductByCategory);
-router.post("/register", user.registerUser);
+router.post("/signup", user.signUp);
 
 module.exports = router;
