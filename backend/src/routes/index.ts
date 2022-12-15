@@ -2,7 +2,7 @@ const { Router } = require("express");
 
 const home = require("../controllers/index");
 const product = require("../controllers/product");
-const user = require("../controllers/user");
+const user = require("../controllers/auth");
 
 const router = Router();
 
