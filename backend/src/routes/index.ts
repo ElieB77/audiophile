@@ -11,5 +11,6 @@ router.get("/products", product.getProducts);
 router.get("/product/:id", product.getProductById);
 router.get("/category/:category", product.getProductByCategory);
 router.post("/signup", user.signUp);
+router.post("/signin", user.signIn);
 
 module.exports = router;
