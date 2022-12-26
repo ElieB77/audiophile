@@ -1,5 +1,5 @@
 import Input from "../../components/UI/Input";
-import styles from "../../styles/pages/checkout.module.scss";
+import styles from "../../assets/styles/pages/checkout.module.scss";
 
 const Checkout = () => {
   return (

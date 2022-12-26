@@ -1,5 +1,8 @@
+// Styles
 import styles from "./styles.module.scss";
+// Modules
 import Image from "next/image";
+// Assets
 import RightArrow from "../../../assets/public/right-arrow.svg";
 
 interface ButtonProps {
@@ -7,9 +10,16 @@ interface ButtonProps {
   btnType?: "outlined" | "borderless";
   btnIcon?: boolean;
   onClick?: () => void;
+  isFullWidth?: boolean;
 }
 
-const Button = ({ btnContent, btnType, btnIcon, onClick }: ButtonProps) => {
+const Button = ({
+  btnContent,
+  btnType,
+  btnIcon,
+  onClick,
+  isFullWidth,
+}: ButtonProps) => {
   const selectedBtnType =
     btnType === "borderless"
       ? styles.__borderless
@@ -17,7 +27,12 @@ const Button = ({ btnContent, btnType, btnIcon, onClick }: ButtonProps) => {
       ? styles.__outlined
       : null;
   return (
-    <div className={`${styles.__button} ${selectedBtnType}`} onClick={onClick}>
+    <div
+      className={`${styles.__button} ${selectedBtnType} ${
+        isFullWidth ? styles.__full_width : null
+      }`}
+      onClick={onClick}
+    >
       {btnContent}
       {btnIcon && (
         <Image

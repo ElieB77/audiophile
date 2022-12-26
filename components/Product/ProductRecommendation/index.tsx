@@ -1,6 +1,9 @@
+// Styles
 import styles from "./styles.module.scss";
-import Image from "next/image";
+// Modules
 import Link from "next/link";
+import Image from "next/image";
+// Components
 import Button from "../../UI/Button";
 
 interface ProductRecommendationProps {

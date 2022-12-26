@@ -1,7 +1,10 @@
+// Styles
 import styles from "./styles.module.scss";
+// Modules
 import Image from "next/image";
-import Button from "../../UI/Button";
 import Link from "next/link";
+// Components
+import Button from "../../UI/Button";
 
 interface HeroProps {
   heroOverline?: string;

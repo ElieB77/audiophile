@@ -1,7 +1,10 @@
+// Styles
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import { useCart } from "../../../context/CartContext";
+// Modules
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+// Context
+import { useCart } from "../../../context/CartContext";
 
 interface CounterProps {
   isCart?: boolean;

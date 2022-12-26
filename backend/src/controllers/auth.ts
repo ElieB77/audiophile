@@ -19,7 +19,7 @@ export const signUp = async (req: any, res: any) => {
               )`,
             (err: any, rows: any) => {
               if (err) throw err;
-              res.json({ status: 200, rows });
+              res.json({ status: 201, rows });
             }
           );
         } else {
@@ -30,4 +30,32 @@ export const signUp = async (req: any, res: any) => {
   });
 };
 
-export const signIn = () => {};
+export const signIn = (req: any, res: any) => {
+  const { email, password } = req.body;
+
+  sql.query(
+    `select * from users where email="${email}"`,
+    (err: any, rows: any) => {
+      if (err) {
+        return res.status(400).json({ message: err });
+      }
+      if (rows.length < 1) {
+        return res
+          .status(401)
+          .json({ message: "Email or password is incorrect." });
+      }
+
+      bcrypt.compare(password, rows[0].password, (err: any, result: any) => {
+        if (result) {
+          return res.status(200).json({ user: rows[0] });
+        } else {
+          return res
+            .status(401)
+            .json({ message: "Email or password is incorrect" });
+        }
+      });
+    }
+  );
+
+  return;
+};

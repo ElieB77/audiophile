@@ -30,10 +30,7 @@ const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
   };
 
   return (
-    <div
-      className={styles.__cart_item}
-      onClick={() => router.push(`/product/${id}`)}
-    >
+    <div className={styles.__cart_item}>
       <div className={styles.__image} onClick={goToProductPage}>
         <Image src={cartImage} alt="article" fill objectFit="cover" />
       </div>

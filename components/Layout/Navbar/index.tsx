@@ -2,17 +2,20 @@
 import styles from "./styles.module.scss";
 // Component
 import CartModal from "../../Cart/CartModal";
+import UserModal from "../../User/UserModal";
 // Modules
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 // Hooks
 import { useCartModal } from "../../../hooks/useCartModal";
+import { useUserModal } from "../../../hooks/useUserModal";
 // Context
 import { useCart } from "../../../context/CartContext";
 // Assets
 import CartIcon from "../../../assets/public/cart.svg";
 import Logo from "../../../assets/public/logo-audiophile.svg";
+import UserIcon from "../../../assets/public/user-icon.svg";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
@@ -20,6 +23,7 @@ interface NavbarProps {
 
 const Navbar = ({ overrideClassname }: NavbarProps) => {
   const [isShowingCartModal, toggleCartModal] = useCartModal();
+  const [isShowingUserModal, toggleUserModal] = useUserModal();
   const { cartQuantity } = useCart();
   const router = useRouter();
 
@@ -49,6 +53,7 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
   return (
     <>
       <CartModal show={isShowingCartModal} handleClick={toggleCartModal} />
+      <UserModal show={isShowingUserModal} handleClick={toggleUserModal} />
       <div className={`${styles.__navbar} ${overrideClassname}`}>
         <Link href="/">
           <Image src={Logo} alt="Logo" width={143} height={25} />
@@ -62,11 +67,16 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
             );
           })}
         </div>
-        <div onClick={toggleCartModal} className={styles.__cart}>
-          <Image src={CartIcon} alt="Cart" width={23} height={20} />
-          {cartQuantity > 0 && (
-            <div className={styles.__cart_qty}>{cartQuantity}</div>
-          )}
+        <div className={styles.__icons}>
+          <div onClick={toggleCartModal} className={styles.__cart}>
+            <Image src={CartIcon} alt="Cart" width={23} height={20} />
+            {cartQuantity > 0 && (
+              <div className={styles.__cart_qty}>{cartQuantity}</div>
+            )}
+          </div>
+          <div className={styles.__user} onClick={toggleUserModal}>
+            <Image src={UserIcon} alt="User" width={23} height={20} />
+          </div>
         </div>
         <div className={styles.__divider}></div>
       </div>

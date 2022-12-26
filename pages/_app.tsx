@@ -68,6 +68,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     categoryHref={card.categoryHref}
                     width={card.width}
                     height={card.height}
+                    btnContent="SHOP"
                   />
                 );
               })}

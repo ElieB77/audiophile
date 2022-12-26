@@ -4,11 +4,10 @@ import styles from "./styles.module.scss";
 import Button from "../../UI/Button";
 import Counter from "../../UI/Counter";
 import CartItem from "../CartItem";
-// Modules
-import Image from "next/image";
 // Context
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface CartModalProps {
   show: any;
@@ -17,6 +16,7 @@ interface CartModalProps {
 
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
+  const router = useRouter();
 
   return show ? (
     <>
@@ -47,7 +47,10 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             <div className={styles.__price}>
               <p>total</p>
               <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
-              <Button btnContent="checkout" />
+              <Button
+                btnContent="checkout"
+                onClick={() => router.push("/checkout")}
+              />
             </div>
           </>
         ) : (

@@ -12,6 +12,7 @@ interface CardCategoriesProps {
   categoryHref?: string;
   width: number;
   height: number;
+  btnContent: string;
 }
 
 const CardCategories = ({
@@ -20,6 +21,7 @@ const CardCategories = ({
   categoryHref,
   width,
   height,
+  btnContent,
 }: CardCategoriesProps) => {
   const router = useRouter();
   return (
@@ -35,7 +37,7 @@ const CardCategories = ({
           />
           <div className={styles.__content}>
             <h6>{categoryName}</h6>
-            <Button btnContent={"SHOP"} btnType="borderless" btnIcon />
+            <Button btnContent={btnContent} btnType="borderless" btnIcon />
           </div>
         </div>
       </div>

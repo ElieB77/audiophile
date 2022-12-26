@@ -1,4 +1,6 @@
+// Styles
 import styles from "./styles.module.scss";
+// Modules
 import Image from "next/image";
 
 const TextWithImage = () => {

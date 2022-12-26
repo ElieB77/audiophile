@@ -47,6 +47,7 @@ export default function Home() {
                 categoryHref={card.categoryHref}
                 width={card.width}
                 height={card.height}
+                btnContent={"SHOP"}
               />
             );
           })}

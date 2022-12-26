@@ -1,8 +1,12 @@
+// Styles
 import styles from "./styles.module.scss";
-import Button from "../../UI/Button";
-import Image from "next/image";
-import Counter from "../../UI/Counter";
+// Modules
 import Link from "next/link";
+import Image from "next/image";
+// Components
+import Counter from "../../UI/Counter";
+import Button from "../../UI/Button";
+// Context
 import { useCart } from "../../../context/CartContext";
 
 interface ProductInfoProps {
