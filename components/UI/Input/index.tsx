@@ -1,3 +1,4 @@
+import { type } from "os";
 import styles from "./styles.module.scss";
 
 interface InputProps {
@@ -6,6 +7,7 @@ interface InputProps {
   isFullWidth?: boolean;
   label?: string;
   isCheckbox?: boolean;
+  onChange?: any;
 }
 
 const Input = ({
@@ -14,6 +16,7 @@ const Input = ({
   isFullWidth,
   label,
   isCheckbox,
+  onChange,
 }: InputProps) => {
   return isCheckbox ? (
     <div className={styles.__checkbox}>
@@ -29,7 +32,13 @@ const Input = ({
       }`}
     >
       <label htmlFor={name}>{label}</label>
-      <input id={name} name={name} type="text" placeholder={placeholder} />
+      <input
+        id={name}
+        name={name}
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     </div>
   );
 };
