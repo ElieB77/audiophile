@@ -27,7 +27,7 @@ const UserModal = ({ show, handleClick }: Props) => {
     if (show) setConditionalContent("signin");
   }, [show]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const isValid = formValidation(
       values.name,
       values.email,
@@ -35,9 +35,22 @@ const UserModal = ({ show, handleClick }: Props) => {
       values.confirmPassword
     );
 
-    setValues({ name: "", email: "", password: "", confirmPassword: "" });
+    if (isValid) {
+      const data = await fetch("http://localhost:3001/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
 
-    console.log(isValid);
+      const response = await data.json();
+      console.log(response);
+    }
   };
 
   return (
