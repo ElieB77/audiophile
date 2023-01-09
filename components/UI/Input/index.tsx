@@ -8,6 +8,7 @@ interface InputProps {
   label?: string;
   isCheckbox?: boolean;
   onChange?: any;
+  value?: any;
 }
 
 const Input = ({
@@ -17,6 +18,7 @@ const Input = ({
   label,
   isCheckbox,
   onChange,
+  value,
 }: InputProps) => {
   return isCheckbox ? (
     <div className={styles.__checkbox}>
@@ -38,6 +40,7 @@ const Input = ({
         type="text"
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
       />
     </div>
   );

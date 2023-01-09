@@ -51,6 +51,8 @@ const UserModal = ({ show, handleClick }: Props) => {
       const response = await data.json();
       console.log(response);
     }
+
+    setValues({ name: "", email: "", password: "", confirmPassword: "" });
   };
 
   return (
@@ -87,13 +89,9 @@ const UserModal = ({ show, handleClick }: Props) => {
                     <Input
                       placeholder="Email *"
                       isFullWidth
-                      onChange={(e) => (values.email = e.target.value)}
+                      // onChange={(e) => (values.email = e.target.value)}
                     />
-                    <Input
-                      placeholder="Password *"
-                      isFullWidth
-                      onChange={(e) => (values.password = e.target.value)}
-                    />
+                    <Input placeholder="Password *" isFullWidth />
                   </>
                 ) : conditionalContent === "forgotpassword" ? (
                   <Input placeholder="Email *" isFullWidth />
@@ -102,24 +100,37 @@ const UserModal = ({ show, handleClick }: Props) => {
                     <Input
                       placeholder="Name *"
                       isFullWidth
-                      onChange={(e) => (values.name = e.target.value)}
+                      onChange={(e: { target: { value: any } }) =>
+                        setValues({ ...values, name: e.target.value })
+                      }
+                      value={values.name}
                     />
                     <Input
                       placeholder="Email *"
                       isFullWidth
-                      onChange={(e) => (values.email = e.target.value)}
+                      onChange={(e: { target: { value: any } }) =>
+                        setValues({ ...values, email: e.target.value })
+                      }
+                      value={values.email}
                     />
                     <Input
                       placeholder="Password *"
                       isFullWidth
-                      onChange={(e) => (values.password = e.target.value)}
+                      onChange={(e: { target: { value: any } }) =>
+                        setValues({ ...values, password: e.target.value })
+                      }
+                      value={values.password}
                     />
                     <Input
                       placeholder="Confirm password *"
                       isFullWidth
-                      onChange={(e) =>
-                        (values.confirmPassword = e.target.value)
+                      onChange={(e: { target: { value: any } }) =>
+                        setValues({
+                          ...values,
+                          confirmPassword: e.target.value,
+                        })
                       }
+                      value={values.confirmPassword}
                     />
                   </>
                 )}
