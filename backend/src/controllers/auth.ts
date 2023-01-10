@@ -19,7 +19,11 @@ export const signUp = async (req: any, res: any) => {
               )`,
             (err: any, rows: any) => {
               if (err) throw err;
-              res.json({ status: 201, rows });
+              res.json({
+                status: 201,
+                rows,
+                message: "Your account has been succesfully created !",
+              });
             }
           );
         } else {
@@ -42,16 +46,20 @@ export const signIn = (req: any, res: any) => {
       if (rows.length < 1) {
         return res
           .status(401)
-          .json({ message: "Email or password is incorrect." });
+          .json({ message: "Email or password is incorrect.", status: 401 });
       }
 
       bcrypt.compare(password, rows[0].password, (err: any, result: any) => {
         if (result) {
-          return res.status(200).json({ user: rows[0] });
+          return res.status(200).json({
+            user: rows[0],
+            message: "You are logged in !",
+            status: 200,
+          });
         } else {
           return res
             .status(401)
-            .json({ message: "Email or password is incorrect" });
+            .json({ message: "Email or password is incorrect", status: 401 });
         }
       });
     }

@@ -6,43 +6,53 @@ export const formValidation = (
   name?: string,
   confirmPassword?: string
 ) => {
-  let isValid = true;
+  let isValid: boolean = true;
+  let error: any = [];
 
   if (!email) {
-    console.log("email is required");
+    error.push({ input: "email", message: "Email is required" });
     isValid = false;
   } else if (!email.match(Constants.validEmail) && email) {
-    console.log("Email format incorrect");
+    error.push({ input: "email", message: "Email format incorrect" });
     isValid = false;
   }
 
   if (!password) {
-    console.log("password is required");
+    error.push({ input: "password", message: "Password is required" });
     isValid = false;
   } else if (password.length < 8) {
-    console.log("Password must be at least 8 characters long");
+    error.push({
+      input: "password",
+      message: "Password must be at least 8 characters long",
+    });
     isValid = false;
   }
 
   if (confirmPassword !== undefined) {
     if (!confirmPassword) {
-      console.log("password confirmation is required");
       isValid = false;
+      error.push({
+        input: "confirmPassword",
+        message: "Password confirmation is required",
+      });
     } else if (confirmPassword !== password) {
-      console.log("Passwords dont match");
+      error.push({ input: "confirmPassword", message: "Passwords dont match" });
       isValid = false;
     }
   }
 
   if (name !== undefined) {
     if (!name) {
-      console.log("name is required");
+      error.push({ input: "name", message: "name is required" });
       isValid = false;
     } else if (name.length < 4) {
-      console.log("Name must be at least 4 characters long");
+      error.push({
+        input: "name",
+        message: "Name must be at least 4 characters long",
+      });
       isValid = false;
     }
   }
 
-  return isValid;
+  return [isValid, error];
 };

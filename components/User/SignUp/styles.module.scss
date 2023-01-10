@@ -34,6 +34,13 @@
     .__inputs {
       margin-bottom: 20px;
     }
+    .__error_message {
+      color: red !important;
+      text-decoration: none !important;
+      margin: 0 !important;
+      text-align: left !important;
+      cursor: default !important;
+    }
     & p:not(:first-child) {
       text-align: center;
       font-size: 13px;

@@ -5,6 +5,8 @@ import Input from "../../UI/Input";
 import { useState } from "react";
 import Button from "../../UI/Button";
 import { formValidation } from "../../../utilities/formValidation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   handleClick?: any;
@@ -18,9 +20,10 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState<any>();
 
   const handleSubmit = async () => {
-    const isValid = formValidation(
+    const [isValid, error] = formValidation(
       values.email,
       values.password,
       values.name,
@@ -42,11 +45,21 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
 
       const response = await data.json();
       console.log(response);
+      if (response.status.toString() === "201") {
+        toast.success(response.message);
+        setTimeout(() => {
+          setConditionalContent("signin");
+        }, 6500);
+      } else if (response.status.toString() === "400") {
+        toast.error(response.message);
+      }
+      setValues({ name: "", email: "", password: "", confirmPassword: "" });
     }
 
-    setValues({ name: "", email: "", password: "", confirmPassword: "" });
-    console.log("sign up button");
+    setErrors(error);
   };
+
+  console.log(errors);
 
   return (
     <>
@@ -72,6 +85,16 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                 }
                 value={values.name}
               />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "name") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
               <Input
                 placeholder="Email *"
                 isFullWidth
@@ -80,6 +103,16 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                 }
                 value={values.email}
               />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "email") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
               <Input
                 placeholder="Password *"
                 isFullWidth
@@ -88,6 +121,16 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                 }
                 value={values.password}
               />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "password") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
               <Input
                 placeholder="Confirm password *"
                 isFullWidth
@@ -99,6 +142,16 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                 }
                 value={values.confirmPassword}
               />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "confirmPassword") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
             </div>
 
             <Button btnContent={"sign up"} isFullWidth onClick={handleSubmit} />
@@ -109,6 +162,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </>
   );
 };
