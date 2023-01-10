@@ -23,15 +23,20 @@ const UserModal = ({ show, handleClick }: Props) => {
     confirmPassword: "",
   });
 
+  const [signInValues, setSignInValues] = useState<any>({
+    email: "",
+    password: "",
+  });
+
   useEffect(() => {
     if (show) setConditionalContent("signin");
   }, [show]);
 
-  const handleSubmit = async () => {
+  const signUpSubmit = async () => {
     const isValid = formValidation(
-      values.name,
       values.email,
       values.password,
+      values.name,
       values.confirmPassword
     );
 
@@ -49,10 +54,38 @@ const UserModal = ({ show, handleClick }: Props) => {
       });
 
       const response = await data.json();
-      console.log(response);
     }
 
     setValues({ name: "", email: "", password: "", confirmPassword: "" });
+    console.log("sign up button");
+  };
+
+  const signInSubmit = async () => {
+    const isValid = formValidation(
+      signInValues.email,
+      signInValues.password,
+      undefined,
+      undefined
+    );
+
+    if (isValid) {
+      const data = await fetch("http://localhost:3001/signin", {
+        method: "POST",
+        body: JSON.stringify({
+          email: signInValues.email,
+          password: signInValues.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      const response = await data.json();
+      console.log(response);
+    }
+
+    setSignInValues({ email: "", password: "" });
+    console.log("sign in button");
   };
 
   return (
@@ -89,9 +122,25 @@ const UserModal = ({ show, handleClick }: Props) => {
                     <Input
                       placeholder="Email *"
                       isFullWidth
-                      // onChange={(e) => (values.email = e.target.value)}
+                      value={signInValues.email}
+                      onChange={(e: { target: { value: any } }) =>
+                        setSignInValues({
+                          ...signInValues,
+                          email: e.target.value,
+                        })
+                      }
                     />
-                    <Input placeholder="Password *" isFullWidth />
+                    <Input
+                      placeholder="Password *"
+                      isFullWidth
+                      value={signInValues.password}
+                      onChange={(e: { target: { value: any } }) =>
+                        setSignInValues({
+                          ...signInValues,
+                          password: e.target.value,
+                        })
+                      }
+                    />
                   </>
                 ) : conditionalContent === "forgotpassword" ? (
                   <Input placeholder="Email *" isFullWidth />
@@ -149,7 +198,9 @@ const UserModal = ({ show, handleClick }: Props) => {
                     : "sign up"
                 }
                 isFullWidth
-                onClick={handleSubmit}
+                onClick={
+                  conditionalContent === "signin" ? signInSubmit : signUpSubmit
+                }
               />
               {conditionalContent === "signin" ? (
                 <p onClick={() => setConditionalContent("signup")}>

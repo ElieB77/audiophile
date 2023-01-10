@@ -1,20 +1,12 @@
 import * as Constants from "../constants";
 
 export const formValidation = (
-  name: string,
   email: string,
   password: string,
-  confirmPassword: string
+  name?: string,
+  confirmPassword?: string
 ) => {
   let isValid = true;
-
-  if (!name) {
-    console.log("name is required");
-    isValid = false;
-  } else if (name.length < 4) {
-    console.log("Name must be at least 4 characters long");
-    isValid = false;
-  }
 
   if (!email) {
     console.log("email is required");
@@ -32,12 +24,24 @@ export const formValidation = (
     isValid = false;
   }
 
-  if (!confirmPassword) {
-    console.log("password confirmation is required");
-    isValid = false;
-  } else if (confirmPassword !== password) {
-    console.log("Passwords dont match");
-    isValid = false;
+  if (confirmPassword !== undefined) {
+    if (!confirmPassword) {
+      console.log("password confirmation is required");
+      isValid = false;
+    } else if (confirmPassword !== password) {
+      console.log("Passwords dont match");
+      isValid = false;
+    }
+  }
+
+  if (name !== undefined) {
+    if (!name) {
+      console.log("name is required");
+      isValid = false;
+    } else if (name.length < 4) {
+      console.log("Name must be at least 4 characters long");
+      isValid = false;
+    }
   }
 
   return isValid;
