@@ -1,5 +1,6 @@
 const sql = require("../models/db");
 const bcrypt = require("bcrypt");
+const jsonwebtoken = require("jsonwebtoken");
 
 export const signUp = async (req: any, res: any) => {
   const { name, email, password } = req.body;
@@ -27,7 +28,7 @@ export const signUp = async (req: any, res: any) => {
             }
           );
         } else {
-          res.json({ status: 400, message: "Email already exist" });
+          res.json({ status: 400, message: "This email already exist." });
         }
       }
     );
@@ -36,6 +37,7 @@ export const signUp = async (req: any, res: any) => {
 
 export const signIn = (req: any, res: any) => {
   const { email, password } = req.body;
+  const jwtExpirySeconds = 300;
 
   sql.query(
     `select * from users where email="${email}"`,
@@ -51,15 +53,20 @@ export const signIn = (req: any, res: any) => {
 
       bcrypt.compare(password, rows[0].password, (err: any, result: any) => {
         if (result) {
+          const token = jsonwebtoken.sign(
+            { name: email },
+            process.env.ACCESS_TOKEN_SECRET,
+            { algorithm: "HS256" }
+          );
           return res.status(200).json({
-            user: rows[0],
             message: "You are logged in !",
             status: 200,
+            token: token,
           });
         } else {
           return res
             .status(401)
-            .json({ message: "Email or password is incorrect", status: 401 });
+            .json({ message: "Email or password is incorrect.", status: 401 });
         }
       });
     }

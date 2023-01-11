@@ -44,7 +44,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
         toast.success(response.message);
         setTimeout(() => {
           handleClick();
-        }, 6500);
+        }, 8500);
       } else if (response.status.toString() === "401") {
         toast.error(response.message);
       }
