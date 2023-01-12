@@ -1,1 +1,2 @@
-UPDATE Products SET short_name="zx7" WHERE id=5;
+ALTER TABLE Cart
+MODIFY product_id JSON

@@ -37,7 +37,6 @@ export const signUp = async (req: any, res: any) => {
 
 export const signIn = (req: any, res: any) => {
   const { email, password } = req.body;
-  const jwtExpirySeconds = 300;
 
   sql.query(
     `select * from users where email="${email}"`,

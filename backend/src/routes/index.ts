@@ -3,6 +3,7 @@ const { Router } = require("express");
 const home = require("../controllers/index");
 const product = require("../controllers/product");
 const user = require("../controllers/auth");
+const cart = require("../controllers/cart");
 
 const router = Router();
 
@@ -12,5 +13,7 @@ router.get("/product/:id", product.getProductById);
 router.get("/category/:category", product.getProductByCategory);
 router.post("/signup", user.signUp);
 router.post("/signin", user.signIn);
+router.post("/add-to-cart", cart.addToCart);
+router.post("/get-cart", cart.getCart);
 
 module.exports = router;

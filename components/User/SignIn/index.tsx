@@ -39,7 +39,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
       });
 
       const response = await data.json();
-      console.log(response);
+      localStorage.setItem("token", response.token);
       if (response.status.toString() === "200") {
         toast.success(response.message);
         setTimeout(() => {
