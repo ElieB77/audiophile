@@ -24,7 +24,7 @@
   }
 }
 
-.__checkbox {
+.__isRadio {
   border: 1px solid #cfcfcf;
   width: 309px;
   border-radius: 8px;
@@ -36,6 +36,33 @@
   }
   & input {
     margin: 0 16px;
+    &:after {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      top: -2px;
+      left: -1px;
+      position: relative;
+      background-color: #d1d3d1;
+      content: "";
+      display: inline-block;
+      visibility: visible;
+      border: 2px solid white;
+    }
+    &:checked:after {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      top: -2px;
+      left: -1px;
+      position: relative;
+      background-color: #ffa500;
+      content: "";
+      display: inline-block;
+      visibility: visible;
+      border: 2px solid white;
+      border: solid 3px #d1d3d1;
+    }
   }
 }
 

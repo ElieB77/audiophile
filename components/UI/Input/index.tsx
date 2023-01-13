@@ -1,4 +1,3 @@
-import { type } from "os";
 import styles from "./styles.module.scss";
 
 interface InputProps {
@@ -6,7 +5,7 @@ interface InputProps {
   placeholder?: string;
   isFullWidth?: boolean;
   label?: string;
-  isCheckbox?: boolean;
+  isRadio?: boolean;
   onChange?: any;
   value?: any;
 }
@@ -16,15 +15,15 @@ const Input = ({
   placeholder,
   isFullWidth,
   label,
-  isCheckbox,
+  isRadio,
   onChange,
   value,
 }: InputProps) => {
-  return isCheckbox ? (
-    <div className={styles.__checkbox}>
+  return isRadio ? (
+    <div className={styles.__isRadio}>
       <label>
-        <input type="checkbox" name="hello" id="hello" />
-        Checkbox
+        <input type="radio" name="hello" id="hello" />
+        {label}
       </label>
     </div>
   ) : (

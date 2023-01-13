@@ -1,8 +1,14 @@
 .__checkout {
   background-color: var(--light-color);
 
-  & button {
-    margin-top: 160px;
+  .__go_back_btn {
+    padding-top: 160px;
+    > div {
+      text-transform: capitalize;
+      padding: 0;
+      padding-bottom: 20px;
+      font-size: 15px;
+    }
   }
 
   .__wrapper {
@@ -40,4 +46,9 @@
 .__input_group {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+  & p {
+    font-size: 12px;
+    display: block;
+  }
 }

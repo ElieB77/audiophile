@@ -17,7 +17,7 @@ export const addToCart = (req: any, res: any) => {
         res.json({ message: "New user" });
       } else {
         sql.query(
-          `update Cart set products="${products}" where email="${userEmail}"`
+          `update Cart set products="${[products]}" where email="${userEmail}"`
         );
         res.json({ message: "Cart has been updated" });
       }
