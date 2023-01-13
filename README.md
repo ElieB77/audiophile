@@ -24,3 +24,8 @@ Users should be able to : <br>
 | 👉 Typescript | 👉 Typescript
 
 ## Setup
+To run this project locally :<br><br>
+Run<br><br>
+```git clone https://github.com/ElieB77/audiophile.git```<br><br>
+Then run<br><br>
+```npm install && npm run dev```
