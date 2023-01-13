@@ -30,6 +30,6 @@ Run<br><br>
 Then run<br><br>
 ```npm install && npm run dev```
 
-### Features to add
-- Forgot password <br>
-- Keep track of order(s)
+### To do 
+- [ ] Forgot password <br>
+- [ ] User settings <br>
