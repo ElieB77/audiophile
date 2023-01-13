@@ -1,32 +1,26 @@
 const sql = require("../models/db");
+const jwt = require("jsonwebtoken");
 
 export const addToCart = (req: any, res: any) => {
-  const { user_id, product_id } = req.body;
+  const { products, token } = req.body;
+  const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  const userEmail = decoded.name;
 
   sql.query(
-    `INSERT INTO Cart (user_id, product_id)
-      VALUES (${user_id}, "${product_id}")`,
+    `select * from Cart where email="${userEmail}"`,
     (err: any, rows: any) => {
       if (err) throw err;
-      res.json({
-        status: 201,
-        rows,
-        message: "Products have been added to the cart",
-      });
-    }
-  );
-};
-
-export const getCart = (req: any, res: any) => {
-  // Get the user id
-  // Retrieve cart items according to user id
-  const { user_id } = req.body;
-
-  sql.query(
-    `SELECT * from Cart WHERE user_id = ${user_id} `,
-    (err: any, rows: any) => {
-      if (err) throw err;
-      res.json({ status: 200, rows });
+      if (rows.length < 1) {
+        sql.query(
+          `INSERT INTO Cart (email, products) VALUES ("${userEmail}","${products}")`
+        );
+        res.json({ message: "New user" });
+      } else {
+        sql.query(
+          `update Cart set products="${products}" where email="${userEmail}"`
+        );
+        res.json({ message: "Cart has been updated" });
+      }
     }
   );
 };

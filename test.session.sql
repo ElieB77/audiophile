@@ -1,2 +1,1 @@
-ALTER TABLE Cart
-MODIFY product_id JSON
+DELETE FROM Cart

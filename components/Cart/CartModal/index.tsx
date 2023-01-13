@@ -17,6 +17,7 @@ interface CartModalProps {
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
   const router = useRouter();
+  console.log(cartItems);
 
   return show ? (
     <>

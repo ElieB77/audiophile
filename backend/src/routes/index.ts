@@ -14,6 +14,5 @@ router.get("/category/:category", product.getProductByCategory);
 router.post("/signup", user.signUp);
 router.post("/signin", user.signIn);
 router.post("/add-to-cart", cart.addToCart);
-router.post("/get-cart", cart.getCart);
 
 module.exports = router;
