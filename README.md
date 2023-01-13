@@ -29,3 +29,7 @@ Run<br><br>
 ```git clone https://github.com/ElieB77/audiophile.git```<br><br>
 Then run<br><br>
 ```npm install && npm run dev```
+
+### Features to add
+- Forgot password <br>
+- Keep track of order(s)
