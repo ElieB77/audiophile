@@ -8,6 +8,7 @@ import CartItem from "../CartItem";
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 interface CartModalProps {
   show: any;
@@ -17,7 +18,6 @@ interface CartModalProps {
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
   const router = useRouter();
-  console.log(cartItems);
 
   return show ? (
     <>

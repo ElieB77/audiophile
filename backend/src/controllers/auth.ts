@@ -53,7 +53,7 @@ export const signIn = (req: any, res: any) => {
       bcrypt.compare(password, rows[0].password, (err: any, result: any) => {
         if (result) {
           const token = jsonwebtoken.sign(
-            { name: email },
+            { id: rows[0].user_id },
             process.env.ACCESS_TOKEN_SECRET,
             { algorithm: "HS256" }
           );

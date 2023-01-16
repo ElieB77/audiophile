@@ -27,7 +27,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
     );
 
     if (isValid) {
-      const data = await fetch("http://localhost:3001/signin", {
+      const data = await fetch("http://localhost:3001/auth/signin", {
         method: "POST",
         body: JSON.stringify({
           email: values.email,

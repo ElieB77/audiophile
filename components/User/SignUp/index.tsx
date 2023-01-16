@@ -31,7 +31,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
     );
 
     if (isValid) {
-      const data = await fetch("http://localhost:3001/signup", {
+      const data = await fetch("http://localhost:3001/auth/signup", {
         method: "POST",
         body: JSON.stringify({
           name: values.name,
@@ -44,7 +44,6 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
       });
 
       const response = await data.json();
-      console.log(response);
       if (response.status.toString() === "201") {
         toast.success(response.message);
         setTimeout(() => {
