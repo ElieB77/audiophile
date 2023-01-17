@@ -6,5 +6,32 @@
   right: 10%;
   z-index: 1003;
   border-radius: 8px;
-  padding: 10px 33px 31px 33px;
+  padding: 10px;
+
+  .__greetings {
+    & span {
+      text-transform: capitalize;
+    }
+  }
+
+  .__menu {
+    margin-top: 10px;
+    & p {
+      cursor: not-allowed;
+      text-decoration: underline;
+      &:hover {
+        color: var(--brightest-color);
+      }
+    }
+  }
+
+  .__log_out {
+    margin-top: 30px;
+    & p {
+      cursor: pointer;
+      &:hover {
+        color: var(--brightest-color);
+      }
+    }
+  }
 }

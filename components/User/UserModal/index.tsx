@@ -32,7 +32,7 @@ const UserModal = ({ show, handleClick }: Props) => {
             handleClick={handleClick}
           />
         ) : isLoggedIn() ? (
-          <UserInfo />
+          <UserInfo handleClick={handleClick} />
         ) : null}
         <div className={styles.__overlay} onClick={handleClick}></div>
       </>

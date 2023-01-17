@@ -1,5 +1,7 @@
 export const setToken = (token: string) => {
-  return localStorage.setItem("token", token);
+  if (token !== undefined && token !== null) {
+    return localStorage.setItem("token", token);
+  }
 };
 
 export const getToken = () => {
@@ -8,6 +10,10 @@ export const getToken = () => {
   } catch (error) {
     return null;
   }
+};
+
+export const removeToken = () => {
+  return localStorage.removeItem("token");
 };
 
 export const isLoggedIn = () => {
