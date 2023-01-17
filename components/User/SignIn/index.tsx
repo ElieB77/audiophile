@@ -8,6 +8,8 @@ import Button from "../../UI/Button";
 import { formValidation } from "../../../utilities/formValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setToken } from "../../../utilities/auth";
+import { fetchData } from "../../../utilities/api";
 
 interface Props {
   handleClick?: any;
@@ -37,14 +39,14 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-
       const response = await data.json();
-      localStorage.setItem("token", response.token);
+      setToken(response.token);
       if (response.status.toString() === "200") {
         toast.success(response.message);
         setTimeout(() => {
           handleClick();
         }, 8500);
+        fetchData("http://localhost:3001/cart");
       } else if (response.status.toString() === "401") {
         toast.error(response.message);
       }

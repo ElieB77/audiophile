@@ -24,6 +24,7 @@ const Category = ({ products, category }: Props) => {
       <div className="container">
         {data &&
           data.map((product: any, index: number) => {
+            console.log("item_id : ", product.item_id);
             const images = parseData(product.images);
             const image = replaceString(images[0].desktop, "./assets", "");
             const isNew = product.new === 1 ? true : false;
@@ -35,7 +36,10 @@ const Category = ({ products, category }: Props) => {
                 description={product.description}
                 index={index}
                 isNew={isNew}
-                id={product.id}
+                id={product.item_id}
+                cartImage={""}
+                cartName={""}
+                price={0}
               />
             );
           })}

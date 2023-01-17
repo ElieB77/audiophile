@@ -10,7 +10,7 @@ export const getProducts = (req: any, res: any) => {
 export const getProductById = (req: any, res: any) => {
   const productId = req.params.id;
   sql.query(
-    `SELECT * from products WHERE id=${productId}`,
+    `SELECT * from products WHERE item_id=${productId}`,
     (err: any, rows: any) => {
       if (err) throw err;
       res.json({ status: 200, rows });

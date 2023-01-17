@@ -8,7 +8,8 @@ import CartItem from "../CartItem";
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { fetchData } from "../../../utilities/api";
+import { isLoggedIn } from "../../../utilities/auth";
 
 interface CartModalProps {
   show: any;
@@ -18,6 +19,24 @@ interface CartModalProps {
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
   const router = useRouter();
+  console.log(cartQuantity);
+
+  const getCartByUser = async () => {
+    const data = await fetchData("http://localhost:3001/cart");
+    const storedItems = data?.data?.map((el: any, index: number) => {
+      return (
+        <CartItem
+          key={index}
+          image={el.image}
+          name={el.name}
+          price={el.price}
+          quantity={el.quantity}
+          id={el.id}
+        />
+      );
+    });
+    return storedItems;
+  };
 
   return show ? (
     <>
@@ -32,18 +51,23 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
               <p onClick={() => clearCart()}>Remove All</p>
             </div>
             <div className={styles.__body}>
-              {cartItems.map((item: any, index: number) => {
-                return (
-                  <CartItem
-                    key={index}
-                    image={item.image}
-                    name={item.name}
-                    price={item.price}
-                    quantity={item.quantity}
-                    id={item.id}
-                  />
-                );
-              })}
+              <>
+                {!isLoggedIn() &&
+                  cartItems.map((item: any, index: number) => {
+                    return (
+                      <CartItem
+                        key={index}
+                        image={item.image}
+                        name={item.name}
+                        price={item.price}
+                        quantity={item.quantity}
+                        id={item.id}
+                      />
+                    );
+                  })}
+
+                {isLoggedIn() ? getCartByUser() : null}
+              </>
             </div>
             <div className={styles.__price}>
               <p>total</p>

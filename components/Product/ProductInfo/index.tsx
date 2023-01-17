@@ -8,6 +8,9 @@ import Counter from "../../UI/Counter";
 import Button from "../../UI/Button";
 // Context
 import { useCart } from "../../../context/CartContext";
+// Utilities
+import { isLoggedIn } from "../../../utilities/auth";
+import { postData } from "../../../utilities/api";
 
 interface ProductInfoProps {
   image?: string;
@@ -43,7 +46,11 @@ const ProductInfo = ({
     <div className={styles.__add_to_cart}>
       <Counter />
       <Button
-        onClick={() => addToCart(id, cartImage, cartName, price)}
+        onClick={() =>
+          isLoggedIn()
+            ? postData("http://localhost:3001/cart/add", id, 1)
+            : addToCart(id, cartImage, cartName, price)
+        }
         btnContent="add to cart"
       />
     </div>

@@ -39,7 +39,7 @@ const Product = ({ product, products }: Props) => {
 
   productsData
     .sort(() => 0.5 - Math.random())
-    .filter((product: any) => product.id !== productData[0].id)
+    .filter((product: any) => product.item_id !== productData[0].item_id)
     .slice(0, 3)
     .map((el: any) => {
       let images = parseData(el.images);
@@ -47,7 +47,7 @@ const Product = ({ product, products }: Props) => {
 
       const obj = {
         name: el.short_name,
-        id: el.id,
+        id: el.item_id,
         image: image,
       };
       productRecommendedList.push(obj);
@@ -64,7 +64,7 @@ const Product = ({ product, products }: Props) => {
       gallery: galleryList,
       recommended: productRecommendedList,
       new: productData[0].new,
-      id: productData[0].id,
+      id: productData[0].item_id,
       cartImage: productData[0].cart_image,
       cartName: productData[0].short_name,
     });
@@ -134,7 +134,7 @@ export async function getStaticPaths() {
 
   return {
     paths: response.rows.map((product: any) => {
-      const id = product.id.toString();
+      const id = product.item_id.toString();
       return {
         params: {
           id,

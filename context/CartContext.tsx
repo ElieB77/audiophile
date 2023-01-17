@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { fetchData } from "../utilities/api";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -18,10 +19,20 @@ interface CartItem {
   quantity: number;
 }
 
+interface StoredCartItem {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 interface CartContext {
+  getCartByUser: any;
   addToCart: (id: number, image: string, name: string, price: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  storedCartItems: StoredCartItem[];
   getItemQuantity: (qty: number) => void;
   clearCart: () => void;
   cartTotalPrice: number;
@@ -38,8 +49,14 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [storedCartItems, setStoredCartItems] = useState<CartItem[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
   const [forceRerender, setForceRerender] = useState<boolean>(false);
+
+  const getCartByUser = async () => {
+    const data = await fetchData("http://localhost:3001/cart");
+    return setStoredCartItems([...storedCartItems, data]);
+  };
 
   const addToCart = (
     id: number,
@@ -106,9 +123,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   return (
     <CartContext.Provider
       value={{
+        getCartByUser,
         addToCart,
         cartQuantity,
         cartItems,
+        storedCartItems,
         getItemQuantity,
         clearCart,
         cartTotalPrice,
