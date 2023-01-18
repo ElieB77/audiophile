@@ -46,11 +46,7 @@ const ProductInfo = ({
     <div className={styles.__add_to_cart}>
       <Counter />
       <Button
-        onClick={() =>
-          isLoggedIn()
-            ? postData("http://localhost:3001/cart/add", id, 1)
-            : addToCart(id, cartImage, cartName, price)
-        }
+        onClick={() => addToCart(id, cartImage, cartName, price)}
         btnContent="add to cart"
       />
     </div>

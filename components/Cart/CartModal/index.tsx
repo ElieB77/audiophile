@@ -52,21 +52,18 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             </div>
             <div className={styles.__body}>
               <>
-                {!isLoggedIn() &&
-                  cartItems.map((item: any, index: number) => {
-                    return (
-                      <CartItem
-                        key={index}
-                        image={item.image}
-                        name={item.name}
-                        price={item.price}
-                        quantity={item.quantity}
-                        id={item.id}
-                      />
-                    );
-                  })}
-
-                {isLoggedIn() ? getCartByUser() : null}
+                {cartItems.map((item: any, index: number) => {
+                  return (
+                    <CartItem
+                      key={index}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      quantity={item.quantity}
+                      id={item.id}
+                    />
+                  );
+                })}
               </>
             </div>
             <div className={styles.__price}>

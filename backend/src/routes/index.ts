@@ -16,10 +16,11 @@ router.post("/auth/signup", auth.signUp);
 router.post("/auth/signin", auth.signIn);
 router.get("/cart", cart.getCart);
 router.post("/cart/add", cart.addToCart);
-router.put("/cart/update/:id", cart.updateCartItemQuantity);
 router.delete("/cart/remove/:product_id", cart.removeFromCart);
-router.get("/cart/total", cart.getCartTotal);
 router.delete("/cart/clear", cart.clearCart);
+router.put("/cart/increase", cart.increaseItemQuantity);
+router.put("/cart/decrease", cart.decreaseItemQuantity);
+router.get("/cart/total", cart.getCartTotal);
 router.get("/user", user.getUser);
 
 module.exports = router;

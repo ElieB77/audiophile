@@ -1,11 +1,6 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { fetchData } from "../utilities/api";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { deleteData, fetchData, postData, updateData } from "../utilities/api";
+import { isLoggedIn } from "../utilities/auth";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -64,13 +59,17 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     name: string,
     price: number
   ) => {
+    if (isLoggedIn()) {
+      console.log("Sent to back");
+      postData(`http://localhost:3001/cart/add`, id, quantity);
+    }
     const alreadyExist = cartItems.find((item) => item.id === id);
     if (!alreadyExist) {
-      return setCartItems([...cartItems, { id, image, name, price, quantity }]);
+      setCartItems([...cartItems, { id, image, name, price, quantity }]);
     } else {
       cartItems.map((item, index) => {
         if (item.id === id) {
-          return (cartItems[index].quantity += quantity);
+          cartItems[index].quantity += quantity;
         }
       });
       setForceRerender(!forceRerender);
@@ -87,6 +86,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   const clearCart = () => {
+    if (isLoggedIn()) {
+      deleteData("http://localhost:3001/cart/clear");
+    }
     return setCartItems([]);
   };
 
@@ -96,6 +98,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 
   const removeItem = (id: number) => {
+    if (isLoggedIn()) {
+      deleteData(`http://localhost:3001/cart/remove/${id}`);
+    }
     return setCartItems([...cartItems.filter((item) => item.id !== id)]);
   };
 
@@ -105,6 +110,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity++;
       }
     });
+    if (isLoggedIn()) {
+      updateData("http://localhost:3001/cart/increase", id);
+    }
     setForceRerender(!forceRerender);
   };
 
@@ -116,6 +124,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity--;
       }
     });
+    if (isLoggedIn()) {
+      updateData("http://localhost:3001/cart/decrease", id);
+    }
 
     setForceRerender(!forceRerender);
   };
