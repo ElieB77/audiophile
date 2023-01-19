@@ -13,7 +13,12 @@ export const getToken = () => {
 };
 
 export const removeToken = () => {
-  return localStorage.removeItem("token");
+  try {
+    localStorage.removeItem("token");
+    return true;
+  } catch {
+    return false;
+  }
 };
 
 export const isLoggedIn = () => {

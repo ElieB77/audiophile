@@ -2,13 +2,11 @@
 import styles from "./styles.module.scss";
 // Components
 import Button from "../../UI/Button";
-import Counter from "../../UI/Counter";
 import CartItem from "../CartItem";
 // Context
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { fetchData } from "../../../utilities/api";
 import { isLoggedIn } from "../../../utilities/auth";
 
 interface CartModalProps {
@@ -17,32 +15,15 @@ interface CartModalProps {
 }
 
 const CartModal = ({ show, handleClick }: CartModalProps) => {
-  const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
+  const { cartItems, cartQuantity, clearCart, cartTotalPrice, cartItemsApi } =
+    useCart();
   const router = useRouter();
-  console.log(cartQuantity);
-
-  const getCartByUser = async () => {
-    const data = await fetchData("http://localhost:3001/cart");
-    const storedItems = data?.data?.map((el: any, index: number) => {
-      return (
-        <CartItem
-          key={index}
-          image={el.image}
-          name={el.name}
-          price={el.price}
-          quantity={el.quantity}
-          id={el.id}
-        />
-      );
-    });
-    return storedItems;
-  };
 
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>
       <div className={styles.__modal}>
-        {cartQuantity !== 0 ? (
+        {!isLoggedIn() && cartQuantity !== 0 ? (
           <>
             <div className={styles.__head}>
               <h6>
@@ -52,15 +33,63 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             </div>
             <div className={styles.__body}>
               <>
-                {cartItems.map((item: any, index: number) => {
+                {!isLoggedIn() &&
+                  cartItems.map((item: any, index: number) => {
+                    return (
+                      <CartItem
+                        key={index}
+                        image={item.image}
+                        name={item.name}
+                        price={item.price}
+                        quantity={item.quantity}
+                        id={item.id}
+                      />
+                    );
+                  })}
+
+                {isLoggedIn() &&
+                  cartItemsApi.data.data?.map((item: any, index: number) => {
+                    return (
+                      <CartItem
+                        key={index}
+                        image={item.cart_image}
+                        name={item.short_name}
+                        price={item.price}
+                        quantity={item.quantity}
+                        id={item.item_id}
+                      />
+                    );
+                  })}
+              </>
+            </div>
+            <div className={styles.__price}>
+              <p>total</p>
+              <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
+              <Button
+                btnContent="checkout"
+                onClick={() => router.push("/checkout")}
+              />
+            </div>
+          </>
+        ) : isLoggedIn() && cartItemsApi.data?.length > 0 ? (
+          <>
+            <div className={styles.__head}>
+              <h6>
+                CART <span>({cartItemsApi.quantity})</span>
+              </h6>
+              <p onClick={() => clearCart()}>Remove All</p>
+            </div>
+            <div className={styles.__body}>
+              <>
+                {cartItemsApi.data?.map((item: any, index: number) => {
                   return (
                     <CartItem
                       key={index}
-                      image={item.image}
-                      name={item.name}
+                      image={item.cart_image}
+                      name={item.short_name}
                       price={item.price}
                       quantity={item.quantity}
-                      id={item.id}
+                      id={item.item_id}
                     />
                   );
                 })}
@@ -68,7 +97,7 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             </div>
             <div className={styles.__price}>
               <p>total</p>
-              <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
+              <h6>{"$" + cartItemsApi.total.toLocaleString()}</h6>
               <Button
                 btnContent="checkout"
                 onClick={() => router.push("/checkout")}

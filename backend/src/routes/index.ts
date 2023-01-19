@@ -20,7 +20,6 @@ router.delete("/cart/remove/:product_id", cart.removeFromCart);
 router.delete("/cart/clear", cart.clearCart);
 router.put("/cart/increase", cart.increaseItemQuantity);
 router.put("/cart/decrease", cart.decreaseItemQuantity);
-router.get("/cart/total", cart.getCartTotal);
 router.get("/user", user.getUser);
 
 module.exports = router;

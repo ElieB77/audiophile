@@ -48,7 +48,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
         toast.success(response.message);
         setTimeout(() => {
           setConditionalContent("signin");
-        }, 6500);
+        }, 2000);
       } else if (response.status.toString() === "400") {
         toast.error(response.message);
       }
@@ -161,7 +161,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={2000} />
     </>
   );
 };

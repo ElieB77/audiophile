@@ -13,7 +13,16 @@ export const getCart = (req: any, res: any) => {
     WHERE Cart.user_id = ${userId};`,
     (err: any, rows: any) => {
       if (err) throw err;
-      res.json({ data: rows });
+      const quantity = rows.reduce(
+        (quantity: any, item: { quantity: any }) => item.quantity + quantity,
+        0
+      );
+      const total = rows.reduce(
+        (accumulator: number, current: { price: number; quantity: number }) =>
+          accumulator + current.price * current.quantity,
+        0
+      );
+      res.json({ data: rows, quantity: quantity, total: total });
     }
   );
 };
@@ -111,34 +120,6 @@ export const decreaseItemQuantity = (req: any, res: any) => {
     (err: any, rows: any) => {
       if (err) throw err;
       return res.status(200).json({ message: "Quantity updated.", data: rows });
-    }
-  );
-};
-
-export const getCartTotal = (req: any, res: any) => {
-  // Get user id to find cart specific to user
-  const token = req.headers.authorization.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-  const userId = decoded.id;
-
-  sql.query(
-    `SELECT Cart.item_id, Cart.quantity, products.price
-    FROM Cart
-    JOIN products ON Cart.item_id = products.item_id
-    WHERE Cart.user_id = ${userId};`,
-    (err: any, rows: any) => {
-      if (err) throw err;
-      if (rows.length > 0) {
-        const cartTotalPrice = rows.reduce(
-          (accumulator: number, current: { price: number; quantity: number }) =>
-            accumulator + current.price * current.quantity,
-          0
-        );
-        res.json({ total: cartTotalPrice });
-      } else {
-        res.status(400);
-      }
-      res.status(200);
     }
   );
 };

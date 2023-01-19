@@ -2,14 +2,13 @@
 import styles from "./styles.module.scss";
 import CloseIcon from "../../../assets/public/close-icon.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import { formValidation } from "../../../utilities/formValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { setToken } from "../../../utilities/auth";
-import { fetchData } from "../../../utilities/api";
+import { isLoggedIn, setToken } from "../../../utilities/auth";
 
 interface Props {
   handleClick?: any;
@@ -45,8 +44,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
         toast.success(response.message);
         setTimeout(() => {
           handleClick();
-        }, 8500);
-        fetchData("http://localhost:3001/cart");
+        }, 1500);
       } else if (response.status.toString() === "401") {
         toast.error(response.message);
       }
@@ -124,7 +122,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 };

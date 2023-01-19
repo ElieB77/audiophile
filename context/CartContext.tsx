@@ -1,6 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { deleteData, fetchData, postData, updateData } from "../utilities/api";
-import { isLoggedIn } from "../utilities/auth";
+import { isLoggedIn, removeToken } from "../utilities/auth";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -14,20 +20,11 @@ interface CartItem {
   quantity: number;
 }
 
-interface StoredCartItem {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
 interface CartContext {
-  getCartByUser: any;
   addToCart: (id: number, image: string, name: string, price: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
-  storedCartItems: StoredCartItem[];
+  cartItemsApi: any;
   getItemQuantity: (qty: number) => void;
   clearCart: () => void;
   cartTotalPrice: number;
@@ -44,14 +41,17 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [storedCartItems, setStoredCartItems] = useState<CartItem[]>([]);
+  const [cartItemsApi, setCartItemsApi] = useState<any[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
   const [forceRerender, setForceRerender] = useState<boolean>(false);
 
-  const getCartByUser = async () => {
-    const data = await fetchData("http://localhost:3001/cart");
-    return setStoredCartItems([...storedCartItems, data]);
-  };
+  useEffect(() => {
+    const getCart = async () => {
+      const data = await fetchData("http://localhost:3001/cart");
+      setCartItemsApi(data);
+    };
+    getCart();
+  }, [isLoggedIn, forceRerender, removeToken]);
 
   const addToCart = (
     id: number,
@@ -60,7 +60,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     price: number
   ) => {
     if (isLoggedIn()) {
-      console.log("Sent to back");
       postData(`http://localhost:3001/cart/add`, id, quantity);
     }
     const alreadyExist = cartItems.find((item) => item.id === id);
@@ -88,6 +87,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const clearCart = () => {
     if (isLoggedIn()) {
       deleteData("http://localhost:3001/cart/clear");
+      setCartItemsApi([]);
     }
     return setCartItems([]);
   };
@@ -100,6 +100,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const removeItem = (id: number) => {
     if (isLoggedIn()) {
       deleteData(`http://localhost:3001/cart/remove/${id}`);
+      setForceRerender(!forceRerender);
     }
     return setCartItems([...cartItems.filter((item) => item.id !== id)]);
   };
@@ -119,7 +120,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const decreaseQuantity = (id: number) => {
     cartItems.map((item: any, index: number) => {
       if (item.id === id) {
-        if (item.quantity < 2) removeItem(id);
+        if (item.quantity < 2) {
+          removeItem(id);
+        }
 
         return cartItems[index].quantity--;
       }
@@ -134,11 +137,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   return (
     <CartContext.Provider
       value={{
-        getCartByUser,
         addToCart,
         cartQuantity,
         cartItems,
-        storedCartItems,
+        cartItemsApi,
         getItemQuantity,
         clearCart,
         cartTotalPrice,
