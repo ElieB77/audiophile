@@ -1,8 +1,8 @@
 // Styles
 import styles from "./styles.module.scss";
 // Component
-import CartModal from "../../Cart/CartModal";
-import UserModal from "../../User/UserModal";
+import CartModal from "../../Popups/CartModal";
+import UserModal from "../../Popups/UserModal";
 // Modules
 import Link from "next/link";
 import Image from "next/image";

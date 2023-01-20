@@ -2,7 +2,7 @@
 import styles from "./styles.module.scss";
 // Components
 import Button from "../../UI/Button";
-import CartItem from "../CartItem";
+import CartItem from "../../Cart/CartItem";
 // Context
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";

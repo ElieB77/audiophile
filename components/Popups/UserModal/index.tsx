@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import SignIn from "../SignIn";
-import SignUp from "../SignUp";
+import SignIn from "../../User/SignIn";
+import SignUp from "../../User/SignUp";
 import { isLoggedIn } from "../../../utilities/auth";
-import UserInfo from "../UserInfo";
+import UserInfo from "../../User/UserInfo";
 
 interface Props {
   show?: any;
