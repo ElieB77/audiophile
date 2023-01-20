@@ -16,3 +16,4 @@ connection.connect((error: any) => {
 });
 
 module.exports = connection;
+export {};

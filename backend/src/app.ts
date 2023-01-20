@@ -19,3 +19,5 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`[server]: Server is running at https://127.0.0.1:${port}`);
 });
+
+export {};

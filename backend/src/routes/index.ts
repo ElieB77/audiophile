@@ -23,3 +23,4 @@ router.put("/cart/decrease", cart.decreaseItemQuantity);
 router.get("/user", user.getUser);
 
 module.exports = router;
+export {};
