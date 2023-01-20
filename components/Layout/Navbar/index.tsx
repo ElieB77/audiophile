@@ -16,8 +16,7 @@ import { useCart } from "../../../context/CartContext";
 import CartIcon from "../../../assets/public/cart.svg";
 import Logo from "../../../assets/public/logo-audiophile.svg";
 import UserIcon from "../../../assets/public/user-icon.svg";
-import { getToken, isLoggedIn, removeToken } from "../../../utilities/auth";
-import { useEffect, useState } from "react";
+import { isLoggedIn } from "../../../utilities/auth";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
@@ -26,8 +25,7 @@ interface NavbarProps {
 const Navbar = ({ overrideClassname }: NavbarProps) => {
   const [isShowingCartModal, toggleCartModal] = useCartModal();
   const [isShowingUserModal, toggleUserModal] = useUserModal();
-  const { cartQuantity, cartItemsApi } = useCart();
-  const [rerender, setRerender] = useState(false);
+  const { cartQuantity } = useCart();
   const router = useRouter();
 
   const navbarLinks = [
@@ -53,10 +51,6 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
     },
   ];
 
-  useEffect(() => {
-    setRerender(!rerender);
-  }, [isLoggedIn, removeToken, getToken]);
-
   return (
     <>
       <CartModal show={isShowingCartModal} handleClick={toggleCartModal} />
@@ -79,9 +73,6 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
             <Image src={CartIcon} alt="Cart" width={23} height={20} />
             {!isLoggedIn() && cartQuantity > 0 && (
               <div className={styles.__cart_qty}>{cartQuantity}</div>
-            )}
-            {isLoggedIn() && cartItemsApi.quantity > 0 && (
-              <div className={styles.__cart_qty}>{cartItemsApi.quantity}</div>
             )}
           </div>
           <div className={styles.__user} onClick={toggleUserModal}>

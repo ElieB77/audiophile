@@ -13,7 +13,6 @@ import CardCategories from "../components/Card/CardCategories";
 import { CartProvider } from "../context/CartContext";
 // Assets
 import Logo from "../assets/public/logo-audiophile.svg";
-import { getToken, isLoggedIn, removeToken } from "../utilities/auth";
 
 const cardCategoryData = [
   {
@@ -41,17 +40,11 @@ const cardCategoryData = [
 
 export default function App({ Component, pageProps }: AppProps) {
   const [pageTitle, setPageTitle] = useState<string>("");
-  const [isAuth, setIsAuth] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
     return setPageTitle(router.pathname.slice(1));
   }, [router.pathname]);
-
-  // useEffect(() => {
-  //   console.log(isLoggedIn());
-  //   return setIsAuth(!isAuth);
-  // }, [isLoggedIn()]);
 
   const navbarColor =
     router.pathname === "/product/[id]" || router.pathname === "/checkout"

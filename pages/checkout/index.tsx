@@ -1,12 +1,14 @@
 import Input from "../../components/UI/Input";
 import styles from "../../assets/styles/pages/checkout.module.scss";
 import Button from "../../components/UI/Button";
+import { useRouter } from "next/router";
 
 const Checkout = () => {
+  const router = useRouter();
   return (
     <div className={styles.__checkout}>
       <div className={`container ${styles.__container}`}>
-        <div className={styles.__go_back_btn}>
+        <div className={styles.__go_back_btn} onClick={() => router.back()}>
           <Button btnContent="go back" btnType="borderless" />
         </div>
         <div className={styles.__wrapper}>

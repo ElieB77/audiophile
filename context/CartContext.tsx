@@ -5,8 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { deleteData, fetchData, postData, updateData } from "../utilities/api";
-import { isLoggedIn, removeToken } from "../utilities/auth";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -24,7 +22,6 @@ interface CartContext {
   addToCart: (id: number, image: string, name: string, price: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
-  cartItemsApi: any;
   getItemQuantity: (qty: number) => void;
   clearCart: () => void;
   cartTotalPrice: number;
@@ -41,17 +38,8 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [cartItemsApi, setCartItemsApi] = useState<any[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
   const [forceRerender, setForceRerender] = useState<boolean>(false);
-
-  useEffect(() => {
-    const getCart = async () => {
-      const data = await fetchData("http://localhost:3001/cart");
-      setCartItemsApi(data);
-    };
-    getCart();
-  }, [isLoggedIn, forceRerender, removeToken]);
 
   const addToCart = (
     id: number,
@@ -59,9 +47,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     name: string,
     price: number
   ) => {
-    if (isLoggedIn()) {
-      postData(`http://localhost:3001/cart/add`, id, quantity);
-    }
     const alreadyExist = cartItems.find((item) => item.id === id);
     if (!alreadyExist) {
       setCartItems([...cartItems, { id, image, name, price, quantity }]);
@@ -85,10 +70,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   const clearCart = () => {
-    if (isLoggedIn()) {
-      deleteData("http://localhost:3001/cart/clear");
-      setCartItemsApi([]);
-    }
     return setCartItems([]);
   };
 
@@ -98,10 +79,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 
   const removeItem = (id: number) => {
-    if (isLoggedIn()) {
-      deleteData(`http://localhost:3001/cart/remove/${id}`);
-      setForceRerender(!forceRerender);
-    }
     return setCartItems([...cartItems.filter((item) => item.id !== id)]);
   };
 
@@ -111,9 +88,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity++;
       }
     });
-    if (isLoggedIn()) {
-      updateData("http://localhost:3001/cart/increase", id);
-    }
     setForceRerender(!forceRerender);
   };
 
@@ -127,10 +101,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity--;
       }
     });
-    if (isLoggedIn()) {
-      updateData("http://localhost:3001/cart/decrease", id);
-    }
-
     setForceRerender(!forceRerender);
   };
 
@@ -140,7 +110,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         addToCart,
         cartQuantity,
         cartItems,
-        cartItemsApi,
         getItemQuantity,
         clearCart,
         cartTotalPrice,
