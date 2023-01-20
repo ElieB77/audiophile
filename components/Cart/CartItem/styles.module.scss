@@ -28,6 +28,12 @@
   & div:nth-of-type(3) {
     margin-left: auto;
   }
+  .__quantity {
+    margin-left: auto;
+    font-weight: bolder;
+    font-family: "Manrope", sans-serif;
+    opacity: 0.5;
+  }
   .__trash {
     width: 15px;
     height: 15px;

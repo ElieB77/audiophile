@@ -18,9 +18,19 @@ interface CartItemProps {
   price: number;
   quantity: number;
   id: number;
+  removeTrashIcon?: boolean;
+  removeQuantityCounter?: boolean;
 }
 
-const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
+const CartItem = ({
+  image,
+  name,
+  price,
+  quantity,
+  id,
+  removeTrashIcon,
+  removeQuantityCounter,
+}: CartItemProps) => {
   let cartImage = replaceString(image, "public", "");
   const { removeItem, increaseQuantity, decreaseQuantity } = useCart();
   const router = useRouter();
@@ -36,17 +46,23 @@ const CartItem = ({ image, name, price, quantity, id }: CartItemProps) => {
       </div>
       <div className={styles.__details}>
         <p onClick={goToProductPage}>{name}</p>
-        <p>{price.toLocaleString()}</p>
+        <p>${price.toLocaleString()}</p>
       </div>
-      <Counter
-        isCart
-        value={quantity}
-        increaseClick={() => increaseQuantity(id)}
-        decreaseClick={() => decreaseQuantity(id)}
-      />
-      <div className={styles.__trash} onClick={() => removeItem(id)}>
-        <Image src={TrashIcon} alt="article" fill objectFit="cover" />
-      </div>
+      {!removeQuantityCounter ? (
+        <Counter
+          isCart
+          value={quantity}
+          increaseClick={() => increaseQuantity(id)}
+          decreaseClick={() => decreaseQuantity(id)}
+        />
+      ) : (
+        <p className={styles.__quantity}>x{quantity}</p>
+      )}
+      {!removeTrashIcon && (
+        <div className={styles.__trash} onClick={() => removeItem(id)}>
+          <Image src={TrashIcon} alt="article" fill objectFit="cover" />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,19 @@
+.__cart_summary {
+  width: 350px;
+  background-color: var(--lightest-color);
+  border-radius: 8px;
+  padding: 33px;
+
+  .__footer {
+    margin-top: 40px;
+    .__total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      & p {
+        text-transform: uppercase;
+        opacity: 0.5;
+      }
+    }
+  }
+}

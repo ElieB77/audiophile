@@ -2,6 +2,7 @@ import Input from "../../components/UI/Input";
 import styles from "../../assets/styles/pages/checkout.module.scss";
 import Button from "../../components/UI/Button";
 import { useRouter } from "next/router";
+import CartSummary from "../../components/Cart/CartSummary";
 
 const Checkout = () => {
   const router = useRouter();
@@ -43,7 +44,9 @@ const Checkout = () => {
               </div>
             </div>
           </div>
-          <div className={styles.__summary}></div>
+          <div className={styles.__summary}>
+            <CartSummary />
+          </div>
         </div>
       </div>
     </div>
