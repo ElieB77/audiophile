@@ -4,7 +4,11 @@ import CartItem from "../CartItem";
 import { useCart } from "../../../context/CartContext";
 import Button from "../../UI/Button";
 
-const CartSummary = () => {
+interface CartSummaryProps {
+  onClick?: any;
+}
+
+const CartSummary = ({ onClick }: CartSummaryProps) => {
   const { cartItems, cartTotalPrice } = useCart();
   console.log(cartItems);
   return (
@@ -31,7 +35,7 @@ const CartSummary = () => {
           <p>total</p>
           <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
         </div>
-        <Button btnContent="continue & pay" isFullWidth />
+        <Button btnContent="continue & pay" isFullWidth onClick={onClick} />
       </div>
     </div>
   );
