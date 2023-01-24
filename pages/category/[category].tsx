@@ -15,7 +15,7 @@ const Category = ({ products, category }: Props) => {
 
   useEffect(() => {
     setData(products.rows);
-  }, [category]);
+  }, [category, products.rows]);
 
   return (
     <>
