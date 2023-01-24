@@ -31,7 +31,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
     );
 
     if (isValid) {
-      const data = await fetch("http://localhost:3001/auth/signup", {
+      const data = await fetch(`${process.env.NEXT_PUBLIC_SIGNUP_URL}`, {
         method: "POST",
         body: JSON.stringify({
           name: values.name,

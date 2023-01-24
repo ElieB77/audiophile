@@ -87,7 +87,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 export async function getStaticProps() {
-  const data = await fetch("http://localhost:3001/products");
+  const data = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response = await data.json();
 
   return {

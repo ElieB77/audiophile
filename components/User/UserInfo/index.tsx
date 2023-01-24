@@ -12,10 +12,10 @@ interface Props {
 const UserInfo = ({ handleClick }: Props) => {
   const [userName, setUserName] = useState<string>("");
 
-  const userInfo = async () => {
-    const data = await fetchData("http://localhost:3001/user");
-    setUserName(data.name);
-  };
+  // const userInfo = async () => {
+  //   const data = await fetchData("http://localhost:3001/user");
+  //   setUserName(data.name);
+  // };
 
   const logOut = () => {
     handleClick();
@@ -23,7 +23,7 @@ const UserInfo = ({ handleClick }: Props) => {
     removeToken();
   };
 
-  userInfo();
+  // userInfo();
   return (
     <>
       <div className={styles.__user_info}>

@@ -113,11 +113,11 @@ const Product = ({ product, products }: Props) => {
 
 export async function getStaticProps(params: any) {
   const productData1 = await fetch(
-    `http://localhost:3001/product/${params.params.id}`
+    `${process.env.NEXT_PUBLIC_PRODUCT_URL}/${params.params.id}`
   );
   const response1 = await productData1.json();
 
-  const productData2 = await fetch("http://localhost:3001/products");
+  const productData2 = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response2 = await productData2.json();
 
   return {
@@ -129,7 +129,7 @@ export async function getStaticProps(params: any) {
 }
 
 export async function getStaticPaths() {
-  const productData = await fetch("http://localhost:3001/products");
+  const productData = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response = await productData.json();
 
   return {

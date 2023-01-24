@@ -50,7 +50,7 @@ const Category = ({ products, category }: Props) => {
 
 export async function getStaticProps(params: any) {
   const data = await fetch(
-    `http://localhost:3001/category/${params.params.category}`
+    `${process.env.NEXT_PUBLIC_CATEGORY_URL}/${params.params.category}`
   );
   const response = await data.json();
 
@@ -63,7 +63,7 @@ export async function getStaticProps(params: any) {
 }
 
 export async function getStaticPaths() {
-  const productData = await fetch("http://localhost:3001/products");
+  const productData = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response = await productData.json();
 
   return {

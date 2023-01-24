@@ -8,7 +8,6 @@ import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { isLoggedIn } from "../../../utilities/auth";
-import { useEffect } from "react";
 
 interface CartModalProps {
   show: any;
