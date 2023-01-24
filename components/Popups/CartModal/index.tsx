@@ -23,11 +23,13 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
     router.push("/checkout");
   };
 
+  console.log(cartItems);
+
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>
       <div className={styles.__modal}>
-        {!isLoggedIn() && cartQuantity !== 0 ? (
+        {cartQuantity !== 0 ? (
           <>
             <div className={styles.__head}>
               <h6>
@@ -37,19 +39,18 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             </div>
             <div className={styles.__body}>
               <>
-                {!isLoggedIn() &&
-                  cartItems.map((item: any, index: number) => {
-                    return (
-                      <CartItem
-                        key={index}
-                        image={item.image}
-                        name={item.name}
-                        price={item.price}
-                        quantity={item.quantity}
-                        id={item.id}
-                      />
-                    );
-                  })}
+                {cartItems.map((item: any, index: number) => {
+                  return (
+                    <CartItem
+                      key={index}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      quantity={item.quantity}
+                      id={item.id}
+                    />
+                  );
+                })}
               </>
             </div>
             <div className={styles.__price}>

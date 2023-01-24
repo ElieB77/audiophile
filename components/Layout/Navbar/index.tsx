@@ -71,7 +71,7 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
         <div className={styles.__icons}>
           <div onClick={toggleCartModal} className={styles.__cart}>
             <Image src={CartIcon} alt="Cart" width={23} height={20} />
-            {!isLoggedIn() && cartQuantity > 0 && (
+            {cartQuantity > 0 && (
               <div className={styles.__cart_qty}>{cartQuantity}</div>
             )}
           </div>
