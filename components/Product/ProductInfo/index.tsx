@@ -59,7 +59,7 @@ const ProductInfo = ({
   return (
     <div className={styles.__product_info}>
       <div className={`${styles.__image} ${reverseClass}`}>
-        <Image src={image!} alt="article" fill objectFit="cover" />
+        <Image src={`/static${image!}`} alt="article" fill objectFit="cover" />
       </div>
       <div className={styles.__info}>
         {showNewArticle}
