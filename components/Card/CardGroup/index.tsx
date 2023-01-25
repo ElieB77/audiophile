@@ -38,7 +38,12 @@ const CardGroup = ({
         {posters.map((poster: any, index: number) => {
           return (
             <div key={index}>
-              <Image src={poster} alt="poster" fill objectFit="cover" />
+              <Image
+                src={`/static${poster}`}
+                alt="poster"
+                fill
+                objectFit="cover"
+              />
             </div>
           );
         })}

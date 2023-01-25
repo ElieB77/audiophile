@@ -20,7 +20,12 @@ const ProductRecommendation = ({
   return (
     <div className={styles.__product_recommendation}>
       <div>
-        <Image src={productImage!} alt="Product" fill objectFit="cover" />
+        <Image
+          src={`/static${productImage!}`}
+          alt="Product"
+          fill
+          objectFit="cover"
+        />
       </div>
       <h5>{productName}</h5>
       <Link href={`${productSlug}`}>

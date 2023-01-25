@@ -30,7 +30,7 @@ const CardCategories = ({
         <div className={styles.__card}>
           <Image
             className={styles.__photo}
-            src={categoryImage!}
+            src={`/static${categoryImage!}`}
             alt=""
             width={width}
             height={height}
