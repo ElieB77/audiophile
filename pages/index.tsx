@@ -1,11 +1,10 @@
 import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
-import headphonesThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-headphones.png";
 
 const cardCategoryData = [
   {
-    imageUrl: headphonesThumbnail,
+    imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
     categoryName: "headphones",
     categoryHref: "/category/headphones",
     width: 200,
