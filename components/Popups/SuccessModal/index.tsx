@@ -37,7 +37,11 @@ const SuccessModal = ({ show, handleClick }: SuccessModalProps) => {
                   <div className={styles.__image}>
                     <Image
                       alt="Product"
-                      src={replaceString(cartItems[0].image, "public", "")}
+                      src={`/static${replaceString(
+                        cartItems[0].image,
+                        "public",
+                        ""
+                      )}`}
                       fill
                       objectFit="cover"
                     />
