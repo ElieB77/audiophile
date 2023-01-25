@@ -1,28 +1,24 @@
 import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
-// import headphonesThumbnail from "../public/static/shared/desktop/image-category-thumbnail-headphones.png";
-import headphonesThumbnail from "/shared/desktop/image-category-thumbnail-headphones.png";
-import speakersThumbnail from "/shared/desktop/image-category-thumbnail-speakers.png";
-import earphonesThumbnail from "/shared/desktop/image-category-thumbnail-earphones.png";
 
 const cardCategoryData = [
   {
-    imageUrl: headphonesThumbnail,
+    imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
     categoryName: "headphones",
     categoryHref: "/category/headphones",
     width: 200,
     height: 200,
   },
   {
-    imageUrl: speakersThumbnail,
+    imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
     categoryName: "speakers",
     categoryHref: "/category/speakers",
     width: 200,
     height: 200,
   },
   {
-    imageUrl: earphonesThumbnail,
+    imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
     categoryName: "earphones",
     categoryHref: "/category/earphones",
     width: 200,
