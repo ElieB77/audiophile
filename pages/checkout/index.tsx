@@ -5,11 +5,19 @@ import { useRouter } from "next/router";
 import CartSummary from "../../components/Cart/CartSummary";
 import SuccessModal from "../../components/Popups/SuccessModal";
 import { useCartModal } from "../../hooks/useCartModal";
+import { useCart } from "../../context/CartContext";
+import { useEffect } from "react";
 
 const Checkout = () => {
   const [isShowingSuccessModal, toggleSuccessModal] = useCartModal();
-
+  const { cartQuantity } = useCart();
   const router = useRouter();
+
+  useEffect(() => {
+    if (cartQuantity < 1) {
+      router.push("/");
+    }
+  }, [cartQuantity, router]);
   return (
     <>
       <SuccessModal
