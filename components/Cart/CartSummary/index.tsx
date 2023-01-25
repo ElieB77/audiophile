@@ -10,7 +10,6 @@ interface CartSummaryProps {
 
 const CartSummary = ({ onClick }: CartSummaryProps) => {
   const { cartItems, cartTotalPrice } = useCart();
-  console.log(cartItems);
   return (
     <div className={styles.__cart_summary}>
       <h6>summary</h6>

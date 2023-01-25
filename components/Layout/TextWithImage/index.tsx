@@ -2,6 +2,7 @@
 import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
+import BestGear from "../../../assets/public/shared/desktop/image-best-gear.jpg";
 
 const TextWithImage = () => {
   return (
@@ -20,12 +21,7 @@ const TextWithImage = () => {
         </p>
       </div>
       <div className={styles.__image}>
-        <Image
-          src="/shared/desktop/image-best-gear.jpg"
-          alt="Portrait"
-          fill
-          objectFit="cover"
-        />
+        <Image src={BestGear} alt="Portrait" fill objectFit="cover" />
       </div>
     </div>
   );

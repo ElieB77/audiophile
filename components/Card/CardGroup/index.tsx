@@ -5,6 +5,11 @@ import Button from "../../UI/Button";
 // Modules
 import Link from "next/link";
 import Image from "next/image";
+// Assets
+import PatternCircles from "../../../assets/public/home/desktop/pattern-circles.svg";
+import zx7Image from "../../../assets/public/home/desktop/image-speaker-zx7.jpg";
+import zx9Image from "../../../assets/public/home/desktop/image-speaker-zx9.png";
+import yx1Image from "../../../assets/public/home/desktop/image-earphones-yx1.jpg";
 
 interface CardGroupProps {
   firstBlockTitle?: string;
@@ -44,19 +49,9 @@ const CardGroup = ({
   return (
     <div className={styles.__card_group}>
       <div className={styles.__first_block}>
-        <Image
-          src="/home/desktop/pattern-circles.svg"
-          width={900}
-          height={900}
-          alt="circle"
-        />
+        <Image src={PatternCircles} width={900} height={900} alt="circle" />
         <div className={styles.__second_img_container}>
-          <Image
-            src="/home/desktop/image-speaker-zx9.png"
-            fill
-            objectFit="contain"
-            alt="speaker"
-          />
+          <Image src={zx9Image} fill objectFit="contain" alt="speaker" />
         </div>
         <div className={styles.__content}>
           <h1>{firstBlockTitle}</h1>
@@ -67,12 +62,7 @@ const CardGroup = ({
         </div>
       </div>
       <div className={styles.__second_block}>
-        <Image
-          src="/home/desktop/image-speaker-zx7.jpg"
-          fill
-          objectFit="cover"
-          alt="speaker"
-        />
+        <Image src={zx7Image} fill objectFit="cover" alt="speaker" />
         <div className={styles.__content}>
           <h4>{secondBlockTitle}</h4>
           <Link href={`product/${secondBlockProductId}`}>
@@ -82,12 +72,7 @@ const CardGroup = ({
       </div>
       <div className={styles.__third_block}>
         <div>
-          <Image
-            src="/home/desktop/image-earphones-yx1.jpg"
-            fill
-            objectFit="cover"
-            alt="speaker"
-          />
+          <Image src={yx1Image} fill objectFit="cover" alt="speaker" />
         </div>
         <div className={styles.__content}>
           <div>

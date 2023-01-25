@@ -58,8 +58,6 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
     setErrors(error);
   };
 
-  console.log(errors);
-
   return (
     <>
       <div className={styles.__user_modal}>

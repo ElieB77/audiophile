@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 // Components
 import Button from "../../UI/Button";
+// Assets
+import ImageHero from "../../../assets/public/home/desktop/image-hero.jpg";
 
 interface HeroProps {
   heroOverline?: string;
@@ -22,12 +24,7 @@ const Hero = ({
   return (
     <div className={styles.__hero}>
       <div className={styles.__background}>
-        <Image
-          src="/home/desktop/image-hero.jpg"
-          alt="background"
-          width={1400}
-          height={700}
-        />
+        <Image src={ImageHero} alt="background" width={1400} height={700} />
       </div>
       <div className={styles.__content}>
         <p className="overline">{heroOverline}</p>

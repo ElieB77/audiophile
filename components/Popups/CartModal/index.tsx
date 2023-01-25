@@ -23,8 +23,6 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
     router.push("/checkout");
   };
 
-  console.log(cartItems);
-
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>

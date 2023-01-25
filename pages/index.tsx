@@ -2,6 +2,8 @@ import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
 import headphonesThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-headphones.png";
+import speakersThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-speakers.png";
+import earphonesThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-earphones.png";
 
 const cardCategoryData = [
   {
@@ -12,14 +14,14 @@ const cardCategoryData = [
     height: 200,
   },
   {
-    imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
+    imageUrl: speakersThumbnail,
     categoryName: "speakers",
     categoryHref: "/category/speakers",
     width: 200,
     height: 200,
   },
   {
-    imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
+    imageUrl: earphonesThumbnail,
     categoryName: "earphones",
     categoryHref: "/category/earphones",
     width: 200,
