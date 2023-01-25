@@ -13,9 +13,9 @@ import { useUserModal } from "../../../hooks/useUserModal";
 // Context
 import { useCart } from "../../../context/CartContext";
 // Assets
-import CartIcon from "../../../assets/public/cart.svg";
-import Logo from "../../../assets/public/logo-audiophile.svg";
-import UserIcon from "../../../assets/public/user-icon.svg";
+import CartIcon from "../../../assets/public/static/cart.svg";
+import Logo from "../../../assets/public/static/logo-audiophile.svg";
+import UserIcon from "../../../assets/public/static/user-icon.svg";
 import { isLoggedIn } from "../../../utilities/auth";
 
 interface NavbarProps {

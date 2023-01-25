@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import styles from "./styles.module.scss";
-import CloseIcon from "../../../assets/public/close-icon.svg";
+import CloseIcon from "../../../assets/public/static/close-icon.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Input from "../../UI/Input";

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { replaceString } from "../../utilities/replaceString";
 import { parseData } from "../../utilities/parseData";
 import Header from "../../components/Layout/Header";
+import Test from "../../assets/public/static/product-xx59-headphones/desktop/image-product.jpg";
 
 interface Props {
   products?: any;
@@ -27,6 +28,7 @@ const Category = ({ products, category }: Props) => {
             const images = parseData(product.images);
             const image = replaceString(images[0].desktop, "./assets", "");
             const isNew = product.new === 1 ? true : false;
+            console.log(image);
             return (
               <ProductInfo
                 key={index}

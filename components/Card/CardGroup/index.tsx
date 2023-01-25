@@ -6,10 +6,10 @@ import Button from "../../UI/Button";
 import Link from "next/link";
 import Image from "next/image";
 // Assets
-import PatternCircles from "../../../assets/public/home/desktop/pattern-circles.svg";
-import zx7Image from "../../../assets/public/home/desktop/image-speaker-zx7.jpg";
-import zx9Image from "../../../assets/public/home/desktop/image-speaker-zx9.png";
-import yx1Image from "../../../assets/public/home/desktop/image-earphones-yx1.jpg";
+import PatternCircles from "../../../assets/public/static/home/desktop/pattern-circles.svg";
+import zx7Image from "../../../assets/public/static/home/desktop/image-speaker-zx7.jpg";
+import zx9Image from "../../../assets/public/static/home/desktop/image-speaker-zx9.png";
+import yx1Image from "../../../assets/public/static/home/desktop/image-earphones-yx1.jpg";
 
 interface CardGroupProps {
   firstBlockTitle?: string;

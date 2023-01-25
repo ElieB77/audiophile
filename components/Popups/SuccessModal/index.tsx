@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import IconCart from "../../../assets/public/checkout/icon-order-confirmation.svg";
+import IconCart from "../../../assets/public/static/checkout/icon-order-confirmation.svg";
 import Image from "next/image";
 import Button from "../../UI/Button";
 import { useCart } from "../../../context/CartContext";
@@ -35,7 +35,11 @@ const SuccessModal = ({ show, handleClick }: SuccessModalProps) => {
                   <div className={styles.__image}>
                     <Image
                       alt="Product"
-                      src={replaceString(cartItems[0].image, "public", "")}
+                      src={replaceString(
+                        cartItems[0].image,
+                        "public/static",
+                        ""
+                      )}
                       fill
                       objectFit="cover"
                     />

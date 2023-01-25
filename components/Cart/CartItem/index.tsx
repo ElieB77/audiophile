@@ -10,7 +10,7 @@ import { replaceString } from "../../../utilities/replaceString";
 // Context
 import { useCart } from "../../../context/CartContext";
 // Assets
-import TrashIcon from "../../../assets/public/trash-icon.svg";
+import TrashIcon from "../../../assets/public/static/trash-icon.svg";
 
 interface CartItemProps {
   image: string;

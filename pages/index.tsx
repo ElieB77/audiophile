@@ -1,9 +1,9 @@
 import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
-import headphonesThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-headphones.png";
-import speakersThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-speakers.png";
-import earphonesThumbnail from "../assets/public/shared/desktop/image-category-thumbnail-earphones.png";
+import headphonesThumbnail from "../assets/public/static/shared/desktop/image-category-thumbnail-headphones.png";
+import speakersThumbnail from "../assets/public/static/shared/desktop/image-category-thumbnail-speakers.png";
+import earphonesThumbnail from "../assets/public/static/shared/desktop/image-category-thumbnail-earphones.png";
 
 const cardCategoryData = [
   {
