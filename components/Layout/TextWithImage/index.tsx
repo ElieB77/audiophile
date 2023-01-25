@@ -2,7 +2,7 @@
 import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
-import BestGear from "../../../assets/public/static/shared/desktop/image-best-gear.jpg";
+import BestGear from "../../../public/static/shared/desktop/image-best-gear.jpg";
 
 const TextWithImage = () => {
   return (

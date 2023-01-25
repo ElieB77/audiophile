@@ -12,7 +12,7 @@ import TextWithImage from "../components/Layout/TextWithImage";
 import CardCategories from "../components/Card/CardCategories";
 import { CartProvider } from "../context/CartContext";
 // Assets
-import Logo from "../assets/public/static/logo-audiophile.svg";
+import Logo from "../public/static/logo-audiophile.svg";
 
 const cardCategoryData = [
   {

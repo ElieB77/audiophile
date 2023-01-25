@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
 // Assets
-import RightArrow from "../../../assets/public/static/right-arrow.svg";
+import RightArrow from "../../../public/static/right-arrow.svg";
 
 interface ButtonProps {
   btnContent: string | JSX.Element;

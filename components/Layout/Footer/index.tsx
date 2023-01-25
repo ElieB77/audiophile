@@ -4,9 +4,9 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 // Assets
-import FacebookLogo from "../../../assets/public/static/facebook-logo.svg";
-import TwitterLogo from "../../../assets/public/static/twitter-logo.svg";
-import InstaLogo from "../../../assets/public/static/insta-logo.svg";
+import FacebookLogo from "../../../public/static/facebook-logo.svg";
+import TwitterLogo from "../../../public/static/twitter-logo.svg";
+import InstaLogo from "../../../public/static/insta-logo.svg";
 
 interface footerLinksProps {
   textContent: string;

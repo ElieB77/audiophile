@@ -10,7 +10,7 @@ import { replaceString } from "../../../utilities/replaceString";
 // Context
 import { useCart } from "../../../context/CartContext";
 // Assets
-import TrashIcon from "../../../assets/public/static/trash-icon.svg";
+import TrashIcon from "../../../public/static/trash-icon.svg";
 
 interface CartItemProps {
   image: string;
@@ -32,6 +32,7 @@ const CartItem = ({
   removeQuantityCounter,
 }: CartItemProps) => {
   let cartImage = replaceString(image, "public", "");
+  console.log(cartImage);
   const { removeItem, increaseQuantity, decreaseQuantity } = useCart();
   const router = useRouter();
 
@@ -42,7 +43,12 @@ const CartItem = ({
   return (
     <div className={styles.__cart_item}>
       <div className={styles.__image} onClick={goToProductPage}>
-        <Image src={cartImage} alt="article" fill objectFit="cover" />
+        <Image
+          src={`/static${cartImage}`}
+          alt="article"
+          fill
+          objectFit="cover"
+        />
       </div>
       <div className={styles.__details}>
         <p onClick={goToProductPage}>{name}</p>

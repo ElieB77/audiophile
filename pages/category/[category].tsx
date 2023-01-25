@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { replaceString } from "../../utilities/replaceString";
 import { parseData } from "../../utilities/parseData";
 import Header from "../../components/Layout/Header";
-import Test from "../../assets/public/static/product-xx59-headphones/desktop/image-product.jpg";
+import Test from "../../public/static/product-xx59-headphones/desktop/image-product.jpg";
 
 interface Props {
   products?: any;

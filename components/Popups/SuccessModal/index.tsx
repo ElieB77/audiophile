@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import IconCart from "../../../assets/public/static/checkout/icon-order-confirmation.svg";
+import IconCart from "../../../public/static/checkout/icon-order-confirmation.svg";
 import Image from "next/image";
 import Button from "../../UI/Button";
 import { useCart } from "../../../context/CartContext";
@@ -20,6 +20,8 @@ const SuccessModal = ({ show, handleClick }: SuccessModalProps) => {
     router.push("/");
   };
 
+  console.log(cartItems);
+
   return (
     show && (
       <>
@@ -35,11 +37,7 @@ const SuccessModal = ({ show, handleClick }: SuccessModalProps) => {
                   <div className={styles.__image}>
                     <Image
                       alt="Product"
-                      src={replaceString(
-                        cartItems[0].image,
-                        "public/static",
-                        ""
-                      )}
+                      src={replaceString(cartItems[0].image, "public", "")}
                       fill
                       objectFit="cover"
                     />

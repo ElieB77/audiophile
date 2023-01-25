@@ -6,7 +6,7 @@ import Link from "next/link";
 // Components
 import Button from "../../UI/Button";
 // Assets
-import ImageHero from "../../../assets/public/static/home/desktop/image-hero.jpg";
+import ImageHero from "../../../public/static/home/desktop/image-hero.jpg";
 
 interface HeroProps {
   heroOverline?: string;
