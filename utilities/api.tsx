@@ -28,9 +28,7 @@ export const postData = async (url: any, item_id: any, quantity: any) => {
       body: JSON.stringify({ item_id, quantity }),
     });
     const data = await response.json();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 export const deleteData = async (url: any) => {
@@ -44,9 +42,7 @@ export const deleteData = async (url: any) => {
       },
     });
     const data = await response.json();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 export const updateData = async (url: any, item_id: any) => {
@@ -61,7 +57,5 @@ export const updateData = async (url: any, item_id: any) => {
       body: JSON.stringify({ item_id }),
     });
     const data = await response.json();
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
