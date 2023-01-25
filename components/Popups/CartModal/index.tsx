@@ -7,7 +7,6 @@ import CartItem from "../../Cart/CartItem";
 import { useCart } from "../../../context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { isLoggedIn } from "../../../utilities/auth";
 
 interface CartModalProps {
   show: any;
@@ -17,11 +16,6 @@ interface CartModalProps {
 const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
   const router = useRouter();
-
-  const goToCheckout = () => {
-    handleClick();
-    router.push("/checkout");
-  };
 
   return show ? (
     <>

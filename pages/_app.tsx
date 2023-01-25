@@ -2,6 +2,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState, useContext } from "react";
+import Head from "next/head";
 // Styles
 import "../assets/styles/globals.scss";
 import "../assets/styles/index.scss";
@@ -53,6 +54,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <title>Audiophile - Get the most out of personal audio</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+      </Head>
       <CartProvider>
         <Navbar overrideClassname={navbarColor} />
         <Component {...pageProps} />

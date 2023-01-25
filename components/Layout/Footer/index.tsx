@@ -30,38 +30,38 @@ const Footer = ({
 }: footerLinksProps) => {
   return (
     <div className={styles.__footer}>
-      {/* <div className="container"> */}
-      <div className={styles.__left_block}>
-        <Image src={imageSrc} alt="Logo" width={143} height={25} />
-        <p>{textContent}</p>
-        <p>{copyrightContent}</p>
-      </div>
-      <div className={styles.__right_block}>
-        <div className={styles.__links}>
-          {footerLinks.map((link: any, index: number) => {
-            return (
-              <Link key={index} href={link.href}>
-                {link.text}
-              </Link>
-            );
-          })}
+      <div className={styles.__wrapper}>
+        <div className={styles.__left_block}>
+          <Image src={imageSrc} alt="Logo" width={143} height={25} />
+          <p>{textContent}</p>
+          <p>{copyrightContent}</p>
         </div>
-        <div className={styles.__socials_icons}>
-          {footerSocials.map((iconUrl: any, index: number) => {
-            return (
-              <Image
-                key={index}
-                src={iconUrl}
-                alt="social media"
-                width={24}
-                height={24}
-              />
-            );
-          })}
+        <div className={styles.__right_block}>
+          <div className={styles.__links}>
+            {footerLinks.map((link: any, index: number) => {
+              return (
+                <Link key={index} href={link.href}>
+                  {link.text}
+                </Link>
+              );
+            })}
+          </div>
+          <div className={styles.__socials_icons}>
+            {footerSocials.map((iconUrl: any, index: number) => {
+              return (
+                <Image
+                  key={index}
+                  src={iconUrl}
+                  alt="social media"
+                  width={24}
+                  height={24}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

@@ -20,8 +20,6 @@ const SuccessModal = ({ show, handleClick }: SuccessModalProps) => {
     router.push("/");
   };
 
-  console.log(cartItems);
-
   return (
     show && (
       <>
