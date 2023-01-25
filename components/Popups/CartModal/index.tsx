@@ -17,6 +17,11 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
   const { cartItems, cartQuantity, clearCart, cartTotalPrice } = useCart();
   const router = useRouter();
 
+  const goToCheckout = () => {
+    router.push("/checkout");
+    handleClick();
+  };
+
   return show ? (
     <>
       <div className={styles.__overlay} onClick={handleClick}></div>
@@ -48,10 +53,7 @@ const CartModal = ({ show, handleClick }: CartModalProps) => {
             <div className={styles.__price}>
               <p>total</p>
               <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
-              <Button
-                btnContent="checkout"
-                onClick={() => router.push("/checkout")}
-              />
+              <Button btnContent="checkout" onClick={goToCheckout} />
             </div>
           </>
         ) : (
