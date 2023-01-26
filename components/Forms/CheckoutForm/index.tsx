@@ -14,6 +14,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const { cartItems } = useCart();
+  const cardElement = elements?.getElement(CardElement);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_STRIPE_URL}`, {
@@ -36,19 +37,21 @@ const CheckoutForm = () => {
     ev.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe?.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements?.getElement(CardElement),
-      },
-    });
+    if (cardElement) {
+      const payload = await stripe?.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+        },
+      });
 
-    if (payload?.error) {
-      setError(`Payment failed ${payload.error.message}`);
-      setProcessing(false);
-    } else {
-      setError(null);
-      setProcessing(false);
-      setSucceeded(true);
+      if (payload?.error) {
+        setError(`Payment failed ${payload.error.message}`);
+        setProcessing(false);
+      } else {
+        setError(null);
+        setProcessing(false);
+        setSucceeded(true);
+      }
     }
   };
 
