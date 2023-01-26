@@ -9,8 +9,9 @@ interface ButtonProps {
   btnContent: string | JSX.Element;
   btnType?: "outlined" | "borderless";
   btnIcon?: boolean;
-  onClick?: () => void;
+  onClick?: any;
   isFullWidth?: boolean;
+  id?: any;
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   btnIcon,
   onClick,
   isFullWidth,
+  id,
 }: ButtonProps) => {
   const selectedBtnType =
     btnType === "borderless"
@@ -32,6 +34,7 @@ const Button = ({
         isFullWidth ? styles.__full_width : null
       }`}
       onClick={onClick}
+      id={id}
     >
       {btnContent}
       {btnIcon && (

@@ -8,6 +8,13 @@ import { useCartModal } from "../../hooks/useCartModal";
 import { useCart } from "../../context/CartContext";
 import { useEffect } from "react";
 
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "../../components/Forms/CheckoutForm";
+const stripePromise = loadStripe(
+  `${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
+);
+
 const Checkout = () => {
   const [isShowingSuccessModal, toggleSuccessModal] = useCartModal();
   const { cartQuantity } = useCart();
@@ -18,6 +25,7 @@ const Checkout = () => {
       router.push("/");
     }
   }, [cartQuantity, router]);
+
   return (
     <>
       <SuccessModal
@@ -30,37 +38,9 @@ const Checkout = () => {
             <Button btnContent="go back" btnType="borderless" />
           </div>
           <div className={styles.__wrapper}>
-            <div className={styles.__form}>
-              <h3>checkout</h3>
-              <div className={styles.__billing_details}>
-                <p className="sub_title">billing details</p>
-                <div className={styles.__input_group}>
-                  <Input placeholder="Alexei Ward" label="Name" />
-                  <Input placeholder="alexei@mail.com" label="Email" />
-                </div>
-                <Input placeholder="+1 202-555-0136" label="number" />
-              </div>
-              <div className={styles.__shipping_info}>
-                <p className="sub_title">shipping info</p>
-                <Input
-                  placeholder="1137 Williams Avenue"
-                  label="Adress"
-                  isFullWidth
-                />
-                <div className={styles.__input_group}>
-                  <Input placeholder="10001" label="ZIP Code" />
-                  <Input placeholder="New York" label="City" />
-                </div>
-                <Input placeholder="United States" label="Country" />
-              </div>
-              <div className={styles.__payment_details}>
-                <p className="sub_title">payment details</p>
-                <div className={styles.__input_group}>
-                  <Input label="Cash on Delivery" isRadio />
-                  <Input label="e-Money" isRadio />
-                </div>
-              </div>
-            </div>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
             <div className={styles.__summary}>
               <CartSummary onClick={toggleSuccessModal} />
             </div>

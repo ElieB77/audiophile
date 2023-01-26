@@ -34,7 +34,7 @@ const CartSummary = ({ onClick }: CartSummaryProps) => {
           <p>total</p>
           <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
         </div>
-        <Button btnContent="continue & pay" isFullWidth onClick={onClick} />
+        {/* <Button btnContent="continue & pay" isFullWidth onClick={onClick} /> */}
       </div>
     </div>
   );
