@@ -4,6 +4,8 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { useCart } from "../../../context/CartContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckoutForm = () => {
   const [succeeded, setSucceeded] = useState(false);
@@ -47,57 +49,60 @@ const CheckoutForm = () => {
       if (payload?.error) {
         setError(`Payment failed ${payload.error.message}`);
         setProcessing(false);
+        toast.error("Something went wrong! Please try again.");
       } else {
         setError(null);
         setProcessing(false);
         setSucceeded(true);
+        toast.success("Your order is complete!");
       }
     }
   };
 
-  console.log(succeeded);
-
   return (
-    <div className={styles.__checkout_form}>
-      <div className={styles.__form}>
-        <h3>checkout</h3>
-        <div className={styles.__billing_details}>
-          <p className="sub_title">billing details</p>
-          <div className={styles.__input_group}>
-            <Input placeholder="Alexei Ward" label="Name" />
-            <Input placeholder="alexei@mail.com" label="Email" />
+    <>
+      <div className={styles.__checkout_form}>
+        <div className={styles.__form}>
+          <h3>checkout</h3>
+          <div className={styles.__billing_details}>
+            <p className="sub_title">billing details</p>
+            <div className={styles.__input_group}>
+              <Input placeholder="Alexei Ward" label="Name" />
+              <Input placeholder="alexei@mail.com" label="Email" />
+            </div>
+            <Input placeholder="+1 202-555-0136" label="number" />
           </div>
-          <Input placeholder="+1 202-555-0136" label="number" />
-        </div>
-        <div className={styles.__shipping_info}>
-          <p className="sub_title">shipping info</p>
-          <Input
-            placeholder="1137 Williams Avenue"
-            label="Adress"
-            isFullWidth
+          <div className={styles.__shipping_info}>
+            <p className="sub_title">shipping info</p>
+            <Input
+              placeholder="1137 Williams Avenue"
+              label="Adress"
+              isFullWidth
+            />
+            <div className={styles.__input_group}>
+              <Input placeholder="10001" label="ZIP Code" />
+              <Input placeholder="New York" label="City" />
+            </div>
+            <Input placeholder="United States" label="Country" />
+          </div>
+          <p className="sub_title">payment</p>
+
+          <CardElement
+            className={styles.__card_element}
+            onChange={handleChange}
           />
-          <div className={styles.__input_group}>
-            <Input placeholder="10001" label="ZIP Code" />
-            <Input placeholder="New York" label="City" />
-          </div>
-          <Input placeholder="United States" label="Country" />
+
+          {processing ? (
+            <div className={styles.__spinner}></div>
+          ) : (
+            <div className={styles.__submit_btn}>
+              <Button btnContent={"continue & pay"} onClick={handleSubmit} />
+            </div>
+          )}
         </div>
-        <p className="sub_title">payment</p>
-
-        <CardElement
-          className={styles.__card_element}
-          onChange={handleChange}
-        />
-
-        {processing ? (
-          <div className={styles.__spinner}></div>
-        ) : (
-          <div className={styles.__submit_btn}>
-            <Button btnContent={"continue & pay"} onClick={handleSubmit} />
-          </div>
-        )}
       </div>
-    </div>
+      <ToastContainer position="top-center" autoClose={1000} />
+    </>
   );
 };
 
