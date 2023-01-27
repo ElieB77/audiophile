@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { storeItems, getItems } from "../utilities/localStorage";
+import { storeItems, getItems, removeItems } from "../utilities/localStorage";
 
 interface CartProviderProps {
   children: ReactNode;
@@ -42,12 +42,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [forceRerender, setForceRerender] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("cartItems")) {
-  //     setCartItems(JSON.parse(localStorage.getItem("cartItems")));
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (getItems("cartItems")) {
       setCartItems(getItems("cartItems"));
@@ -56,6 +50,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   useEffect(() => {
     if (cartItems.length > 0) storeItems(cartItems);
+    if (cartItems.length === 0) removeItems("cartItems");
   }, [cartItems, forceRerender]);
 
   const addToCart = (
