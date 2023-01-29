@@ -16,18 +16,19 @@ export const fetchData = async (url: any) => {
   }
 };
 
-export const postData = async (url: any, item_id: any, quantity: any) => {
+export const postData = async (url: any, items: any) => {
   const token = getToken();
   try {
-    const response = await fetch(url, {
+    const response: any = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ item_id, quantity }),
+      body: JSON.stringify({ items }),
     });
     const data = await response.json();
+    console.log("Request", data);
   } catch (error) {}
 };
 

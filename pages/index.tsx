@@ -1,6 +1,7 @@
 import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
+import { isLoggedIn } from "../utilities/auth";
 
 const cardCategoryData = [
   {
@@ -27,6 +28,7 @@ const cardCategoryData = [
 ];
 
 export default function Home() {
+  console.log("auth?", isLoggedIn());
   return (
     <>
       <Hero
@@ -43,11 +45,12 @@ export default function Home() {
               <CardCategories
                 key={index}
                 categoryName={card.categoryName}
-                categoryImage={card.imageUrl!}
+                categoryImage={`/static${card.imageUrl!}`}
                 categoryHref={card.categoryHref}
                 width={card.width}
                 height={card.height}
                 btnContent={"SHOP"}
+                alt="categories"
               />
             );
           })}

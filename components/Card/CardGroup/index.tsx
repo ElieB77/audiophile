@@ -67,7 +67,7 @@ const CardGroup = ({
         </div>
       </div>
       <div className={styles.__second_block}>
-        <Image src={zx7Image} fill objectFit="cover" alt="speaker" />
+        <Image src={zx7Image} fill alt="speaker" />
         <div className={styles.__content}>
           <h4>{secondBlockTitle}</h4>
           <Link href={`product/${secondBlockProductId}`}>

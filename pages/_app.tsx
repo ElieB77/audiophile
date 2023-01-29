@@ -69,11 +69,12 @@ export default function App({ Component, pageProps }: AppProps) {
                   <CardCategories
                     key={index}
                     categoryName={card.categoryName}
-                    categoryImage={card.imageUrl!}
+                    categoryImage={`/static${card.imageUrl!}`}
                     categoryHref={card.categoryHref}
                     width={card.width}
                     height={card.height}
                     btnContent="SHOP"
+                    alt={"Categories"}
                   />
                 );
               })}

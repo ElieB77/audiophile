@@ -13,6 +13,7 @@ interface CardCategoriesProps {
   width: number;
   height: number;
   btnContent: string;
+  alt: string;
 }
 
 const CardCategories = ({
@@ -22,6 +23,7 @@ const CardCategories = ({
   width,
   height,
   btnContent,
+  alt,
 }: CardCategoriesProps) => {
   const router = useRouter();
   return (
@@ -30,8 +32,8 @@ const CardCategories = ({
         <div className={styles.__card}>
           <Image
             className={styles.__photo}
-            src={`/static${categoryImage!}`}
-            alt=""
+            src={categoryImage!}
+            alt={alt}
             width={width}
             height={height}
           />

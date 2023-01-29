@@ -5,6 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { postData } from "../utilities/api";
+import { isLoggedIn } from "../utilities/auth";
 import { storeItems, getItems, removeItems } from "../utilities/localStorage";
 
 interface CartProviderProps {
@@ -49,6 +51,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, []);
 
   useEffect(() => {
+    // Store to localStorage when user is not logged in and store to database when he is logged in.
+    if (isLoggedIn()) {
+      postData(process.env.NEXT_PUBLIC_ADD_TO_CART, cartItems);
+    }
     if (cartItems.length > 0) storeItems(cartItems);
     if (cartItems.length === 0) removeItems("cartItems");
   }, [cartItems, forceRerender]);

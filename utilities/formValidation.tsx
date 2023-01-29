@@ -12,7 +12,7 @@ export const formValidation = (
   if (!email) {
     error.push({ input: "email", message: "Email is required." });
     isValid = false;
-  } else if (!email.match(Constants.validEmail) && email) {
+  } else if (!email.match(Constants.VALID_EMAIL) && email) {
     error.push({ input: "email", message: "Email format incorrect." });
     isValid = false;
   }
