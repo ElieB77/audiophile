@@ -19,8 +19,13 @@
     & p {
       cursor: not-allowed;
       text-decoration: underline;
+      display: flex;
+      align-items: center;
       &:hover {
         color: var(--brightest-color);
+      }
+      & img {
+        margin-right: 10px;
       }
     }
   }
@@ -29,6 +34,11 @@
     margin-top: 30px;
     & p {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      & img {
+        margin-right: 10px;
+      }
       &:hover {
         color: var(--brightest-color);
       }

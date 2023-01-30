@@ -4,6 +4,12 @@ import styles from "./styles.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../../context/AuthContext";
+import LogOutIcon from "../../../public/static/log-out-icon.svg";
+import ListIcon from "../../../public/static/list-solid.svg";
+import UserInfoIcon from "../../../public/static/user-info.svg";
+import Image from "next/image";
+import { useCart } from "../../../context/CartContext";
+import { getData } from "../../../utilities/api";
 
 interface Props {
   handleClick: any;
@@ -13,10 +19,11 @@ const UserInfo = ({ handleClick }: Props) => {
   const [userName, setUserName] = useState<string>("");
   const { removeToken } = useAuth();
 
-  // const userInfo = async () => {
-  //   const data = await fetchData("http://localhost:3001/user");
-  //   setUserName(data.name);
-  // };
+  useEffect(() => {
+    getData(process.env.NEXT_PUBLIC_GET_USER).then((data) => {
+      setUserName(data.name);
+    });
+  }, []);
 
   const logOut = () => {
     removeToken();
@@ -34,12 +41,21 @@ const UserInfo = ({ handleClick }: Props) => {
           </p>
         </div>
         <div className={styles.__menu}>
-          <p>Orders</p>
-          <p>Informations</p>
+          <p>
+            <Image src={ListIcon} alt="Logo" width={15} height={15} />
+            Orders
+          </p>
+          <p>
+            <Image src={UserInfoIcon} alt="Logo" width={15} height={15} />
+            Informations
+          </p>
         </div>
         <div className={styles.__log_out}>
           <hr />
-          <p onClick={logOut}>Log out</p>
+          <p onClick={logOut}>
+            <Image src={LogOutIcon} alt="Logo" width={15} height={15} />
+            Log out
+          </p>
         </div>
         <ToastContainer position="top-center" />
       </div>

@@ -16,7 +16,6 @@ import { useCart } from "../../../context/CartContext";
 import CartIcon from "../../../public/static/cart.svg";
 import Logo from "../../../public/static/logo-audiophile.svg";
 import UserIcon from "../../../public/static/user-icon.svg";
-import { isLoggedIn } from "../../../utilities/auth";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
