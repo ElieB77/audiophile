@@ -28,7 +28,6 @@ const Category = ({ products, category }: Props) => {
             const images = parseData(product.images);
             const image = replaceString(images[0].desktop, "./assets", "");
             const isNew = product.new === 1 ? true : false;
-            console.log(image);
             return (
               <ProductInfo
                 key={index}

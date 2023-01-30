@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import SignIn from "../../User/SignIn";
 import SignUp from "../../User/SignUp";
-import { isLoggedIn } from "../../../utilities/auth";
+// import { isLoggedIn } from "../../../utilities/auth";
+import { useAuth } from "../../../context/AuthContext";
 import UserInfo from "../../User/UserInfo";
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 const UserModal = ({ show, handleClick }: Props) => {
   const [conditionalContent, setConditionalContent] =
     useState<string>("signin");
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     if (show) setConditionalContent("signin");

@@ -1,7 +1,6 @@
 import Hero from "../components/Layout/Hero";
 import CardCategories from "../components/Card/CardCategories";
 import CardGroup from "../components/Card/CardGroup";
-import { isLoggedIn } from "../utilities/auth";
 
 const cardCategoryData = [
   {
@@ -28,7 +27,6 @@ const cardCategoryData = [
 ];
 
 export default function Home() {
-  console.log("auth?", isLoggedIn());
   return (
     <>
       <Hero

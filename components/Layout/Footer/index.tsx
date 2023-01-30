@@ -59,6 +59,11 @@ const Footer = ({
               );
             })}
           </div>
+          <p className={styles.__credit}>
+            Designed by
+            <a href="https://www.frontendmentor.io/"> Frontendmentor</a> & coded
+            by <a href="https://github.com/ElieB77">ElieB77</a>
+          </p>
         </div>
       </div>
     </div>

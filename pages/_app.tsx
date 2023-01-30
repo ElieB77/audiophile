@@ -12,8 +12,11 @@ import Footer from "../components/Layout/Footer";
 import TextWithImage from "../components/Layout/TextWithImage";
 import CardCategories from "../components/Card/CardCategories";
 import { CartProvider } from "../context/CartContext";
+import { AuthProvider } from "../context/AuthContext";
 // Assets
 import Logo from "../public/static/logo-audiophile.svg";
+// import { isLoggedIn } from "../utilities/auth";
+import { useAuth } from "../context/AuthContext";
 
 const cardCategoryData = [
   {
@@ -43,6 +46,9 @@ export default function App({ Component, pageProps }: AppProps) {
   const [pageTitle, setPageTitle] = useState<string>("");
   const router = useRouter();
 
+  const { isLoggedIn } = useAuth();
+  // console.log("isAuth?:", isLoggedIn());
+
   useEffect(() => {
     return setPageTitle(router.pathname.slice(1));
   }, [router.pathname]);
@@ -58,36 +64,38 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Audiophile - Get the most out of personal audio</title>
         <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
       </Head>
-      <CartProvider>
-        <Navbar overrideClassname={navbarColor} />
-        <Component {...pageProps} />
-        <div className="container">
-          {router.pathname !== "/" && router.pathname !== "/checkout" && (
-            <div className="__card_categories">
-              {cardCategoryData.map((card: any, index: number) => {
-                return (
-                  <CardCategories
-                    key={index}
-                    categoryName={card.categoryName}
-                    categoryImage={`/static${card.imageUrl!}`}
-                    categoryHref={card.categoryHref}
-                    width={card.width}
-                    height={card.height}
-                    btnContent="SHOP"
-                    alt={"Categories"}
-                  />
-                );
-              })}
-            </div>
-          )}
-          {router.pathname !== "/checkout" && <TextWithImage />}
-        </div>
-        <Footer
-          textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
-          imageSrc={Logo}
-          copyrightContent="Copyright 2021. All Rights Reserved"
-        />
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Navbar overrideClassname={navbarColor} />
+          <Component {...pageProps} />
+          <div className="container">
+            {router.pathname !== "/" && router.pathname !== "/checkout" && (
+              <div className="__card_categories">
+                {cardCategoryData.map((card: any, index: number) => {
+                  return (
+                    <CardCategories
+                      key={index}
+                      categoryName={card.categoryName}
+                      categoryImage={`/static${card.imageUrl!}`}
+                      categoryHref={card.categoryHref}
+                      width={card.width}
+                      height={card.height}
+                      btnContent="SHOP"
+                      alt={"Categories"}
+                    />
+                  );
+                })}
+              </div>
+            )}
+            {router.pathname !== "/checkout" && <TextWithImage />}
+          </div>
+          <Footer
+            textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
+            imageSrc={Logo}
+            copyrightContent="Copyright 2021. All Rights Reserved"
+          />
+        </CartProvider>
+      </AuthProvider>
     </>
   );
 }

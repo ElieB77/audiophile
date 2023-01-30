@@ -46,6 +46,20 @@
           cursor: pointer;
         }
       }
+      .__credit {
+        font-size: 13px;
+        font-family: "Manrope", sans-serif;
+        margin-top: 56px;
+
+        & a {
+          color: var(--brightest-color);
+          text-decoration: underline;
+          font-weight: bold;
+          &:hover {
+            color: var(--bright-color);
+          }
+        }
+      }
     }
   }
 }

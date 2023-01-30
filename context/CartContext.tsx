@@ -5,8 +5,9 @@ import {
   useEffect,
   useState,
 } from "react";
-import { postData } from "../utilities/api";
-import { isLoggedIn } from "../utilities/auth";
+import { deleteData, getData, postData } from "../utilities/api";
+// import { isLoggedIn } from "../utilities/auth";
+import { useAuth } from "./AuthContext";
 import { storeItems, getItems, removeItems } from "../utilities/localStorage";
 
 interface CartProviderProps {
@@ -42,22 +43,29 @@ export const useCart = () => {
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [quantity, setQuantity] = useState<number>(0);
-  const [forceRerender, setForceRerender] = useState<boolean>(false);
+  const [update, setUpdate] = useState<boolean>(false);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    if (getItems("cartItems")) {
-      setCartItems(getItems("cartItems"));
+    if (isLoggedIn()) {
+      getData(process.env.NEXT_PUBLIC_GET_CART).then((data) => {
+        setCartItems(data.cartItems);
+      });
+    } else {
+      if (getItems("cartItems")) {
+        setCartItems(getItems("cartItems"));
+      }
     }
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
-    // Store to localStorage when user is not logged in and store to database when he is logged in.
     if (isLoggedIn()) {
       postData(process.env.NEXT_PUBLIC_ADD_TO_CART, cartItems);
+    } else {
+      if (cartItems.length > 0) storeItems(cartItems);
+      if (cartItems.length === 0) removeItems("cartItems");
     }
-    if (cartItems.length > 0) storeItems(cartItems);
-    if (cartItems.length === 0) removeItems("cartItems");
-  }, [cartItems, forceRerender]);
+  }, [cartItems, update]);
 
   const addToCart = (
     id: number,
@@ -74,7 +82,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
           cartItems[index].quantity += quantity;
         }
       });
-      setForceRerender(!forceRerender);
+      setUpdate(!update);
     }
   };
 
@@ -88,6 +96,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   const clearCart = () => {
+    if (isLoggedIn()) {
+      deleteData(process.env.NEXT_PUBLIC_CLEAR_CART);
+    }
     return setCartItems([]);
   };
 
@@ -97,6 +108,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 
   const removeItem = (id: number) => {
+    if (isLoggedIn()) {
+      deleteData(`${process.env.NEXT_PUBLIC_REMOVE_ITEM}/${id}`);
+    }
     return setCartItems([...cartItems.filter((item) => item.id !== id)]);
   };
 
@@ -106,7 +120,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity++;
       }
     });
-    setForceRerender(!forceRerender);
+    setUpdate(!update);
   };
 
   const decreaseQuantity = (id: number) => {
@@ -119,7 +133,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cartItems[index].quantity--;
       }
     });
-    setForceRerender(!forceRerender);
+    setUpdate(!update);
   };
 
   return (

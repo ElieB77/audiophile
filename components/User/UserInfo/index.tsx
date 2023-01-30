@@ -1,9 +1,9 @@
 import { use, useEffect, useState } from "react";
-import { fetchData } from "../../../utilities/api";
-import { isLoggedIn, removeToken } from "../../../utilities/auth";
+// import { isLoggedIn, removeToken } from "../../../utilities/auth";
 import styles from "./styles.module.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../../context/AuthContext";
 
 interface Props {
   handleClick: any;
@@ -11,6 +11,7 @@ interface Props {
 
 const UserInfo = ({ handleClick }: Props) => {
   const [userName, setUserName] = useState<string>("");
+  const { removeToken } = useAuth();
 
   // const userInfo = async () => {
   //   const data = await fetchData("http://localhost:3001/user");
@@ -18,9 +19,9 @@ const UserInfo = ({ handleClick }: Props) => {
   // };
 
   const logOut = () => {
-    handleClick();
-    toast.success("You have been logged out successfully.");
     removeToken();
+    // toast.success("You have been logged out successfully.");
+    handleClick();
   };
 
   // userInfo();

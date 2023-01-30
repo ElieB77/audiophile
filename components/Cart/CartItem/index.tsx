@@ -32,7 +32,6 @@ const CartItem = ({
   removeQuantityCounter,
 }: CartItemProps) => {
   let cartImage = replaceString(image, "public", "");
-  console.log(cartImage);
   const { removeItem, increaseQuantity, decreaseQuantity } = useCart();
   const router = useRouter();
 

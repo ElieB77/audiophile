@@ -1,7 +1,5 @@
-import { getToken } from "./auth";
-
-export const fetchData = async (url: any) => {
-  const token = getToken();
+export const getData = async (url: any) => {
+  const token = localStorage.getItem("token");
   try {
     const response = await fetch(url, {
       method: "GET",
@@ -12,12 +10,12 @@ export const fetchData = async (url: any) => {
     });
     return await response.json();
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 
 export const postData = async (url: any, items: any) => {
-  const token = getToken();
+  const token = localStorage.getItem("token");
   try {
     const response: any = await fetch(url, {
       method: "POST",
@@ -29,25 +27,28 @@ export const postData = async (url: any, items: any) => {
     });
     const data = await response.json();
     console.log("Request", data);
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const deleteData = async (url: any) => {
-  const token = getToken();
+  const token = localStorage.getItem("token");
   try {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-    const data = await response.json();
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const updateData = async (url: any, item_id: any) => {
-  const token = getToken();
+  const token = localStorage.getItem("token");
   try {
     const response = await fetch(url, {
       method: "PUT",

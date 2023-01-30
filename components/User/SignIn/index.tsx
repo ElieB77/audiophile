@@ -8,7 +8,8 @@ import Button from "../../UI/Button";
 import { formValidation } from "../../../utilities/formValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { isLoggedIn, setToken } from "../../../utilities/auth";
+// import { isLoggedIn, setToken } from "../../../utilities/auth";
+import { useAuth } from "../../../context/AuthContext";
 
 interface Props {
   handleClick?: any;
@@ -18,6 +19,9 @@ interface Props {
 const SignIn = ({ handleClick, setConditionalContent }: Props) => {
   const [values, setValues] = useState<any>({ email: "", password: "" });
   const [errors, setErrors] = useState<any>();
+  const [success, setSuccess] = useState<boolean>(false);
+
+  const { isLoggedIn, setToken } = useAuth();
 
   const handleSubmit = async () => {
     const [isValid, error] = formValidation(
@@ -41,6 +45,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
       const response = await data.json();
       setToken(response.token);
       if (response.status.toString() === "200") {
+        setSuccess(true);
         toast.success(response.message);
         setTimeout(() => {
           handleClick();
