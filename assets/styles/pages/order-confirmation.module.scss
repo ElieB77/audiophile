@@ -1,5 +1,7 @@
 .__order_confirmation {
-  width: 540px;
+  // width: 540px;
+  width: 100%;
+  height: 100%;
   background: var(--lightest-color);
   position: absolute;
   top: 50%;
@@ -8,74 +10,78 @@
   transform: translate(-50%, -50%);
   border-radius: 8px;
   padding: 48px;
-  & h3 {
-    font-family: "Manrope", sans-serif;
-    margin-top: 30px;
-  }
-  & p {
-    opacity: 0.5;
-    margin-top: 24px;
-  }
-
-  .__order_summary {
-    display: flex;
-    border-radius: 8px;
-    margin: 35px 0 45px 0;
+  .__wrapper {
+    margin: 0 auto;
+    width: 540px;
+    & h3 {
+      font-family: "Manrope", sans-serif;
+      margin-top: 30px;
+    }
     & p {
-      margin: 0;
+      opacity: 0.5;
+      margin-top: 24px;
     }
-    .__items {
-      background-color: var(--light-color);
-      width: 100%;
-      border-radius: 8px 0px 0px 8px;
-      text-align: center;
-      padding: 24px;
-      .__first_item {
-        display: flex;
-        align-items: center;
-        // justify-content: space-between;
-        .__image {
-          width: 50px;
-          height: 50px;
-          position: relative;
-          margin-right: 16px;
-        }
-        & p {
-          font-family: "Manrope", sans-serif;
-          font-weight: bolder;
-          text-transform: uppercase;
-          color: var(--darkest-color);
-          opacity: 1;
-          margin: 0;
-        }
-        & p:nth-child(2) {
-          opacity: 0.5;
-        }
 
-        .__quantity {
-          margin-left: auto;
-          font-weight: bolder;
-          font-family: "Manrope", sans-serif;
-          opacity: 0.5;
+    .__order_summary {
+      display: flex;
+      border-radius: 8px;
+      margin: 35px 0 45px 0;
+      & p {
+        margin: 0;
+      }
+      .__items {
+        background-color: var(--light-color);
+        width: 100%;
+        border-radius: 8px 0px 0px 8px;
+        text-align: center;
+        padding: 24px;
+        .__first_item {
+          display: flex;
+          align-items: center;
+          // justify-content: space-between;
+          .__image {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin-right: 16px;
+          }
+          & p {
+            font-family: "Manrope", sans-serif;
+            font-weight: bolder;
+            text-transform: uppercase;
+            color: var(--darkest-color);
+            opacity: 1;
+            margin: 0;
+          }
+          & p:nth-child(2) {
+            opacity: 0.5;
+          }
+
+          .__quantity {
+            margin-left: auto;
+            font-weight: bolder;
+            font-family: "Manrope", sans-serif;
+            opacity: 0.5;
+          }
         }
       }
-    }
-    & hr {
-      margin: 12px 0;
-    }
-    .__total {
-      background-color: var(--darkest-color);
-      padding: 40px 65px 40px 30px;
-      border-radius: 0px 8px 8px 0px;
-      & p {
-        color: var(--lightest-color);
-        opacity: 0.5;
-        text-transform: uppercase;
-        white-space: nowrap;
-        margin-bottom: 8px;
+      & hr {
+        margin: 12px 0;
       }
-      & h6 {
-        color: var(--lightest-color);
+      .__total {
+        background-color: var(--darkest-color);
+        padding: 40px 65px 40px 30px;
+        border-radius: 0px 8px 8px 0px;
+        & p {
+          color: var(--lightest-color);
+          opacity: 0.5;
+          text-transform: uppercase;
+          white-space: nowrap;
+          margin-bottom: 8px;
+        }
+        & h6 {
+          color: var(--lightest-color);
+        }
       }
     }
   }

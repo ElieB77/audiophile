@@ -1,10 +1,15 @@
 import * as Constants from "../constants";
 
 export const formValidation = (
-  email: string,
-  password: string,
+  email?: string,
+  password?: string,
   name?: string,
-  confirmPassword?: string
+  confirmPassword?: string,
+  phone_number?: Number,
+  address?: any,
+  zip_code?: Number,
+  city?: string,
+  country?: string
 ) => {
   let isValid: boolean = true;
   let error: any = [];
@@ -17,15 +22,17 @@ export const formValidation = (
     isValid = false;
   }
 
-  if (!password) {
-    error.push({ input: "password", message: "Password is required." });
-    isValid = false;
-  } else if (password.length < 8) {
-    error.push({
-      input: "password",
-      message: "Password must be at least 8 characters long.",
-    });
-    isValid = false;
+  if (password !== undefined) {
+    if (!password) {
+      error.push({ input: "password", message: "Password is required." });
+      isValid = false;
+    } else if (password.length < 8) {
+      error.push({
+        input: "password",
+        message: "Password must be at least 8 characters long.",
+      });
+      isValid = false;
+    }
   }
 
   if (confirmPassword !== undefined) {
@@ -53,6 +60,44 @@ export const formValidation = (
         input: "name",
         message: "Name must be at least 4 characters long.",
       });
+      isValid = false;
+    }
+  }
+
+  if (phone_number !== undefined) {
+    if (!phone_number) {
+      error.push({
+        input: "phone_number",
+        message: "Phone Number is required.",
+      });
+      isValid = false;
+    }
+  }
+
+  if (address !== undefined) {
+    if (!address) {
+      error.push({ input: "address", message: "Address is required." });
+      isValid = false;
+    }
+  }
+
+  if (zip_code !== undefined) {
+    if (!zip_code) {
+      error.push({ input: "zip_code", message: "ZIP Code is required." });
+      isValid = false;
+    }
+  }
+
+  if (city !== undefined) {
+    if (!city) {
+      error.push({ input: "city", message: "City is required." });
+      isValid = false;
+    }
+  }
+
+  if (country !== undefined) {
+    if (!country) {
+      error.push({ input: "country", message: "Country is required." });
       isValid = false;
     }
   }

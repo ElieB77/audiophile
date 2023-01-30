@@ -8,7 +8,6 @@ import Button from "../../UI/Button";
 import { formValidation } from "../../../utilities/formValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { isLoggedIn, setToken } from "../../../utilities/auth";
 import { useAuth } from "../../../context/AuthContext";
 
 interface Props {
@@ -126,8 +125,8 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
             </p>
           </div>
         </div>
+        <ToastContainer position="top-center" autoClose={1000} />
       </div>
-      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 };

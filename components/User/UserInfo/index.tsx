@@ -26,8 +26,8 @@ const UserInfo = ({ handleClick }: Props) => {
   }, []);
 
   const logOut = () => {
+    toast.success("You have been logged out successfully.");
     removeToken();
-    // toast.success("You have been logged out successfully.");
     handleClick();
   };
 
@@ -57,8 +57,8 @@ const UserInfo = ({ handleClick }: Props) => {
             Log out
           </p>
         </div>
-        <ToastContainer position="top-center" />
       </div>
+      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 };

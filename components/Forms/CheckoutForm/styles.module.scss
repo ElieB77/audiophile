@@ -36,6 +36,13 @@
     .__submit_btn {
       margin-top: 50px;
     }
+    .__error_message {
+      color: red;
+      text-transform: unset;
+      display: block;
+      margin: 0 !important;
+      font-size: 12px;
+    }
   }
   .__input_group {
     display: flex;

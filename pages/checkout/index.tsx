@@ -3,7 +3,6 @@ import styles from "../../assets/styles/pages/checkout.module.scss";
 import Button from "../../components/UI/Button";
 import { useRouter } from "next/router";
 import CartSummary from "../../components/Cart/CartSummary";
-import SuccessModal from "../../components/Popups/SuccessModal";
 import { useCartModal } from "../../hooks/useCartModal";
 import { useCart } from "../../context/CartContext";
 import { useEffect } from "react";
@@ -28,10 +27,6 @@ const Checkout = () => {
 
   return (
     <>
-      <SuccessModal
-        show={isShowingSuccessModal}
-        handleClick={toggleSuccessModal}
-      />
       <div className={styles.__checkout}>
         <div className={`container ${styles.__container}`}>
           <div className={styles.__go_back_btn} onClick={() => router.back()}>
