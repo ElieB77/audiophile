@@ -66,34 +66,41 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <AuthProvider>
         <CartProvider>
-          <Navbar overrideClassname={navbarColor} />
+          {router.pathname !== "/order-confirmation" && (
+            <Navbar overrideClassname={navbarColor} />
+          )}
           <Component {...pageProps} />
           <div className="container">
-            {router.pathname !== "/" && router.pathname !== "/checkout" && (
-              <div className="__card_categories">
-                {cardCategoryData.map((card: any, index: number) => {
-                  return (
-                    <CardCategories
-                      key={index}
-                      categoryName={card.categoryName}
-                      categoryImage={`/static${card.imageUrl!}`}
-                      categoryHref={card.categoryHref}
-                      width={card.width}
-                      height={card.height}
-                      btnContent="SHOP"
-                      alt={"Categories"}
-                    />
-                  );
-                })}
-              </div>
-            )}
-            {router.pathname !== "/checkout" && <TextWithImage />}
+            {router.pathname !== "/" &&
+              router.pathname !== "/checkout" &&
+              router.pathname !== "/order-confirmation" && (
+                <div className="__card_categories">
+                  {cardCategoryData.map((card: any, index: number) => {
+                    return (
+                      <CardCategories
+                        key={index}
+                        categoryName={card.categoryName}
+                        categoryImage={`/static${card.imageUrl!}`}
+                        categoryHref={card.categoryHref}
+                        width={card.width}
+                        height={card.height}
+                        btnContent="SHOP"
+                        alt={"Categories"}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            {router.pathname !== "/checkout" &&
+              router.pathname !== "/order-confirmation" && <TextWithImage />}
           </div>
-          <Footer
-            textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
-            imageSrc={Logo}
-            copyrightContent="Copyright 2021. All Rights Reserved"
-          />
+          {router.pathname !== "/order-confirmation" && (
+            <Footer
+              textContent="Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week."
+              imageSrc={Logo}
+              copyrightContent="Copyright 2021. All Rights Reserved"
+            />
+          )}
         </CartProvider>
       </AuthProvider>
     </>

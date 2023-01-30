@@ -6,6 +6,7 @@ import Input from "../../UI/Input";
 import { useCart } from "../../../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const CheckoutForm = () => {
   const [succeeded, setSucceeded] = useState(false);
@@ -17,6 +18,8 @@ const CheckoutForm = () => {
   const elements = useElements();
   const { cartItems } = useCart();
   const cardElement = elements?.getElement(CardElement);
+
+  const router = useRouter();
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_STRIPE_URL}`, {
@@ -54,7 +57,7 @@ const CheckoutForm = () => {
         setError(null);
         setProcessing(false);
         setSucceeded(true);
-        toast.success("Your order is complete!");
+        router.push("/order-confirmation");
       }
     }
   };
