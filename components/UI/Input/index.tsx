@@ -8,6 +8,7 @@ interface InputProps {
   isRadio?: boolean;
   onChange?: any;
   value?: any;
+  type?: "radio" | "password" | "text" | "email" | "number";
 }
 
 const Input = ({
@@ -18,11 +19,12 @@ const Input = ({
   isRadio,
   onChange,
   value,
+  type,
 }: InputProps) => {
   return isRadio ? (
     <div className={styles.__isRadio}>
       <label>
-        <input type="radio" name="hello" id="hello" />
+        <input type={type} name="hello" id="hello" />
         {label}
       </label>
     </div>
@@ -36,7 +38,7 @@ const Input = ({
       <input
         id={name}
         name={name}
-        type="text"
+        type={type}
         placeholder={placeholder}
         onChange={onChange}
         value={value}

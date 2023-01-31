@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
 import BestGear from "../../../public/static/shared/desktop/image-best-gear.jpg";
+import BestGearTablet from "../../../public/static/shared/tablet/image-best-gear.jpg";
 
 const TextWithImage = () => {
   return (
@@ -21,7 +22,20 @@ const TextWithImage = () => {
         </p>
       </div>
       <div className={styles.__image}>
-        <Image src={BestGear} alt="Portrait" fill objectFit="cover" />
+        <Image
+          className={styles.__best_gear_desktop}
+          src={BestGear}
+          alt="Portrait"
+          fill
+          objectFit="cover"
+        />
+        <Image
+          className={styles.__best_gear_tablet}
+          src={BestGearTablet}
+          alt="Portrait"
+          fill
+          objectFit="cover"
+        />
       </div>
     </div>
   );

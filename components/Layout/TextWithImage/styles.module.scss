@@ -18,8 +18,38 @@
     width: 540px;
     height: 588px;
     position: relative;
+    .__best_gear_tablet {
+      display: none;
+    }
     & img {
       border-radius: 8px;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+    margin: 100px 0;
+    .__text {
+      order: 1;
+      width: 573px;
+      text-align: center;
+      margin-top: 65px;
+      margin-right: 0;
+    }
+    .__image {
+      width: 100%;
+      height: 300px;
+      .__best_gear_tablet {
+        display: block;
+      }
+      .__best_gear_desktop {
+        display: none;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .__text {
+      width: 100%;
     }
   }
 }

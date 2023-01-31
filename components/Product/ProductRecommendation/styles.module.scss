@@ -17,4 +17,23 @@
     width: inherit;
     height: inherit;
   }
+  @media only screen and (max-width: 1200px) {
+    overflow: hidden;
+    & div {
+      & img {
+        object-fit: contain;
+        width: 210px !important;
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    h5 {
+      margin: 32px 0;
+    }
+    & div {
+      & img {
+        width: 327px !important;
+      }
+    }
+  }
 }

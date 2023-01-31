@@ -26,9 +26,12 @@ const UserInfo = ({ handleClick }: Props) => {
   }, []);
 
   const logOut = () => {
-    toast.success("You have been logged out successfully.");
     removeToken();
     handleClick();
+
+    // setTimeout(() => {
+    //   handleClick();
+    // }, 1500);
   };
 
   // userInfo();

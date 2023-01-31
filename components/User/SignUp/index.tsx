@@ -75,6 +75,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
           <div className={styles.__body}>
             <div className={styles.__inputs}>
               <Input
+                type="text"
                 placeholder="Name *"
                 isFullWidth
                 onChange={(e: { target: { value: any } }) =>
@@ -94,6 +95,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                 })}
               <Input
                 placeholder="Email *"
+                type="email"
                 isFullWidth
                 onChange={(e: { target: { value: any } }) =>
                   setValues({ ...values, email: e.target.value })
@@ -111,6 +113,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                   }
                 })}
               <Input
+                type="password"
                 placeholder="Password *"
                 isFullWidth
                 onChange={(e: { target: { value: any } }) =>
@@ -129,6 +132,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
                   }
                 })}
               <Input
+                type="password"
                 placeholder="Confirm password *"
                 isFullWidth
                 onChange={(e: { target: { value: any } }) =>

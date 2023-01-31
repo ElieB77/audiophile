@@ -33,7 +33,7 @@ const Footer = ({
       <div className={styles.__wrapper}>
         <div className={styles.__left_block}>
           <Image src={imageSrc} alt="Logo" width={143} height={25} />
-          <p>{textContent}</p>
+          <p className={styles.__text_content}>{textContent}</p>
           <p>{copyrightContent}</p>
         </div>
         <div className={styles.__right_block}>

@@ -18,7 +18,6 @@ interface Props {
 const SignIn = ({ handleClick, setConditionalContent }: Props) => {
   const [values, setValues] = useState<any>({ email: "", password: "" });
   const [errors, setErrors] = useState<any>();
-  const [success, setSuccess] = useState<boolean>(false);
 
   const { isLoggedIn, setToken } = useAuth();
 
@@ -42,13 +41,11 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
         },
       });
       const response = await data.json();
-      setToken(response.token);
-      if (response.status.toString() === "200") {
-        setSuccess(true);
-        toast.success(response.message);
-        setTimeout(() => {
-          handleClick();
-        }, 1500);
+      if (response.status === 200) {
+        setToken(response.token);
+        // setTimeout(() => {
+        //   handleClick();
+        // }, 1500);
       } else if (response.status.toString() === "401") {
         toast.error(response.message);
       }
@@ -76,6 +73,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
             <div className={styles.__inputs}>
               <Input
                 placeholder="Email *"
+                type={"email"}
                 isFullWidth
                 value={values.email}
                 onChange={(e: { target: { value: any } }) =>
@@ -96,6 +94,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
                   }
                 })}
               <Input
+                type="password"
                 placeholder="Password *"
                 isFullWidth
                 value={values.password}

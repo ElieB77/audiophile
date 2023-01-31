@@ -1,5 +1,4 @@
 .__order_confirmation {
-  // width: 540px;
   width: 100%;
   height: 100%;
   background: var(--lightest-color);
@@ -81,6 +80,20 @@
         }
         & h6 {
           color: var(--lightest-color);
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .__wrapper {
+      margin-top: 40%;
+      .__order_summary {
+        flex-direction: column;
+        .__items {
+          border-radius: 8px 8px 0px 0px;
+        }
+        .__total {
+          border-radius: 0px 0px 8px 8px;
         }
       }
     }

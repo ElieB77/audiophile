@@ -31,7 +31,6 @@ const CheckoutForm = () => {
   const [errors, setErrors] = useState<any>();
 
   const router = useRouter();
-  console.log(values);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_STRIPE_URL}`, {
@@ -90,8 +89,6 @@ const CheckoutForm = () => {
     setErrors(error);
   };
 
-  console.log(errors);
-
   return (
     <>
       <div className={styles.__checkout_form}>
@@ -104,6 +101,7 @@ const CheckoutForm = () => {
                 <Input
                   label="Name"
                   placeholder="Alexei *"
+                  type="text"
                   value={values.name}
                   onChange={(e: { target: { value: any } }) =>
                     setValues({
@@ -126,6 +124,7 @@ const CheckoutForm = () => {
               <div>
                 <Input
                   label="Email Address"
+                  type="email"
                   placeholder="alexei@mail.com *"
                   value={values.email}
                   onChange={(e: { target: { value: any } }) =>
@@ -149,6 +148,7 @@ const CheckoutForm = () => {
             </div>
             <Input
               label="Phone Number"
+              type="text"
               placeholder="+1 202-555-0136"
               value={values.phone_number}
               onChange={(e: { target: { value: any } }) =>
@@ -174,6 +174,7 @@ const CheckoutForm = () => {
 
             <Input
               label="Address"
+              type="text"
               placeholder="1137 Williams Avenue"
               isFullWidth
               value={values.address}
@@ -199,6 +200,7 @@ const CheckoutForm = () => {
               <div>
                 <Input
                   label="ZIP Code"
+                  type="text"
                   placeholder="10001"
                   value={values.zip_code}
                   onChange={(e: { target: { value: any } }) =>
@@ -222,6 +224,7 @@ const CheckoutForm = () => {
               <div>
                 <Input
                   label="City"
+                  type="text"
                   placeholder="New York"
                   value={values.city}
                   onChange={(e: { target: { value: any } }) =>
@@ -245,6 +248,7 @@ const CheckoutForm = () => {
             </div>
             <Input
               label="Country"
+              type="text"
               placeholder="United States"
               value={values.country}
               onChange={(e: { target: { value: any } }) =>

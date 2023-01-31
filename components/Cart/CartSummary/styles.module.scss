@@ -16,4 +16,11 @@
       }
     }
   }
+  @media only screen and (max-width: 1200px) {
+    width: 730px;
+    margin-top: 30px;
+  }
+  @media only screen and (max-width: 850px) {
+    width: 100%;
+  }
 }

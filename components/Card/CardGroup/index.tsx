@@ -76,7 +76,7 @@ const CardGroup = ({
         </div>
       </div>
       <div className={styles.__third_block}>
-        <div>
+        <div className={styles.__product_img}>
           <Image src={yx1Image} fill objectFit="cover" alt="speaker" />
         </div>
         <div className={styles.__content}>

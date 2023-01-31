@@ -26,7 +26,6 @@ export const postData = async (url: any, items: any) => {
       body: JSON.stringify({ items }),
     });
     const data = await response.json();
-    console.log("Request", data);
   } catch (error) {
     throw error;
   }

@@ -4,10 +4,7 @@
   border-radius: 8px;
   padding: 54px 46px 46px 46px;
   .__form {
-    //   height: 1126px;
     background-color: var(--lightest-color);
-    // padding: 54px 46px 46px 46px;
-    // border-radius: 8px;
     & p {
       text-transform: uppercase;
       color: var(--brightest-color);
@@ -51,6 +48,22 @@
     & p {
       font-size: 12px;
       display: block;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    padding: 54px 15px 46px 15px;
+    width: 100%;
+
+    .__input_group {
+      display: inherit;
+    }
+
+    .__billing_details,
+    .__shipping_info,
+    .__payment_details {
+      & div {
+        width: 100%;
+      }
     }
   }
 }

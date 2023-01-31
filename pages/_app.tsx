@@ -15,39 +15,34 @@ import { CartProvider } from "../context/CartContext";
 import { AuthProvider } from "../context/AuthContext";
 // Assets
 import Logo from "../public/static/logo-audiophile.svg";
-// import { isLoggedIn } from "../utilities/auth";
-import { useAuth } from "../context/AuthContext";
 
 const cardCategoryData = [
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
     categoryName: "headphones",
     categoryHref: "/category/headphones",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
     categoryName: "speakers",
     categoryHref: "/category/speakers",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
     categoryName: "earphones",
     categoryHref: "/category/earphones",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
   const [pageTitle, setPageTitle] = useState<string>("");
   const router = useRouter();
-
-  const { isLoggedIn } = useAuth();
-  // console.log("isAuth?:", isLoggedIn());
 
   useEffect(() => {
     return setPageTitle(router.pathname.slice(1));
@@ -82,10 +77,10 @@ export default function App({ Component, pageProps }: AppProps) {
                         categoryName={card.categoryName}
                         categoryImage={`/static${card.imageUrl!}`}
                         categoryHref={card.categoryHref}
-                        width={card.width}
-                        height={card.height}
+                        // width={card.width}
+                        // height={card.height}
                         btnContent="SHOP"
-                        alt={"Categories"}
+                        // alt={"Categories"}
                       />
                     );
                   })}

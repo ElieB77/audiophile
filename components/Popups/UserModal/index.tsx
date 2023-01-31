@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import SignIn from "../../User/SignIn";
 import SignUp from "../../User/SignUp";
-// import { isLoggedIn } from "../../../utilities/auth";
 import { useAuth } from "../../../context/AuthContext";
 import UserInfo from "../../User/UserInfo";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   show?: any;
@@ -37,6 +38,7 @@ const UserModal = ({ show, handleClick }: Props) => {
           <UserInfo handleClick={handleClick} />
         ) : null}
         <div className={styles.__overlay} onClick={handleClick}></div>
+        <ToastContainer position="top-center" autoClose={1000} />
       </>
     )
   );

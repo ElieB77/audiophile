@@ -49,14 +49,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   useEffect(() => {
     if (isLoggedIn()) {
       getData(process.env.NEXT_PUBLIC_GET_CART).then((data) => {
-        setCartItems(data.cartItems);
+        setCartItems([...data.cartItems]);
       });
     } else {
       if (getItems("cartItems")) {
         setCartItems(getItems("cartItems"));
       }
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn()]);
 
   useEffect(() => {
     if (isLoggedIn()) {

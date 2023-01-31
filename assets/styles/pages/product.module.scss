@@ -5,4 +5,18 @@
     padding: 0;
     font-size: 15px;
   }
+  @media only screen and (max-width: 1200px) {
+    margin-top: 130px;
+    margin-bottom: 20px;
+  }
+}
+
+.__recommended_products {
+  display: flex;
+  gap: 30px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 200px;
+    flex-direction: column;
+    gap: 0px;
+  }
 }

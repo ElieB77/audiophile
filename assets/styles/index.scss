@@ -2,13 +2,18 @@
   display: flex;
   gap: 30px;
   margin-top: 200px;
+  @media only screen and (max-width: 1200px) {
+    gap: 10px;
+  }
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    margin-top: 100px;
+  }
 }
 
 .__dark_navbar {
   background-color: var(--dark-color) !important;
   height: 97px;
-}
-
-.__recommended_products {
-  display: flex;
 }

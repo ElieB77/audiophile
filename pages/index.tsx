@@ -7,22 +7,22 @@ const cardCategoryData = [
     imageUrl: "/shared/desktop/image-category-thumbnail-headphones.png",
     categoryName: "headphones",
     categoryHref: "/category/headphones",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-speakers.png",
     categoryName: "speakers",
     categoryHref: "/category/speakers",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
   {
     imageUrl: "/shared/desktop/image-category-thumbnail-earphones.png",
     categoryName: "earphones",
     categoryHref: "/category/earphones",
-    width: 200,
-    height: 200,
+    // width: 200,
+    // height: 200,
   },
 ];
 
@@ -45,10 +45,9 @@ export default function Home() {
                 categoryName={card.categoryName}
                 categoryImage={`/static${card.imageUrl!}`}
                 categoryHref={card.categoryHref}
-                width={card.width}
-                height={card.height}
+                // width={card.width}
+                // height={card.height}
                 btnContent={"SHOP"}
-                alt="categories"
               />
             );
           })}

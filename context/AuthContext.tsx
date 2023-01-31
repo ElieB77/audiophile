@@ -24,12 +24,16 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [token, setTokenState] = useState<string | null>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("token");
-    }
-    return null;
-  });
+  const [token, setTokenState] = useState<any>(null);
+
+  useEffect(() => {
+    setTokenState(() => {
+      if (typeof window !== "undefined") {
+        return localStorage.getItem("token");
+      }
+      return null;
+    });
+  }, [token]);
 
   const setToken = (token: string) => {
     setTokenState(token);
@@ -41,7 +45,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.removeItem("token");
   };
 
-  const isLoggedIn = () => token !== null && token !== undefined;
+  const isLoggedIn = () => {
+    return token !== null;
+  };
 
   return (
     <AuthContext.Provider

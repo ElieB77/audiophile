@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useUserModal = () => {
+export const useSideBar = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false);
 
   useEffect(() => {

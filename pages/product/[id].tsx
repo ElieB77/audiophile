@@ -95,7 +95,10 @@ const Product = ({ product, products }: Props) => {
       <h3 style={{ textAlign: "center", marginTop: "160px" }}>
         you may also like
       </h3>
-      <div style={{ display: "flex", gap: "30px" }}>
+      <div
+        className={styles.__recommended_products}
+        // style={{ display: "flex", gap: "30px" }}
+      >
         {data.recommended &&
           data.recommended.map((product: any, index: number) => {
             return (

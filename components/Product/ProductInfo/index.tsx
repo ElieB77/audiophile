@@ -8,9 +8,6 @@ import Counter from "../../UI/Counter";
 import Button from "../../UI/Button";
 // Context
 import { useCart } from "../../../context/CartContext";
-// Utilities
-import { isLoggedIn } from "../../../utilities/auth";
-import { postData } from "../../../utilities/api";
 
 interface ProductInfoProps {
   image?: string;
@@ -51,9 +48,11 @@ const ProductInfo = ({
       />
     </div>
   ) : (
-    <Link href={`/product/${id}`}>
-      <Button btnContent="see product" />
-    </Link>
+    <div className={styles.__see_product_btn}>
+      <Link href={`/product/${id}`}>
+        <Button btnContent="see product" />
+      </Link>
+    </div>
   );
 
   return (

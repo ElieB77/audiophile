@@ -27,11 +27,22 @@ body {
   font-family: "Manrope Medium", sans-serif;
   font-size: 15px;
   line-height: 25px;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .container {
   width: 1110px;
   margin: 0 auto;
+  @media only screen and (max-width: 1200px) {
+    width: 689px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 327px;
+  }
 }
 
 // Colors
@@ -64,12 +75,19 @@ h1 {
   line-height: 58px;
   font-size: 56px;
   letter-spacing: 2px;
+  @media only screen and (max-width: 768px) {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }
 
 h2 {
   font-size: 40px;
   line-height: 44px;
   letter-spacing: 1.5px;
+  @media only screen and (max-width: 768px) {
+    font-size: 28px;
+  }
 }
 
 h3 {
@@ -94,6 +112,9 @@ h6 {
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 1.3px;
+  @media only screen and (max-width: 768px) {
+    font-size: 15px;
+  }
 }
 
 .overline {

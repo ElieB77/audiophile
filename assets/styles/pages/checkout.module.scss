@@ -1,6 +1,5 @@
 .__checkout {
   background-color: var(--light-color);
-
   .__go_back_btn {
     padding-top: 160px;
     > div {
@@ -10,7 +9,6 @@
       font-size: 15px;
     }
   }
-
   .__wrapper {
     display: flex;
     justify-content: space-between;
@@ -33,6 +31,19 @@
           margin-top: 10px;
         }
       }
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .__go_back_btn {
+      padding-top: 130px;
+    }
+    .__wrapper {
+      flex-direction: column;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    .__form {
+      width: 327px;
     }
   }
 }

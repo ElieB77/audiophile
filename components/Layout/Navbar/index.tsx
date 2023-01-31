@@ -16,6 +16,8 @@ import { useCart } from "../../../context/CartContext";
 import CartIcon from "../../../public/static/cart.svg";
 import Logo from "../../../public/static/logo-audiophile.svg";
 import UserIcon from "../../../public/static/user-icon.svg";
+import BurgerIcon from "../../../public/static/burger-icon.svg";
+import SideBar from "../../Popups/SideBar";
 
 interface NavbarProps {
   overrideClassname?: React.CSSProperties | string;
@@ -24,6 +26,7 @@ interface NavbarProps {
 const Navbar = ({ overrideClassname }: NavbarProps) => {
   const [isShowingCartModal, toggleCartModal] = useCartModal();
   const [isShowingUserModal, toggleUserModal] = useUserModal();
+  const [isShowingSideBar, toggleSideBar] = useUserModal();
   const { cartQuantity } = useCart();
   const router = useRouter();
 
@@ -54,7 +57,16 @@ const Navbar = ({ overrideClassname }: NavbarProps) => {
     <>
       <CartModal show={isShowingCartModal} handleClick={toggleCartModal} />
       <UserModal show={isShowingUserModal} handleClick={toggleUserModal} />
+      <SideBar
+        show={isShowingSideBar}
+        handleClick={toggleSideBar}
+        navbarLinks={navbarLinks}
+      />
+
       <div className={`${styles.__navbar} ${overrideClassname}`}>
+        <div className={styles.__burger_menu} onClick={toggleSideBar}>
+          <Image src={BurgerIcon} alt="Menu" width={16} height={15} />
+        </div>
         <Link href="/">
           <Image src={Logo} alt="Logo" width={143} height={25} />
         </Link>

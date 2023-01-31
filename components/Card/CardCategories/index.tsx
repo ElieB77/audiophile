@@ -10,20 +10,18 @@ interface CardCategoriesProps {
   categoryName?: string;
   categoryImage?: string;
   categoryHref?: string;
-  width: number;
-  height: number;
+  // width: number;
+  // height: number;
   btnContent: string;
-  alt: string;
 }
 
 const CardCategories = ({
   categoryName,
   categoryImage,
   categoryHref,
-  width,
-  height,
+  // width,
+  // height,
   btnContent,
-  alt,
 }: CardCategoriesProps) => {
   const router = useRouter();
   return (
@@ -32,10 +30,10 @@ const CardCategories = ({
         <div className={styles.__card}>
           <Image
             className={styles.__photo}
-            src={categoryImage!}
-            alt={alt}
-            width={width}
-            height={height}
+            src={`${categoryImage!}`}
+            alt="Category"
+            width={200}
+            height={200}
           />
           <div className={styles.__content}>
             <h6>{categoryName}</h6>

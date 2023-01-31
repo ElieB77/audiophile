@@ -21,4 +21,15 @@
       opacity: 1;
     }
   }
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+    .__left_block {
+      width: 100%;
+    }
+    .__right_block {
+      margin: 0;
+      margin-top: 50px;
+      position: relative;
+    }
+  }
 }
