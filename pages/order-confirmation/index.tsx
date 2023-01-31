@@ -20,11 +20,13 @@ const OrderConfirmation = () => {
   return (
     <div className={styles.__order_confirmation}>
       <div className={styles.__wrapper}>
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          numberOfPieces={50}
-        />
+        {typeof window !== "undefined" && (
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            numberOfPieces={50}
+          />
+        )}
         <Image src={IconCart} alt={"Success icon"} />
         <h3>thank you for your order!</h3>
         <p>You will receive an email confirmation shortly.</p>
