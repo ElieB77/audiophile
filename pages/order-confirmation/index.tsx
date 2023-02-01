@@ -38,7 +38,7 @@ const OrderConfirmation = () => {
                   <Image
                     alt="Product"
                     src={`/static${replaceString(
-                      cartItems[0].image,
+                      cartItems[0].image && cartItems[0].image,
                       "public",
                       ""
                     )}`}
