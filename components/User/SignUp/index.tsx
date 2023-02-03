@@ -23,6 +23,7 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
   const [errors, setErrors] = useState<any>();
 
   const handleSubmit = async () => {
+    console.log("handlesubmit");
     const [isValid, error] = formValidation(
       values.email,
       values.password,
@@ -42,7 +43,6 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-
       const response = await data.json();
       if (response.status.toString() === "201") {
         toast.success(response.message);

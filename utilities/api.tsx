@@ -25,7 +25,7 @@ export const postData = async (url: any, items: any) => {
       },
       body: JSON.stringify({ items }),
     });
-    const data = await response.json();
+    return await response.json();
   } catch (error) {
     throw error;
   }
@@ -57,6 +57,8 @@ export const updateData = async (url: any, item_id: any) => {
       },
       body: JSON.stringify({ item_id }),
     });
-    const data = await response.json();
-  } catch (error) {}
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
 };

@@ -1,7 +1,7 @@
 // Modules
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 // Styles
 import "../assets/styles/globals.scss";

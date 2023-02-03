@@ -43,9 +43,6 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
       const response = await data.json();
       if (response.status === 200) {
         setToken(response.token);
-        // setTimeout(() => {
-        //   handleClick();
-        // }, 1500);
       } else if (response.status.toString() === "401") {
         toast.error(response.message);
       }
@@ -124,8 +121,8 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
             </p>
           </div>
         </div>
-        <ToastContainer position="top-center" autoClose={1000} />
       </div>
+      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 };

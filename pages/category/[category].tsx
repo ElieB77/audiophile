@@ -2,7 +2,6 @@ import Navbar from "../../components/Layout/Navbar";
 import ProductInfo from "../../components/Product/ProductInfo";
 import { useEffect, useState } from "react";
 import { replaceString } from "../../utilities/replaceString";
-import { parseData } from "../../utilities/parseData";
 import Header from "../../components/Layout/Header";
 import Test from "../../public/static/product-xx59-headphones/desktop/image-product.jpg";
 
@@ -25,7 +24,7 @@ const Category = ({ products, category }: Props) => {
       <div className="container">
         {data &&
           data.map((product: any, index: number) => {
-            const images = parseData(product.images);
+            const images = product.images;
             const image = replaceString(images[0].desktop, "./assets", "");
             const isNew = product.new === 1 ? true : false;
             return (

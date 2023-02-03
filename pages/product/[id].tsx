@@ -8,8 +8,6 @@ import ProductInfo from "../../components/Product/ProductInfo";
 import CardGroup from "../../components/Card/CardGroup";
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
 import Button from ".././../components/UI/Button";
-// Utils
-import { parseData } from "../../utilities/parseData";
 import { replaceString } from "../../utilities/replaceString";
 // Styles
 import styles from "../../assets/styles/pages/product.module.scss";
@@ -29,10 +27,10 @@ const Product = ({ product, products }: Props) => {
   let productRecommendedList: any[] = [];
   let galleryList: any[] = [];
 
-  const productImages = parseData(productData[0].images);
+  const productImages = productData[0].images;
   const productImage = replaceString(productImages[0].desktop, "./assets", "");
-  const accessoriesList = parseData(productData[0].includes);
-  const gallery = parseData(productData[0].gallery);
+  const accessoriesList = productData[0].includes;
+  const gallery = productData[0].gallery;
 
   Object.keys(gallery).map((item) => {
     galleryList.push(replaceString(gallery[item].desktop, "./assets", ""));
@@ -43,7 +41,7 @@ const Product = ({ product, products }: Props) => {
     .filter((product: any) => product.item_id !== productData[0].item_id)
     .slice(0, 3)
     .map((el: any) => {
-      let images = parseData(el.images);
+      let images = el.images;
       let image = replaceString(images[0].desktop, "./assets", "");
 
       const obj = {
@@ -95,10 +93,7 @@ const Product = ({ product, products }: Props) => {
       <h3 style={{ textAlign: "center", marginTop: "160px" }}>
         you may also like
       </h3>
-      <div
-        className={styles.__recommended_products}
-        // style={{ display: "flex", gap: "30px" }}
-      >
+      <div className={styles.__recommended_products}>
         {data.recommended &&
           data.recommended.map((product: any, index: number) => {
             return (
