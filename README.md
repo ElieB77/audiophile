@@ -1,39 +1,56 @@
-# Audiophile (E-commerce website) -> [Back-end repository.](https://github.com/ElieB77/audiophile_backend)
+![Headphones](public/static/home/desktop/image-hero.jpg)
 
-Audiophile is a [Frontend mentor](https://www.frontendmentor.io) challenge. <br>
-Users should be able to : <br>
+<h2 align="center">AUDIOPHILE</h2>
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add/Remove products from the cart
-- Edit product quantities in the cart
-- Fill in all fields in the checkout
-- Receive form validations if fields are missed or incorrect during checkout
-- See correct checkout totals depending on the products in the cart
-- Shipping always adds $50 to the order
-- VAT is calculated as 20% of the product total, excluding shipping
-- See an order confirmation modal after checking out with an order summary
-- Bonus: Keep track of what's in the cart, even after refreshing the browser (localStorage could be used for this if you're not building out a full-stack app)
+<div align="center">
+<p>[Backend repository](https://github.com/ElieB77/audiophile_backend)</p>
+<p>[Live website](https://audiophile-elieb77.vercel.app/)</p>
+</div>
 
-![Headphones](assets/public/static/product-xx59-headphones/desktop/image-gallery-3.jpg)
 
-## Built with
+## Introduction
+This is my solution to the Audiophile e-commerce website challenge created by [Frontend Mentor](https://www.frontendmentor.io/home)
 
-| **_Front-end_** | **_Back-end_** | **_Database_** |
-| :-------------- | :------------: | -------------: |
-| 👉 React        |   👉 NodeJS    |       👉 MYSQL |
-| 👉 NextJS       |  👉 ExpressJS  |
-| 👉 Typescript   |  👉 Typescript |
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## Setup
 
-To run this project locally :<br><br>
-Run<br><br>
-`git clone https://github.com/ElieB77/audiophile.git`<br><br>
-Then run<br><br>
-`npm install && npm run dev`
+## Features
+The website includes the following features :
+- Autentication
+- Shopping cart
+- Payment processing
+- Product catalog
+- Responsive design
 
-### To do
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-- [ ] Forgot password <br>
-- [ ] User settings <br>
+## Stack & Technologies used
+This project was built using the following technologies :
+- React
+- Next
+- Typescript
+- Sass
+
+#### Dependencies
+- [react](https://www.npmjs.com/package/react)
+- [react-stripe-js](https://www.npmjs.com/package/@stripe/react-stripe-js)
+- [react-confetti](https://www.npmjs.com/package/react-confetti)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
+- [@types-react](https://www.npmjs.com/package/@types/react)
+- [sass](https://www.npmjs.com/package/sass)
+- [typescript](https://www.npmjs.com/package/typescript)
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## Getting started
+ 
+
+
+
+
+
+
+
+
+
