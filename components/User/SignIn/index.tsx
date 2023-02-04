@@ -1,14 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
+// Styles
 import styles from "./styles.module.scss";
+// Assets
 import CloseIcon from "../../../public/static/close-icon.svg";
+// Modules
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
-import { formValidation } from "../../../utilities/formValidation";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// Components
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
+// Context
 import { useAuth } from "../../../context/AuthContext";
+// Utilities
+import { formValidation } from "../../../utilities/formValidation";
 
 interface Props {
   handleClick?: any;
@@ -19,7 +25,7 @@ const SignIn = ({ handleClick, setConditionalContent }: Props) => {
   const [values, setValues] = useState<any>({ email: "", password: "" });
   const [errors, setErrors] = useState<any>();
 
-  const { isLoggedIn, setToken } = useAuth();
+  const { setToken } = useAuth();
 
   const handleSubmit = async () => {
     const [isValid, error] = formValidation(

@@ -2,6 +2,7 @@
 import styles from "./styles.module.scss";
 // Modules
 import Image from "next/image";
+// Assets
 import BestGear from "../../../public/static/shared/desktop/image-best-gear.jpg";
 import BestGearTablet from "../../../public/static/shared/tablet/image-best-gear.jpg";
 

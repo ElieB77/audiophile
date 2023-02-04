@@ -1,11 +1,15 @@
+// Modules
 import { useEffect, useState } from "react";
-import styles from "./styles.module.scss";
-import SignIn from "../../User/SignIn";
-import SignUp from "../../User/SignUp";
-import { useAuth } from "../../../context/AuthContext";
-import UserInfo from "../../User/UserInfo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// Styles
+import styles from "./styles.module.scss";
+// Components
+import SignIn from "../../User/SignIn";
+import SignUp from "../../User/SignUp";
+import UserInfo from "../../User/UserInfo";
+// Context
+import { useAuth } from "../../../context/AuthContext";
 
 interface Props {
   show?: any;

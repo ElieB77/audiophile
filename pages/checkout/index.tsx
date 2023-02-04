@@ -1,9 +1,7 @@
-import Input from "../../components/UI/Input";
 import styles from "../../assets/styles/pages/checkout.module.scss";
 import Button from "../../components/UI/Button";
 import { useRouter } from "next/router";
 import CartSummary from "../../components/Cart/CartSummary";
-import { useCartModal } from "../../hooks/useCartModal";
 import { useCart } from "../../context/CartContext";
 import { useEffect } from "react";
 
@@ -15,7 +13,6 @@ const stripePromise = loadStripe(
 );
 
 const Checkout = () => {
-  const [isShowingSuccessModal, toggleSuccessModal] = useCartModal();
   const { cartQuantity } = useCart();
   const router = useRouter();
 
@@ -37,7 +34,7 @@ const Checkout = () => {
               <CheckoutForm />
             </Elements>
             <div className={styles.__summary}>
-              <CartSummary onClick={toggleSuccessModal} />
+              <CartSummary />
             </div>
           </div>
         </div>

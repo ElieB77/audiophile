@@ -1,13 +1,19 @@
+// Modules
 import React, { useEffect, useState } from "react";
+// Styles
 import styles from "./styles.module.scss";
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+// Components
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
-import { useCart } from "../../../context/CartContext";
+// Modules
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+// Utilities
 import { formValidation } from "../../../utilities/formValidation";
+// Context
+import { useCart } from "../../../context/CartContext";
 
 const CheckoutForm = () => {
   const [error, setError] = useState<any>();

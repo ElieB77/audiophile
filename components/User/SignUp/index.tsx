@@ -1,10 +1,15 @@
+// Styles
 import styles from "./styles.module.scss";
+// Assets
 import CloseIcon from "../../../public/static/close-icon.svg";
-import Image from "next/image";
+// Components
 import Input from "../../UI/Input";
-import { useState } from "react";
 import Button from "../../UI/Button";
+// Utilities
 import { formValidation } from "../../../utilities/formValidation";
+// Modules
+import Image from "next/image";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

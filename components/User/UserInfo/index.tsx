@@ -1,14 +1,17 @@
-import { use, useEffect, useState } from "react";
-// import { isLoggedIn, removeToken } from "../../../utilities/auth";
+// Styles
 import styles from "./styles.module.scss";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// Modules
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import Image from "next/image";
+// Context
 import { useAuth } from "../../../context/AuthContext";
+// Assets
 import LogOutIcon from "../../../public/static/log-out-icon.svg";
 import ListIcon from "../../../public/static/list-solid.svg";
 import UserInfoIcon from "../../../public/static/user-info.svg";
-import Image from "next/image";
-import { useCart } from "../../../context/CartContext";
+// Utilities
 import { getData } from "../../../utilities/api";
 
 interface Props {

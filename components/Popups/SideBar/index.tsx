@@ -1,5 +1,8 @@
+// Styles
 import styles from "./styles.module.scss";
+// Assets
 import CloseIcon from "../../../public/static/close-icon.svg";
+// Modules
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,9 @@
+// Styles
 import styles from "./styles.module.scss";
-import CartItem from "../CartItem";
+// Context
 import { useCart } from "../../../context/CartContext";
+// Components
+import CartItem from "../CartItem";
 
 const CartSummary = () => {
   const { cartItems, cartTotalPrice } = useCart();
