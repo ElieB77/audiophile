@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import { formValidation } from "../../../utilities/formValidation";
 
 const CheckoutForm = () => {
-  const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState<any>();
   const [processing, setProcessing] = useState<any>();
   const [disabled, setDisabled] = useState(true);
@@ -80,7 +79,6 @@ const CheckoutForm = () => {
         } else {
           setError(null);
           setProcessing(false);
-          setSucceeded(true);
           router.push("/order-confirmation");
         }
       }

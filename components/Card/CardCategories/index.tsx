@@ -10,8 +10,6 @@ interface CardCategoriesProps {
   categoryName?: string;
   categoryImage?: string;
   categoryHref?: string;
-  // width: number;
-  // height: number;
   btnContent: string;
 }
 
@@ -19,8 +17,6 @@ const CardCategories = ({
   categoryName,
   categoryImage,
   categoryHref,
-  // width,
-  // height,
   btnContent,
 }: CardCategoriesProps) => {
   const router = useRouter();

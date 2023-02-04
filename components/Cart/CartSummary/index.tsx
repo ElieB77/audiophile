@@ -1,14 +1,8 @@
 import styles from "./styles.module.scss";
-import Image from "next/image";
 import CartItem from "../CartItem";
 import { useCart } from "../../../context/CartContext";
-import Button from "../../UI/Button";
 
-interface CartSummaryProps {
-  onClick?: any;
-}
-
-const CartSummary = ({ onClick }: CartSummaryProps) => {
+const CartSummary = () => {
   const { cartItems, cartTotalPrice } = useCart();
   return (
     <div className={styles.__cart_summary}>
@@ -34,7 +28,6 @@ const CartSummary = ({ onClick }: CartSummaryProps) => {
           <p>total</p>
           <h6>{"$" + cartTotalPrice.toLocaleString()}</h6>
         </div>
-        {/* <Button btnContent="continue & pay" isFullWidth onClick={onClick} /> */}
       </div>
     </div>
   );
