@@ -8,8 +8,7 @@ Links to [Backend repository](https://github.com/ElieB77/audiophile_backend) & [
 ## Introduction
 This is my solution to the Audiophile e-commerce website challenge created by [Frontend Mentor](https://www.frontendmentor.io/home)
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
+---
 
 ## Features
 The website includes the following features :
@@ -19,7 +18,7 @@ The website includes the following features :
 - Product catalog
 - Responsive design
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
 ## Stack & Technologies used
 This project was built using the following technologies :
@@ -38,7 +37,7 @@ This project was built using the following technologies :
 - [typescript](https://www.npmjs.com/package/typescript)
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
 ## Getting started
 1. Clone the repository
