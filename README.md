@@ -2,10 +2,7 @@
 
 <h2 align="center">AUDIOPHILE</h2>
 
-<div align="center">
-[Backend repository](https://github.com/ElieB77/audiophile_backend)<br>
-[Live website](https://audiophile-elieb77.vercel.app/)
-</div>
+Links to [Backend repository](https://github.com/ElieB77/audiophile_backend) & [Live website](https://audiophile-elieb77.vercel.app/)
 
 
 ## Introduction
@@ -44,17 +41,17 @@ This project was built using the following technologies :
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## Getting started
-Clone the repository
+1. Clone the repository
  ```bash
 git clone https://github.com/ElieB77/audiophile.git
 ```
 
-Run npm install
+2. Run npm install
  ```bash
 npm install
 ```
 
-Create a .env file and add the following environment variables
+3. Create a .env file and add the following environment variables
 ```bash
 NEXT_PUBLIC_SIGNUP_URL= {YOUR_URL}/auth/signup
 NEXT_PUBLIC_SIGNIN_URL= {YOUR_URL}/auth/signin
@@ -70,7 +67,7 @@ NEXT_PUBLIC_STRIPE_SECRET_KEY= XXXXXXXXX -> (https://stripe.com/docs/keys)
 NEXT_PUBLIC_STRIPE_URL= {YOUR_URL}/create-payment-intent
 ```
 
-In your nodeJS app, add the following functions :
+4. In your nodeJS app, add the following functions :
 <details><summary><b>Authentication</b></summary>
 
  ```javascript
@@ -324,6 +321,48 @@ export const createPaymentIntent = async (req: any, res: any) => {
 ```
 
 </details>
+
+5. Then in your MySQL database, add the following tables
+
+```mysql
+CREATE TABLE `Cart` (
+  `cart_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `id` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `image` varchar(250) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL
+)
+```
+
+```mysql
+CREATE TABLE `products` (
+  `item_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `new` tinyint(1) DEFAULT NULL,
+  `features` text,
+  `description` varchar(300) DEFAULT NULL,
+  `images` json DEFAULT NULL,
+  `includes` json DEFAULT NULL,
+  `gallery` json DEFAULT NULL,
+  `category_image` json DEFAULT NULL,
+  `cart_image` varchar(255) DEFAULT NULL,
+  `short_name` varchar(255) DEFAULT NULL
+)
+```
+
+```mysql
+CREATE TABLE `users` (
+  `name` varchar(150) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` char(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL
+)
+```
 
 
 
