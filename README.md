@@ -6,7 +6,8 @@ Links to [Backend repository](https://github.com/ElieB77/audiophile_backend) & [
 
 
 ## Introduction
-This is my solution to the Audiophile e-commerce website challenge created by [Frontend Mentor](https://www.frontendmentor.io/home)
+This is my solution to the Audiophile e-commerce website challenge created by [Frontend Mentor](https://www.frontendmentor.io/home).
+This project was created using ReactJS, Typescript and NextJS on the client-side, and Node, Typescript and Express on the server-side with MySQL as the database.
 
 ---
 
