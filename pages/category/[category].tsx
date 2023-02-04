@@ -1,9 +1,11 @@
+// Components
 import Navbar from "../../components/Layout/Navbar";
 import ProductInfo from "../../components/Product/ProductInfo";
-import { useEffect, useState } from "react";
-import { replaceString } from "../../utilities/replaceString";
 import Header from "../../components/Layout/Header";
-import Test from "../../public/static/product-xx59-headphones/desktop/image-product.jpg";
+// Modules
+import { useEffect, useState } from "react";
+// Utilities
+import { replaceString } from "../../utilities/replaceString";
 
 interface Props {
   products?: any;

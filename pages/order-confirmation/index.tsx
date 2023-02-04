@@ -1,12 +1,18 @@
+// Styles
 import styles from "../../assets/styles/pages/order-confirmation.module.scss";
-import IconCart from "../../public/static/checkout/icon-order-confirmation.svg";
+// Modules
 import Image from "next/image";
-import { replaceString } from "../../utilities/replaceString";
-import { useCart } from "../../context/CartContext";
-import Button from "../../components/UI/Button";
 import { useRouter } from "next/router";
 import Confetti from "react-confetti";
+// Utilities
+import { replaceString } from "../../utilities/replaceString";
 import { deleteData } from "../../utilities/api";
+// Assets
+import IconCart from "../../public/static/checkout/icon-order-confirmation.svg";
+// Context
+import { useCart } from "../../context/CartContext";
+// Components
+import Button from "../../components/UI/Button";
 
 const OrderConfirmation = () => {
   const { cartItems, cartTotalPrice } = useCart();

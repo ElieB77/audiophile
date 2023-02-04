@@ -1,13 +1,18 @@
+// Styles
 import styles from "../../assets/styles/pages/checkout.module.scss";
-import Button from "../../components/UI/Button";
+// Modules
 import { useRouter } from "next/router";
-import CartSummary from "../../components/Cart/CartSummary";
-import { useCart } from "../../context/CartContext";
 import { useEffect } from "react";
-
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+// Components
 import CheckoutForm from "../../components/Forms/CheckoutForm";
+import CartSummary from "../../components/Cart/CartSummary";
+import Button from "../../components/UI/Button";
+// Context
+import { useCart } from "../../context/CartContext";
+// Assets
+
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`
 );
