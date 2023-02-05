@@ -2,7 +2,7 @@
 
 <h2 align="center">AUDIOPHILE</h2>
 
-Links to [Backend repository](https://github.com/ElieB77/audiophile_backend) & [Live website](https://audiophile-elieb77.vercel.app/)
+[Backend repository](https://github.com/ElieB77/audiophile_backend) / [Live website](https://audiophile-elieb77.vercel.app/)
 
 
 ## Introduction
@@ -67,7 +67,7 @@ NEXT_PUBLIC_STRIPE_SECRET_KEY= XXXXXXXXX -> (https://stripe.com/docs/keys)
 NEXT_PUBLIC_STRIPE_URL= {YOUR_URL}/create-payment-intent
 ```
 
-4. In your nodeJS app, add the following functions :
+4. In your nodeJS app, add the following functions or clone this [repository](https://github.com/ElieB77/audiophile_backend) :
 <details><summary><b>Authentication</b></summary>
 
  ```javascript
