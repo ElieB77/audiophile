@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // Context
 import { useAuth } from "../../../context/AuthContext";
 // Assets
@@ -21,6 +22,7 @@ interface Props {
 const UserInfo = ({ handleClick }: Props) => {
   const [userName, setUserName] = useState<string>("");
   const { removeToken } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     getData(process.env.NEXT_PUBLIC_GET_USER).then((data) => {
@@ -51,9 +53,14 @@ const UserInfo = ({ handleClick }: Props) => {
             <Image src={ListIcon} alt="Logo" width={15} height={15} />
             Orders
           </p>
-          <p>
+          <p
+            onClick={() => {
+              router.push("/user-settings");
+              handleClick();
+            }}
+          >
             <Image src={UserInfoIcon} alt="Logo" width={15} height={15} />
-            Informations
+            Settings
           </p>
         </div>
         <div className={styles.__log_out}>

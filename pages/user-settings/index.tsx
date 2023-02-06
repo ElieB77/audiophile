@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import styles from "../../assets/styles/pages/user-informations.module.scss";
-import UserInfoForm from "../../components/Forms/UserInfoForm";
+import UserSettingsForm from "../../components/Forms/UserSettingsForm";
 import Button from "../../components/UI/Button";
 
-const UserInformations = () => {
+const UserSettings = () => {
   const router = useRouter();
   return (
     <div className={styles.__user_informations}>
@@ -14,7 +14,7 @@ const UserInformations = () => {
         <div className={styles.__wrapper}>
           <h3>settings</h3>
           <div className={styles.__form}>
-            <UserInfoForm />
+            <UserSettingsForm />
           </div>
         </div>
       </div>
@@ -22,4 +22,4 @@ const UserInformations = () => {
   );
 };
 
-export default UserInformations;
+export default UserSettings;

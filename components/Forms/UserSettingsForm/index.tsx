@@ -2,7 +2,7 @@ import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import styles from "./styles.module.scss";
 
-const UserInfoForm = () => {
+const UserSettingsForm = () => {
   return (
     <div className={styles.__user_info_form}>
       <div className={styles.__inputs}>
@@ -17,4 +17,4 @@ const UserInfoForm = () => {
   );
 };
 
-export default UserInfoForm;
+export default UserSettingsForm;
