@@ -1,0 +1,20 @@
+.__user_informations {
+  background-color: var(--light-color);
+  padding: 150px 0 100px 0;
+  .__container {
+    width: 600px;
+    margin: 0 auto;
+    .__go_back_btn {
+      margin-bottom: 20px;
+      > div {
+        padding: 0;
+        text-transform: capitalize;
+        font-size: 15px;
+      }
+    }
+    .__wrapper {
+      padding: 30px 50px;
+      background-color: var(--lightest-color);
+    }
+  }
+}
