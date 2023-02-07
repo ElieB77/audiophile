@@ -27,7 +27,7 @@ const UserModal = ({ show, handleClick }: Props) => {
 
   return (
     show && (
-      <>
+      <div>
         {conditionalContent === "signin" && !isLoggedIn() ? (
           <SignIn
             setConditionalContent={setConditionalContent}
@@ -43,7 +43,7 @@ const UserModal = ({ show, handleClick }: Props) => {
         ) : null}
         <div className={styles.__overlay} onClick={handleClick}></div>
         <ToastContainer position="top-center" autoClose={1000} />
-      </>
+      </div>
     )
   );
 };

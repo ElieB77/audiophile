@@ -26,7 +26,7 @@ const UserInfo = ({ handleClick }: Props) => {
 
   useEffect(() => {
     getData(process.env.NEXT_PUBLIC_GET_USER).then((data) => {
-      setUserName(data.name);
+      setUserName(data && data.rows[0].name);
     });
   }, []);
 
