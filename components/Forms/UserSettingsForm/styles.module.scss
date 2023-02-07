@@ -4,5 +4,15 @@
     display: flex;
     gap: 15px;
     flex-direction: column;
+    & div {
+      position: relative;
+    }
+  }
+  .__error_message {
+    color: red;
+    position: absolute;
+    font-size: 11px;
+    top: 0;
+    right: 0;
   }
 }

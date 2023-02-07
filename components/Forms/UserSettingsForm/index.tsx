@@ -64,31 +64,63 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
     <>
       <div className={styles.__user_info_form}>
         <div className={styles.__inputs}>
-          <Input
-            placeholder="Name"
-            label="Name"
-            isFullWidth
-            value={values.name}
-            onChange={(e: { target: { value: any } }) =>
-              setValues({
-                ...values,
-                name: e.target.value,
-              })
-            }
-          />
-          <Input
-            placeholder="Email"
-            label="Email"
-            isFullWidth
-            type="email"
-            value={values.email}
-            onChange={(e: { target: { value: any } }) =>
-              setValues({
-                ...values,
-                email: e.target.value,
-              })
-            }
-          />
+          <div>
+            <Input
+              error={
+                errors &&
+                errors.find((err: { input: string }) => err.input === "name")
+              }
+              placeholder="Name"
+              label="Name"
+              isFullWidth
+              value={values.name}
+              onChange={(e: { target: { value: any } }) =>
+                setValues({
+                  ...values,
+                  name: e.target.value,
+                })
+              }
+            />
+            {errors &&
+              errors.map((err: any, index: any) => {
+                if (err.input === "name") {
+                  return (
+                    <p className={styles.__error_message} key={index}>
+                      {err.message}
+                    </p>
+                  );
+                }
+              })}
+          </div>
+          <div>
+            <Input
+              error={
+                errors &&
+                errors.find((err: { input: string }) => err.input === "email")
+              }
+              placeholder="Email"
+              label="Email"
+              isFullWidth
+              type="email"
+              value={values.email}
+              onChange={(e: { target: { value: any } }) =>
+                setValues({
+                  ...values,
+                  email: e.target.value,
+                })
+              }
+            />
+            {errors &&
+              errors.map((err: any, index: any) => {
+                if (err.input === "email") {
+                  return (
+                    <p className={styles.__error_message} key={index}>
+                      {err.message}
+                    </p>
+                  );
+                }
+              })}
+          </div>
         </div>
         <div className={styles.__submit_btn}>
           <Button btnContent={"update"} onClick={handleSubmit} />
