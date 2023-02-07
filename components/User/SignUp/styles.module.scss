@@ -33,13 +33,21 @@
     }
     .__inputs {
       margin-bottom: 20px;
+      & div {
+        position: relative;
+      }
     }
     .__error_message {
+      position: absolute;
+      font-size: 11px !important;
       color: red !important;
       text-decoration: none !important;
       margin: 0 !important;
       text-align: left !important;
       cursor: default !important;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
     & p:not(:first-child) {
       text-align: center;

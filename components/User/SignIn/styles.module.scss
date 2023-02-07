@@ -32,14 +32,21 @@
       opacity: 0.5;
     }
     .__inputs {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      & div {
+        position: relative;
+      }
     }
     .__error_message {
       color: red !important;
+      font-size: 11px !important;
       text-decoration: none !important;
       margin: 0 !important;
       text-align: left !important;
       cursor: default !important;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
     & p:not(:first-child) {
       text-align: center;

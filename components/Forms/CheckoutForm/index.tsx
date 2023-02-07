@@ -102,107 +102,144 @@ const CheckoutForm = () => {
             <p className="sub_title">billing details</p>
             <div className={styles.__input_group}>
               <div>
-                <Input
-                  label="Name"
-                  placeholder="Alexei *"
-                  type="text"
-                  value={values.name}
-                  onChange={(e: { target: { value: any } }) =>
-                    setValues({
-                      ...values,
-                      name: e.target.value,
-                    })
-                  }
-                />
-                {errors &&
-                  errors.map((err: any, index: any) => {
-                    if (err.input === "name") {
-                      return (
-                        <p className={styles.__error_message} key={index}>
-                          {err.message}
-                        </p>
-                      );
+                <div>
+                  <Input
+                    error={
+                      errors &&
+                      errors.find(
+                        (err: { input: string }) => err.input === "name"
+                      )
                     }
-                  })}
+                    label="Name"
+                    placeholder="Alexei *"
+                    type="text"
+                    value={values.name}
+                    onChange={(e: { target: { value: any } }) =>
+                      setValues({
+                        ...values,
+                        name: e.target.value,
+                      })
+                    }
+                  />
+                  {errors &&
+                    errors.map((err: any, index: any) => {
+                      if (err.input === "name") {
+                        return (
+                          <p className={styles.__error_message} key={index}>
+                            {err.message}
+                          </p>
+                        );
+                      }
+                    })}
+                </div>
               </div>
               <div>
-                <Input
-                  label="Email Address"
-                  type="email"
-                  placeholder="alexei@mail.com *"
-                  value={values.email}
-                  onChange={(e: { target: { value: any } }) =>
-                    setValues({
-                      ...values,
-                      email: e.target.value,
-                    })
-                  }
-                />
-                {errors &&
-                  errors.map((err: any, index: any) => {
-                    if (err.input === "email") {
-                      return (
-                        <p className={styles.__error_message} key={index}>
-                          {err.message}
-                        </p>
-                      );
+                <div>
+                  <Input
+                    error={
+                      errors &&
+                      errors.find(
+                        (err: { input: string }) => err.input === "email"
+                      )
                     }
-                  })}
+                    label="Email Address"
+                    type="email"
+                    placeholder="alexei@mail.com *"
+                    value={values.email}
+                    onChange={(e: { target: { value: any } }) =>
+                      setValues({
+                        ...values,
+                        email: e.target.value,
+                      })
+                    }
+                  />
+                  {errors &&
+                    errors.map((err: any, index: any) => {
+                      if (err.input === "email") {
+                        return (
+                          <p className={styles.__error_message} key={index}>
+                            {err.message}
+                          </p>
+                        );
+                      }
+                    })}
+                </div>
               </div>
             </div>
-            <Input
-              label="Phone Number"
-              type="text"
-              placeholder="+1 202-555-0136"
-              value={values.phone_number}
-              onChange={(e: { target: { value: any } }) =>
-                setValues({
-                  ...values,
-                  phone_number: e.target.value,
-                })
-              }
-            />
-            {errors &&
-              errors.map((err: any, index: any) => {
-                if (err.input === "phone_number") {
-                  return (
-                    <p className={styles.__error_message} key={index}>
-                      {err.message}
-                    </p>
-                  );
+            <div className={styles.__single_input}>
+              <Input
+                error={
+                  errors &&
+                  errors.find(
+                    (err: { input: string }) => err.input === "phone_number"
+                  )
                 }
-              })}
+                label="Phone Number"
+                type="text"
+                placeholder="+1 202-555-0136"
+                value={values.phone_number}
+                onChange={(e: { target: { value: any } }) =>
+                  setValues({
+                    ...values,
+                    phone_number: e.target.value,
+                  })
+                }
+              />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "phone_number") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
+            </div>
           </div>
           <div className={styles.__shipping_info}>
             <p className="sub_title">shipping info</p>
-
-            <Input
-              label="Address"
-              type="text"
-              placeholder="1137 Williams Avenue"
-              isFullWidth
-              value={values.address}
-              onChange={(e: { target: { value: any } }) =>
-                setValues({
-                  ...values,
-                  address: e.target.value,
-                })
-              }
-            />
-            {errors &&
-              errors.map((err: any, index: any) => {
-                if (err.input === "address") {
-                  return (
-                    <p className={styles.__error_message} key={index}>
-                      {err.message}
-                    </p>
-                  );
+            <div>
+              <Input
+                error={
+                  errors &&
+                  errors.find(
+                    (err: { input: string }) => err.input === "address"
+                  )
                 }
-              })}
+                label="Address"
+                type="text"
+                placeholder="1137 Williams Avenue"
+                isFullWidth
+                value={values.address}
+                onChange={(e: { target: { value: any } }) =>
+                  setValues({
+                    ...values,
+                    address: e.target.value,
+                  })
+                }
+              />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "address") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
+            </div>
 
             <div className={styles.__input_group}>
               <div>
                 <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) => err.input === "zip_code"
+                    )
+                  }
                   label="ZIP Code"
                   type="text"
                   placeholder="10001"
@@ -227,6 +264,12 @@ const CheckoutForm = () => {
               </div>
               <div>
                 <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) => err.input === "city"
+                    )
+                  }
                   label="City"
                   type="text"
                   placeholder="New York"
@@ -250,28 +293,36 @@ const CheckoutForm = () => {
                   })}
               </div>
             </div>
-            <Input
-              label="Country"
-              type="text"
-              placeholder="United States"
-              value={values.country}
-              onChange={(e: { target: { value: any } }) =>
-                setValues({
-                  ...values,
-                  country: e.target.value,
-                })
-              }
-            />
-            {errors &&
-              errors.map((err: any, index: any) => {
-                if (err.input === "country") {
-                  return (
-                    <p className={styles.__error_message} key={index}>
-                      {err.message}
-                    </p>
-                  );
+            <div className={styles.__single_input}>
+              <Input
+                error={
+                  errors &&
+                  errors.find(
+                    (err: { input: string }) => err.input === "country"
+                  )
                 }
-              })}
+                label="Country"
+                type="text"
+                placeholder="United States"
+                value={values.country}
+                onChange={(e: { target: { value: any } }) =>
+                  setValues({
+                    ...values,
+                    country: e.target.value,
+                  })
+                }
+              />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "country") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
+            </div>
           </div>
           <p className="sub_title">payment</p>
 

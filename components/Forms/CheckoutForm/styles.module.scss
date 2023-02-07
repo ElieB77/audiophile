@@ -16,12 +16,12 @@
     .__shipping_info,
     .__payment_details {
       margin-top: 50px;
-      & label {
-        margin-top: 10px;
-      }
     }
     .__shipping_info {
       margin-bottom: 50px;
+      & div {
+        position: relative;
+      }
     }
     .__card_element {
       padding: 20px;
@@ -36,19 +36,28 @@
     .__error_message {
       color: red;
       text-transform: unset;
-      display: block;
       margin: 0 !important;
-      font-size: 12px;
+      font-size: 11px !important;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
   .__input_group {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    & div {
+      position: relative;
+    }
     & p {
       font-size: 12px;
       display: block;
     }
+  }
+  .__single_input {
+    position: relative;
+    width: fit-content;
   }
   @media only screen and (max-width: 850px) {
     padding: 54px 15px 46px 15px;

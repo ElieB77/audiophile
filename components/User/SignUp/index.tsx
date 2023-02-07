@@ -79,85 +79,119 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
           </div>
           <div className={styles.__body}>
             <div className={styles.__inputs}>
-              <Input
-                type="text"
-                placeholder="Name *"
-                isFullWidth
-                onChange={(e: { target: { value: any } }) =>
-                  setValues({ ...values, name: e.target.value })
-                }
-                value={values.name}
-              />
-              {errors &&
-                errors.map((err: any, index: any) => {
-                  if (err.input === "name") {
-                    return (
-                      <p className={styles.__error_message} key={index}>
-                        {err.message}
-                      </p>
-                    );
+              <div>
+                <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) => err.input === "name"
+                    )
                   }
-                })}
-              <Input
-                placeholder="Email *"
-                type="email"
-                isFullWidth
-                onChange={(e: { target: { value: any } }) =>
-                  setValues({ ...values, email: e.target.value })
-                }
-                value={values.email}
-              />
-              {errors &&
-                errors.map((err: any, index: any) => {
-                  if (err.input === "email") {
-                    return (
-                      <p className={styles.__error_message} key={index}>
-                        {err.message}
-                      </p>
-                    );
+                  type="text"
+                  placeholder="Name *"
+                  isFullWidth
+                  onChange={(e: { target: { value: any } }) =>
+                    setValues({ ...values, name: e.target.value })
                   }
-                })}
-              <Input
-                type="password"
-                placeholder="Password *"
-                isFullWidth
-                onChange={(e: { target: { value: any } }) =>
-                  setValues({ ...values, password: e.target.value })
-                }
-                value={values.password}
-              />
-              {errors &&
-                errors.map((err: any, index: any) => {
-                  if (err.input === "password") {
-                    return (
-                      <p className={styles.__error_message} key={index}>
-                        {err.message}
-                      </p>
-                    );
+                  value={values.name}
+                />
+                {errors &&
+                  errors.map((err: any, index: any) => {
+                    if (err.input === "name") {
+                      return (
+                        <p className={styles.__error_message} key={index}>
+                          {err.message}
+                        </p>
+                      );
+                    }
+                  })}
+              </div>
+              <div>
+                <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) => err.input === "email"
+                    )
                   }
-                })}
-              <Input
-                type="password"
-                placeholder="Confirm password *"
-                isFullWidth
-                onChange={(e: { target: { value: any } }) =>
-                  setValues({
-                    ...values,
-                    confirmPassword: e.target.value,
-                  })
-                }
-                value={values.confirmPassword}
-              />
-              {errors &&
-                errors.map((err: any, index: any) => {
-                  if (err.input === "confirmPassword") {
-                    return (
-                      <p className={styles.__error_message} key={index}>
-                        {err.message}
-                      </p>
-                    );
+                  placeholder="Email *"
+                  type="email"
+                  isFullWidth
+                  onChange={(e: { target: { value: any } }) =>
+                    setValues({ ...values, email: e.target.value })
                   }
-                })}
+                  value={values.email}
+                />
+                {errors &&
+                  errors.map((err: any, index: any) => {
+                    if (err.input === "email") {
+                      return (
+                        <p className={styles.__error_message} key={index}>
+                          {err.message}
+                        </p>
+                      );
+                    }
+                  })}
+              </div>
+              <div>
+                <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) => err.input === "password"
+                    )
+                  }
+                  type="password"
+                  placeholder="Password *"
+                  isFullWidth
+                  onChange={(e: { target: { value: any } }) =>
+                    setValues({ ...values, password: e.target.value })
+                  }
+                  value={values.password}
+                />
+                {errors &&
+                  errors.map((err: any, index: any) => {
+                    if (err.input === "password") {
+                      return (
+                        <p className={styles.__error_message} key={index}>
+                          {err.message}
+                        </p>
+                      );
+                    }
+                  })}
+              </div>
+
+              <div>
+                <Input
+                  error={
+                    errors &&
+                    errors.find(
+                      (err: { input: string }) =>
+                        err.input === "confirmPassword"
+                    )
+                  }
+                  type="password"
+                  placeholder="Confirm password *"
+                  isFullWidth
+                  onChange={(e: { target: { value: any } }) =>
+                    setValues({
+                      ...values,
+                      confirmPassword: e.target.value,
+                    })
+                  }
+                  value={values.confirmPassword}
+                />
+                {errors &&
+                  errors.map((err: any, index: any) => {
+                    if (err.input === "confirmPassword") {
+                      return (
+                        <p className={styles.__error_message} key={index}>
+                          {err.message}
+                        </p>
+                      );
+                    }
+                  })}
+              </div>
             </div>
 
             <Button btnContent={"sign up"} isFullWidth onClick={handleSubmit} />
