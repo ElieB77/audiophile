@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
     router.pathname === "/product/[id]" ||
     router.pathname === "/checkout" ||
     router.pathname === "/user-settings"
-      ? "__dark_navbar"
+      ? "__dark_navbar __sticky_navbar"
       : undefined;
 
   return (
