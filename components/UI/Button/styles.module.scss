@@ -7,9 +7,14 @@
   color: var(--lightest-color);
   font-family: "Manrope", sans-serif;
   font-size: 13px;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: var(--bright-color);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   .__btn_icon {
