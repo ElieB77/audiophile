@@ -44,19 +44,19 @@ const Counter = ({
   return (
     <div className={`${styles.__counter} ${isCart ? styles.__is_small : null}`}>
       <div>
-        <p
+        <button
           className={styles.__prev_btn}
           onClick={isCart ? decreaseClick : decreaseCounter}
         >
           -
-        </p>
+        </button>
         <p className={styles.__counter}>{isCart ? value : count}</p>
-        <p
+        <button
           className={styles.__next_btn}
           onClick={isCart ? increaseClick : increaseCounter}
         >
           +
-        </p>
+        </button>
       </div>
     </div>
   );
