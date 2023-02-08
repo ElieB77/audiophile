@@ -28,11 +28,14 @@
   }
   @media only screen and (max-width: 768px) {
     h5 {
-      margin: 32px 0;
+      margin: 10px 0;
     }
-    & div {
+    & div:not(:last-child) {
+      height: 200px !important;
       & img {
-        width: 327px !important;
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: contain !important;
       }
     }
   }
