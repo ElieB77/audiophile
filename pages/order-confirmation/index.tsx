@@ -13,14 +13,16 @@ import IconCart from "../../public/static/checkout/icon-order-confirmation.svg";
 import { useCart } from "../../context/CartContext";
 // Components
 import Button from "../../components/UI/Button";
+import { useEffect } from "react";
 
 const OrderConfirmation = () => {
-  const { cartItems, cartTotalPrice } = useCart();
+  const { cartItems, cartTotalPrice, clearCart } = useCart();
   const router = useRouter();
 
   const backToHomepage = () => {
     router.push("/");
     deleteData(process.env.NEXT_PUBLIC_CLEAR_CART);
+    clearCart();
   };
 
   return (
