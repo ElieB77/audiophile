@@ -8,7 +8,6 @@ import ProductInfo from "../../components/Product/ProductInfo";
 import CardGroup from "../../components/Card/CardGroup";
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
 import Button from ".././../components/UI/Button";
-import ReviewDetails from "../../components/Review/ReviewDetails";
 import CustomerReview from "../../components/Review/CustomerReview";
 // Styles
 import styles from "../../assets/styles/pages/product.module.scss";
