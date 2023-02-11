@@ -1,0 +1,29 @@
+.__customer_review {
+  border: solid 1.5px var(--light-color);
+  border-radius: 8px;
+  padding: 10px;
+  .__user_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .__profile {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: gray;
+    }
+    & p {
+      font-weight: bolder;
+    }
+  }
+  .__title {
+    display: flex;
+    align-items: center;
+    > div {
+      margin: 0;
+    }
+  }
+  .__content {
+    margin-top: 20px;
+  }
+}

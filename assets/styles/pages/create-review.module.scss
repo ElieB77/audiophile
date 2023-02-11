@@ -1,0 +1,41 @@
+.__create_review {
+  width: 100%;
+  height: 100%;
+  padding: 160px 0 100px 0;
+  .__container {
+    width: 800px;
+    margin: 0 auto;
+    & h5 {
+      margin-bottom: 20px;
+    }
+    .__product {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      & img {
+        border-radius: 50%;
+      }
+      & p {
+        font-weight: bolder;
+        font-family: "Manrope", sans-serif;
+      }
+    }
+    .__overall_note {
+    }
+    .__add_title {
+      & p {
+        margin-bottom: -15px;
+      }
+    }
+    .__write_review {
+      margin: 30px 0 20px 0;
+      & p {
+        margin-bottom: -15px;
+      }
+    }
+    hr {
+      margin: 40px 0;
+      opacity: 0.5;
+    }
+  }
+}

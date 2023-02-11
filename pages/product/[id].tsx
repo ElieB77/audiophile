@@ -8,9 +8,13 @@ import ProductInfo from "../../components/Product/ProductInfo";
 import CardGroup from "../../components/Card/CardGroup";
 import ProductRecommendation from "../../components/Product/ProductRecommendation";
 import Button from ".././../components/UI/Button";
-import { replaceString } from "../../utilities/replaceString";
+import ReviewDetails from "../../components/Review/ReviewDetails";
+import CustomerReview from "../../components/Review/CustomerReview";
 // Styles
 import styles from "../../assets/styles/pages/product.module.scss";
+// Utilities
+import { replaceString } from "../../utilities/replaceString";
+import LeaveReview from "../../components/Review/LeaveReview";
 
 interface Props {
   product: any;
@@ -90,6 +94,10 @@ const Product = ({ product, products }: Props) => {
         accessories={data.accessories}
       />
       <CardGroup posters={data.gallery} />
+      <div className={styles.__review_container} id="customer-review">
+        <LeaveReview productId={data.id} />
+        <CustomerReview />
+      </div>
       <h3 style={{ textAlign: "center", marginTop: "160px" }}>
         you may also like
       </h3>

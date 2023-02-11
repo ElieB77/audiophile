@@ -31,6 +31,11 @@
       margin-bottom: 47px;
       font-family: "Manrope", sans-serif;
     }
+    .__stars {
+      &:hover div:nth-of-type(2) {
+        display: block;
+      }
+    }
     .__add_to_cart {
       display: flex;
       gap: 16px;

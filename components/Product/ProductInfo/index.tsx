@@ -6,6 +6,8 @@ import Image from "next/image";
 // Components
 import Counter from "../../UI/Counter";
 import Button from "../../UI/Button";
+import StarRatings from "../../Review/StarRatings";
+import ReviewDetails from "../../Review/ReviewDetails";
 // Context
 import { useCart } from "../../../context/CartContext";
 
@@ -63,6 +65,10 @@ const ProductInfo = ({
       <div className={styles.__info}>
         {showNewArticle}
         <h2>{name}</h2>
+        <div className={styles.__stars}>
+          <StarRatings />
+          <ReviewDetails />
+        </div>
         <p>{description}</p>
         {showCounterQuantity && <h6>{"$" + price?.toLocaleString()}</h6>}
         {selectedButton}

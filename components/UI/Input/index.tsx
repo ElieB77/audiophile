@@ -10,6 +10,7 @@ interface InputProps {
   value?: any;
   type?: "radio" | "password" | "text" | "email" | "number";
   error?: boolean;
+  isTextArea?: boolean;
 }
 
 const Input = ({
@@ -22,6 +23,7 @@ const Input = ({
   value,
   type,
   error,
+  isTextArea,
 }: InputProps) => {
   return isRadio ? (
     <div className={styles.__isRadio}>
@@ -37,15 +39,24 @@ const Input = ({
       }`}
     >
       <label htmlFor={name}>{label}</label>
-      <input
-        className={error ? styles.__error : ""}
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-      />
+      {!isTextArea ? (
+        <input
+          className={error ? styles.__error : ""}
+          id={name}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+        />
+      ) : (
+        <textarea
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+          rows={10}
+        />
+      )}
     </div>
   );
 };

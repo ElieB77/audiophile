@@ -1,0 +1,45 @@
+.__rating_system {
+  display: inline;
+  margin-right: 10px;
+  border: none;
+  background-color: transparent;
+  & span {
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
+.__active {
+  color: #ffa41c;
+}
+
+.__off {
+  color: gray;
+}
+
+.__star_ratings {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 15px;
+  &:hover p:last-child {
+    color: var(--brightest-color) !important;
+  }
+  & p {
+    margin: 0 !important;
+    color: var(--darkest-color) !important;
+    opacity: 1;
+    &:last-child {
+      margin-left: 3px !important;
+      opacity: 1 !important;
+    }
+  }
+
+  .__stars {
+    margin-inline: 5px;
+    & span {
+      color: #ffa41c;
+    }
+  }
+}

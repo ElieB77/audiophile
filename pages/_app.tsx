@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const navbarColor =
     router.pathname === "/product/[id]" ||
     router.pathname === "/checkout" ||
+    router.pathname === "/create-review/[id]" ||
     router.pathname === "/user-settings"
       ? "__dark_navbar __sticky_navbar"
       : undefined;
@@ -65,7 +66,8 @@ export default function App({ Component, pageProps }: AppProps) {
             {router.pathname !== "/" &&
               router.pathname !== "/checkout" &&
               router.pathname !== "/user-settings" &&
-              router.pathname !== "/order-confirmation" && (
+              router.pathname !== "/order-confirmation" &&
+              router.pathname !== "/create-review/[id]" && (
                 <div className="__card_categories">
                   {cardCategoryData.map((card: any, index: number) => {
                     return (
@@ -82,7 +84,8 @@ export default function App({ Component, pageProps }: AppProps) {
               )}
             {router.pathname !== "/checkout" &&
               router.pathname !== "/user-settings" &&
-              router.pathname !== "/order-confirmation" && <TextWithImage />}
+              router.pathname !== "/order-confirmation" &&
+              router.pathname !== "/create-review/[id]" && <TextWithImage />}
           </div>
           {router.pathname !== "/order-confirmation" && (
             <Footer
