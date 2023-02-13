@@ -5,8 +5,20 @@
   .__container {
     width: 800px;
     margin: 0 auto;
-    & h5 {
+    .__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 20px;
+      & h5 {
+      }
+      .__go_back_btn {
+        & div {
+          text-transform: capitalize;
+          padding: 0;
+          font-size: 15px;
+        }
+      }
     }
     .__product {
       display: flex;
@@ -20,14 +32,15 @@
         font-family: "Manrope", sans-serif;
       }
     }
-    .__overall_note {
-    }
+
     .__add_title {
+      position: relative;
       & p {
         margin-bottom: -15px;
       }
     }
     .__write_review {
+      position: relative;
       margin: 30px 0 20px 0;
       & p {
         margin-bottom: -15px;
@@ -38,4 +51,17 @@
       opacity: 0.5;
     }
   }
+}
+
+.__error_message {
+  color: red;
+  position: absolute;
+  font-size: 11px;
+  top: 0;
+  right: 0;
+}
+
+.__error_ratings {
+  color: red;
+  font-size: 11px;
 }

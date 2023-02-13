@@ -51,6 +51,7 @@ const Input = ({
         />
       ) : (
         <textarea
+          className={error ? styles.__error : ""}
           placeholder={placeholder}
           onChange={onChange}
           value={value}

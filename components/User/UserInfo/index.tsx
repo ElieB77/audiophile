@@ -60,7 +60,7 @@ const UserInfo = ({ handleClick }: Props) => {
             }}
           >
             <Image src={UserInfoIcon} alt="Logo" width={15} height={15} />
-            Settings
+            Account
           </p>
         </div>
         <div className={styles.__log_out}>

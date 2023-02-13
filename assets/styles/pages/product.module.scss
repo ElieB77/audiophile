@@ -16,6 +16,10 @@
   margin-top: 50px;
   padding-top: 110px;
   gap: 100px;
+  .__reviews {
+    display: flex;
+    flex-direction: column !important;
+  }
 }
 
 .__recommended_products {

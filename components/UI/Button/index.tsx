@@ -12,6 +12,7 @@ interface ButtonProps {
   onClick?: any;
   isFullWidth?: boolean;
   id?: any;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   onClick,
   isFullWidth,
   id,
+  disabled,
 }: ButtonProps) => {
   const selectedBtnType =
     btnType === "borderless"
@@ -32,7 +34,7 @@ const Button = ({
     <div
       className={`${styles.__button} ${selectedBtnType} ${
         isFullWidth ? styles.__full_width : null
-      }`}
+      } ${disabled ? styles.__disabled : null}`}
       onClick={onClick}
       id={id}
     >

@@ -6,6 +6,7 @@ import Header from "../../components/Layout/Header";
 import { useEffect, useState } from "react";
 // Utilities
 import { replaceString } from "../../utilities/replaceString";
+import StarRatings from "../../components/Review/StarRatings";
 
 interface Props {
   products?: any;
@@ -18,6 +19,8 @@ const Category = ({ products, category }: Props) => {
   useEffect(() => {
     setData(products.rows);
   }, [category, products.rows]);
+
+  console.log(data);
 
   return (
     <>
@@ -38,9 +41,9 @@ const Category = ({ products, category }: Props) => {
                 index={index}
                 isNew={isNew}
                 id={product.item_id}
-                cartImage={""}
-                cartName={""}
                 price={0}
+                count={product.avg_rating}
+                reviewLength={product.ratings_length}
               />
             );
           })}

@@ -14,18 +14,23 @@ import styles from "../../assets/styles/pages/product.module.scss";
 // Utilities
 import { replaceString } from "../../utilities/replaceString";
 import LeaveReview from "../../components/Review/LeaveReview";
+import StarRatings from "../../components/Review/StarRatings";
 
 interface Props {
   product: any;
   products: any;
+  review: any;
 }
 
-const Product = ({ product, products }: Props) => {
+const Product = ({ product, products, review }: Props) => {
   const [data, setData] = useState<{ [key: string]: any }>({});
+  const [dataReview, setDataReview] = useState<any>();
+  const [averageRating, setAverageRating] = useState<number>(0);
   const router = useRouter();
 
   const productData = product.rows;
   const productsData = products.rows;
+  const reviews = review.rows;
 
   let productRecommendedList: any[] = [];
   let galleryList: any[] = [];
@@ -70,7 +75,16 @@ const Product = ({ product, products }: Props) => {
       cartImage: productData[0].cart_image,
       cartName: productData[0].short_name,
     });
-  }, [productData]);
+
+    setDataReview(reviews);
+
+    setAverageRating(
+      reviews.reduce((acc: any, rev: any) => acc + rev.rating, 0) /
+        reviews.length
+    );
+  }, [productData, reviews, averageRating]);
+
+  console.log(averageRating);
 
   return (
     <div className="container">
@@ -87,6 +101,8 @@ const Product = ({ product, products }: Props) => {
         id={data.id}
         cartImage={data.cartImage}
         cartName={data.cartName}
+        count={isNaN(averageRating) ? 0 : averageRating}
+        reviewLength={reviews.length}
       />
       <ArticleAccessories
         content={data.features}
@@ -95,7 +111,27 @@ const Product = ({ product, products }: Props) => {
       <CardGroup posters={data.gallery} />
       <div className={styles.__review_container} id="customer-review">
         <LeaveReview productId={data.id} />
-        <CustomerReview />
+        <div>
+          {reviews.length !== 0 ? (
+            dataReview &&
+            dataReview.map((review: any, index: number) => {
+              return (
+                <CustomerReview
+                  key={index}
+                  name={review.name}
+                  title={review.title}
+                  content={review.content}
+                  rating={review.rating}
+                />
+              );
+            })
+          ) : (
+            <p>
+              Be the first to share your experience with us! Leave a review and
+              let others know what you think about our product.
+            </p>
+          )}
+        </div>
       </div>
       <h3 style={{ textAlign: "center", marginTop: "160px" }}>
         you may also like
@@ -126,10 +162,16 @@ export async function getStaticProps(params: any) {
   const productData2 = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response2 = await productData2.json();
 
+  const review1 = await fetch(
+    `${process.env.NEXT_PUBLIC_GET_REVIEW}/${params.params.id}`
+  );
+  const reviewResponse1 = await review1.json();
+
   return {
     props: {
       product: response1,
       products: response2,
+      review: reviewResponse1,
     },
   };
 }
@@ -137,6 +179,9 @@ export async function getStaticProps(params: any) {
 export async function getStaticPaths() {
   const productData = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response = await productData.json();
+
+  const review = await fetch(`${process.env.NEXT_PUBLIC_GET_REVIEWS}`);
+  const reviewResponse = await review.json();
 
   return {
     paths: response.rows.map((product: any) => {

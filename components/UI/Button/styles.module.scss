@@ -46,3 +46,8 @@
   display: block;
   text-align: center;
 }
+
+.__disabled {
+  pointer-events: none;
+  cursor: default;
+}

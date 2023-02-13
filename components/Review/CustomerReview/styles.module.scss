@@ -1,7 +1,12 @@
 .__customer_review {
-  border: solid 1.5px var(--light-color);
+  border: solid 2px var(--light-color);
   border-radius: 8px;
   padding: 10px;
+  min-width: 650px !important;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
   .__user_info {
     display: flex;
     align-items: center;
@@ -19,6 +24,10 @@
   .__title {
     display: flex;
     align-items: center;
+    font-weight: bolder;
+    & p {
+      margin-left: 10px;
+    }
     > div {
       margin: 0;
     }
@@ -26,4 +35,11 @@
   .__content {
     margin-top: 20px;
   }
+}
+.__active {
+  color: #ffa41c;
+}
+
+.__off {
+  color: gray;
 }

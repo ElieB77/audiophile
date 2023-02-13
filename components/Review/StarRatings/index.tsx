@@ -9,18 +9,26 @@ import { useEffect, useState } from "react";
 interface StarRatingsProps {
   showStarsOnly?: any;
   ratingSystem?: boolean;
+  count?: Number;
+  rating?: any;
+  setRating?: any;
+  isSubmit?: any;
 }
 
-const StarRatings = ({ showStarsOnly, ratingSystem }: StarRatingsProps) => {
-  const [rating, setRating] = useState<number>(0);
+const StarRatings = ({
+  ratingSystem,
+  count,
+  rating,
+  setRating,
+  isSubmit,
+}: StarRatingsProps) => {
   const [stars, setStars] = useState<any>();
   const [hover, setHover] = useState<number>(0);
 
   useEffect(() => {
-    setStars(
-      !ratingSystem
-        ? [...Array(5)].map((index) => <span key={index}>&#9733;</span>)
-        : [...Array(5)].map((star, index) => {
+    ratingSystem
+      ? setStars(
+          [...Array(5)].map((star, index) => {
             index += 1;
             return (
               <button
@@ -32,7 +40,7 @@ const StarRatings = ({ showStarsOnly, ratingSystem }: StarRatingsProps) => {
               >
                 <span
                   className={
-                    index <= ((rating && hover) || hover)
+                    index <= ((rating && hover) || hover) && !isSubmit
                       ? styles.__active
                       : styles.__off
                   }
@@ -42,25 +50,25 @@ const StarRatings = ({ showStarsOnly, ratingSystem }: StarRatingsProps) => {
               </button>
             );
           })
-    );
-  }, [rating, hover]);
+        )
+      : setStars(
+          [...Array(5)].map((star: any, index: number) => {
+            index += 1;
+            return (
+              <>
+                <span
+                  className={index <= count! ? styles.__active : styles.__off}
+                  key={index}
+                >
+                  &#9733;
+                </span>
+              </>
+            );
+          })
+        );
+  }, [rating, hover, count, ratingSystem, setRating, isSubmit]);
 
-  return ratingSystem ? (
-    <>{stars}</>
-  ) : (
-    <div className={styles.__star_ratings}>
-      {!showStarsOnly && <p>5</p>}
-      <div className={styles.__stars}>
-        <span>{stars}</span>
-      </div>
-      {!showStarsOnly && (
-        <>
-          <Image src={DownArrow} alt="Arrow" width={10} height={10} />
-          <p>(1)</p>
-        </>
-      )}
-    </div>
-  );
+  return ratingSystem ? <div>{stars}</div> : <>{stars}</>;
 };
 
 export default StarRatings;

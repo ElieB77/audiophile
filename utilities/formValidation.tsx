@@ -9,17 +9,21 @@ export const formValidation = (
   address?: any,
   zip_code?: Number,
   city?: string,
-  country?: string
+  country?: string,
+  title?: string,
+  content?: string
 ) => {
   let isValid: boolean = true;
   let error: any = [];
 
-  if (!email) {
-    error.push({ input: "email", message: "Email is required." });
-    isValid = false;
-  } else if (!email.match(Constants.VALID_EMAIL) && email) {
-    error.push({ input: "email", message: "Email format incorrect." });
-    isValid = false;
+  if (email !== undefined) {
+    if (!email) {
+      error.push({ input: "email", message: "Email is required." });
+      isValid = false;
+    } else if (!email.match(Constants.VALID_EMAIL) && email) {
+      error.push({ input: "email", message: "Email format incorrect." });
+      isValid = false;
+    }
   }
 
   if (password !== undefined) {
@@ -98,6 +102,20 @@ export const formValidation = (
   if (country !== undefined) {
     if (!country) {
       error.push({ input: "country", message: "Country is required." });
+      isValid = false;
+    }
+  }
+
+  if (title !== undefined) {
+    if (!title) {
+      error.push({ input: "title", message: "Title is required." });
+      isValid = false;
+    }
+  }
+
+  if (content !== undefined) {
+    if (!content) {
+      error.push({ input: "content", message: "Experience is required." });
       isValid = false;
     }
   }

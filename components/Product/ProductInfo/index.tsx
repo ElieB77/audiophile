@@ -3,18 +3,18 @@ import styles from "./styles.module.scss";
 // Modules
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // Components
 import Counter from "../../UI/Counter";
 import Button from "../../UI/Button";
 import StarRatings from "../../Review/StarRatings";
-import ReviewDetails from "../../Review/ReviewDetails";
 // Context
 import { useCart } from "../../../context/CartContext";
 
 interface ProductInfoProps {
   image?: string;
-  cartImage: string;
-  cartName: string;
+  cartImage?: string;
+  cartName?: string;
   isNew?: boolean;
   name?: string;
   description?: string;
@@ -23,6 +23,9 @@ interface ProductInfoProps {
   showCounterQuantity?: boolean;
   id: number;
   quantity?: number;
+  ratingCount?: number;
+  count?: any;
+  reviewLength?: any;
 }
 
 const ProductInfo = ({
@@ -36,8 +39,11 @@ const ProductInfo = ({
   id,
   cartImage,
   cartName,
+  count,
+  reviewLength,
 }: ProductInfoProps) => {
   const { addToCart } = useCart();
+  const router = useRouter();
 
   const reverseClass = index && index % 2 !== 0 ? styles.__reverse : null;
   const showNewArticle = isNew ? <p className="overline">new product</p> : null;
@@ -45,7 +51,7 @@ const ProductInfo = ({
     <div className={styles.__add_to_cart}>
       <Counter />
       <Button
-        onClick={() => addToCart(id, cartImage, cartName, price)}
+        onClick={() => addToCart(id, cartImage!, cartName!, price)}
         btnContent="add to cart"
       />
     </div>
@@ -66,8 +72,31 @@ const ProductInfo = ({
         {showNewArticle}
         <h2>{name}</h2>
         <div className={styles.__stars}>
-          <StarRatings />
-          <ReviewDetails />
+          <p>{Math.floor(count)}</p>
+          <div>
+            <StarRatings count={count} />
+          </div>
+          <p>({reviewLength})</p>
+          {router.pathname === "/product/[id]" && (
+            <>
+              <Link href="#customer-review" scroll={false}>
+                <Button
+                  btnContent={"show all reviews"}
+                  btnType={"borderless"}
+                />
+              </Link>
+              <p>/</p>
+              <Button
+                btnContent={"leave a review"}
+                btnType="borderless"
+                onClick={() =>
+                  router.push(`/create-review/${id}`, undefined, {
+                    shallow: true,
+                  })
+                }
+              />
+            </>
+          )}
         </div>
         <p>{description}</p>
         {showCounterQuantity && <h6>{"$" + price?.toLocaleString()}</h6>}

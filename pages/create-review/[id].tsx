@@ -5,6 +5,10 @@ import Button from "../../components/UI/Button";
 import Input from "../../components/UI/Input";
 import Image from "next/image";
 import { replaceString } from "../../utilities/replaceString";
+import { formValidation } from "../../utilities/formValidation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 interface Props {
   product: any;
@@ -12,6 +16,16 @@ interface Props {
 
 const CreateReview = ({ product }: Props) => {
   const [data, setData] = useState<{ [key: string]: any }>({});
+  const [rating, setRating] = useState<number>(0);
+  const [errors, setErrors] = useState<any>();
+  const [errorRating, setErrorRating] = useState<any>();
+  const [isSubmit, setIsSubmit] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
+  const [values, setValues] = useState<any>({
+    content: "",
+    title: "",
+  });
+  const router = useRouter();
 
   useEffect(() => {
     setData({
@@ -20,38 +34,167 @@ const CreateReview = ({ product }: Props) => {
     });
   }, [product]);
 
+  const handleSubmit = async () => {
+    const [isValid, error] = formValidation(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      values.title,
+      values.content
+    );
+    if (isValid && rating !== 0) {
+      const token = localStorage.getItem("token");
+      try {
+        const data = await fetch(`${process.env.NEXT_PUBLIC_CREATE_REVIEW}`, {
+          method: "POST",
+          body: JSON.stringify({
+            product_id: product.rows[0].item_id,
+            title: values.title,
+            content: values.content,
+            rating: rating,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const response = await data.json();
+        if (response.status === 201) {
+          setIsSubmit(true);
+          setValues({ title: "", content: "" });
+          toast.success("Your review has been successfully submitted!");
+          setTimeout(() => {
+            router.push("/");
+          }, 3000);
+        } else if (response.status === 400) {
+          toast.error("You have already submitted a review for this product.");
+          setIsSubmit(false);
+          setDisabled(true);
+          setTimeout(() => {
+            router.back();
+          }, 3000);
+        }
+      } catch (error) {
+        setIsSubmit(false);
+        throw error;
+      }
+    }
+    setErrors(error);
+    setErrorRating("Overall note is required");
+  };
+
+  console.log(isSubmit);
+
   return (
-    <div className={styles.__create_review}>
-      <div className={styles.__container}>
-        <h5>Leave a review</h5>
-        <div className={styles.__product}>
-          <Image src={data.image} alt="product" width={50} height={50} />
-          <p>{data.name}</p>
-        </div>
-        <hr />
-        <div className={styles.__overall_note}>
-          <p>Overall note</p>
-          <StarRatings ratingSystem />
-        </div>
-        <hr />
-        <div className={styles.__add_title}>
-          <p>Add a title</p>
-          <Input
-            placeholder="Enter a descriptive title for your review"
-            isFullWidth
+    <>
+      <div className={styles.__create_review}>
+        <div className={styles.__container}>
+          <div className={styles.__head}>
+            <h5>Leave a review</h5>
+            <div className={styles.__go_back_btn} onClick={() => router.back()}>
+              <Button btnContent="go back" btnType="borderless" />
+            </div>
+          </div>
+          <div className={styles.__product}>
+            <Image src={data.image} alt="product" width={50} height={50} />
+            <p>{data.name}</p>
+          </div>
+          <hr />
+          <div className={styles.__overall_note}>
+            <p>Overall note</p>
+            <StarRatings
+              ratingSystem
+              rating={rating}
+              setRating={setRating}
+              isSubmit={isSubmit}
+            />
+            {rating === 0 && !isSubmit && (
+              <p className={styles.__error_ratings}>{errorRating}</p>
+            )}
+          </div>
+          <hr />
+          <div className={styles.__add_title}>
+            <p>Add a title</p>
+
+            <div>
+              <Input
+                error={
+                  errors &&
+                  errors.find((err: { input: string }) => err.input === "title")
+                }
+                placeholder="Enter a descriptive title for your review"
+                isFullWidth
+                type="text"
+                value={values.title}
+                onChange={(e: { target: { value: any } }) =>
+                  setValues({
+                    ...values,
+                    title: e.target.value,
+                  })
+                }
+              />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "title") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
+            </div>
+          </div>
+          <div className={styles.__write_review}>
+            <p>Share your experience</p>
+
+            <div>
+              <Input
+                error={
+                  errors &&
+                  errors.find(
+                    (err: { input: string }) => err.input === "content"
+                  )
+                }
+                placeholder="Tell us what you liked or disliked about the product"
+                isFullWidth
+                type="text"
+                isTextArea
+                value={values.content}
+                onChange={(e: { target: { value: any } }) =>
+                  setValues({
+                    ...values,
+                    content: e.target.value,
+                  })
+                }
+              />
+              {errors &&
+                errors.map((err: any, index: any) => {
+                  if (err.input === "content") {
+                    return (
+                      <p className={styles.__error_message} key={index}>
+                        {err.message}
+                      </p>
+                    );
+                  }
+                })}
+            </div>
+          </div>
+          <Button
+            btnContent="Send"
+            onClick={handleSubmit}
+            disabled={disabled}
           />
         </div>
-        <div className={styles.__write_review}>
-          <p>Share your experience</p>
-          <Input
-            placeholder="Tell us what you liked or disliked about the product"
-            isFullWidth
-            isTextArea
-          />
-        </div>
-        <Button btnContent="Send" />
       </div>
-    </div>
+      <ToastContainer position="top-center" autoClose={1000} />
+    </>
   );
 };
 

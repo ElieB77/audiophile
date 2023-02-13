@@ -32,8 +32,23 @@
       font-family: "Manrope", sans-serif;
     }
     .__stars {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       &:hover div:nth-of-type(2) {
         display: block;
+      }
+      & p {
+        opacity: 1;
+        color: var(--darkest-color);
+        margin: 0;
+      }
+      & div {
+        text-transform: lowercase;
+        padding: 0;
+        &::first-letter {
+          text-transform: capitalize;
+        }
       }
     }
     .__add_to_cart {
