@@ -180,9 +180,6 @@ export async function getStaticPaths() {
   const productData = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_URL}`);
   const response = await productData.json();
 
-  const review = await fetch(`${process.env.NEXT_PUBLIC_GET_REVIEWS}`);
-  const reviewResponse = await review.json();
-
   return {
     paths: response.rows.map((product: any) => {
       const id = product.item_id.toString();

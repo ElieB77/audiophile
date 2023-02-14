@@ -18,7 +18,6 @@ const UserSettings = () => {
   useEffect(() => {
     getData(process.env.NEXT_PUBLIC_GET_USER).then((data) => {
       setUser(data);
-      console.log(data);
     });
   }, []);
 

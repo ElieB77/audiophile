@@ -20,8 +20,6 @@ const Category = ({ products, category }: Props) => {
     setData(products.rows);
   }, [category, products.rows]);
 
-  console.log(data);
-
   return (
     <>
       <Navbar />
