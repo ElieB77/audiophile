@@ -27,8 +27,6 @@ const Product = ({ product, products, review }: Props) => {
   const [averageRating, setAverageRating] = useState<number>(0);
   const router = useRouter();
 
-  console.log(review);
-
   const productData = product.rows;
   const productsData = products.rows;
   const reviews = review.rows;
@@ -188,6 +186,7 @@ export async function getStaticPaths() {
         },
       };
     }),
+
     fallback: false,
   };
 }

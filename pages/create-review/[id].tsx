@@ -9,6 +9,7 @@ import { formValidation } from "../../utilities/formValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import { useAuth } from "../../context/AuthContext";
 
 interface Props {
   product: any;
@@ -26,6 +27,7 @@ const CreateReview = ({ product }: Props) => {
     title: "",
   });
   const router = useRouter();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     setData({
@@ -35,6 +37,16 @@ const CreateReview = ({ product }: Props) => {
   }, [product]);
 
   const handleSubmit = async () => {
+    if (!isLoggedIn()) {
+      return toast(
+        "To leave a review, you must be logged in. Please log in or create an account to continue.",
+        {
+          autoClose: 5000,
+          type: "warning",
+        }
+      );
+    }
+
     const [isValid, error] = formValidation(
       undefined,
       undefined,
@@ -88,8 +100,6 @@ const CreateReview = ({ product }: Props) => {
     setErrors(error);
     setErrorRating("Overall note is required");
   };
-
-  console.log(isSubmit);
 
   return (
     <>
