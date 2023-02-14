@@ -58,8 +58,6 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
     setErrors(error);
   };
 
-  console.log(errors);
-
   return (
     <>
       <div className={styles.__user_info_form}>

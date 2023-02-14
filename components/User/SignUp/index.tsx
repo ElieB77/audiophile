@@ -28,7 +28,6 @@ const SignUp = ({ handleClick, setConditionalContent }: Props) => {
   const [errors, setErrors] = useState<any>();
 
   const handleSubmit = async () => {
-    console.log("handlesubmit");
     const [isValid, error] = formValidation(
       values.email,
       values.password,

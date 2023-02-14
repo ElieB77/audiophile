@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // Modules
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -27,6 +26,8 @@ const Product = ({ product, products, review }: Props) => {
   const [dataReview, setDataReview] = useState<any>();
   const [averageRating, setAverageRating] = useState<number>(0);
   const router = useRouter();
+
+  console.log(review);
 
   const productData = product.rows;
   const productsData = products.rows;
@@ -83,8 +84,6 @@ const Product = ({ product, products, review }: Props) => {
         reviews.length
     );
   }, [productData, reviews, averageRating]);
-
-  console.log(averageRating);
 
   return (
     <div className="container">
