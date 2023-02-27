@@ -63,6 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
           )}
           <Component {...pageProps} />
           <div className="container">
+            <p className={"server_error"}>Server is down</p>
             {router.pathname !== "/" &&
               router.pathname !== "/checkout" &&
               router.pathname !== "/user-settings" &&
