@@ -10,8 +10,7 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
-      & h5 {
-      }
+
       .__go_back_btn {
         & div {
           text-transform: capitalize;
@@ -49,6 +48,16 @@
     hr {
       margin: 40px 0;
       opacity: 0.5;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .__container {
+      width: 500px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .__container {
+      width: 327px;
     }
   }
 }

@@ -4,18 +4,21 @@ import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
+import Image from "next/image";
 // Components
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 // Utilities
 import { formValidation } from "../../../utilities/formValidation";
+// Assets
+import AvatarDefault from "../../../public/static/avatar-default.png";
 
 interface UserSettingsFormProps {
   data: any;
 }
 
 const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
+  const [selectedFile, setSelectedFile] = useState<any>(null);
   const [errors, setErrors] = useState<any>();
   const [values, setValues] = useState<any>({
     name: "",
@@ -58,10 +61,33 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
     setErrors(error);
   };
 
+  const handleUpload = async () => {
+    const data = new FormData();
+    data.append("file", selectedFile);
+
+    await fetch("http://localhost:3001/user/upload", {
+      method: "POST",
+      body: data,
+    });
+  };
+
+  console.log(selectedFile);
+
   return (
     <>
       <div className={styles.__user_info_form}>
         <div className={styles.__inputs}>
+          <div className={styles.__upload_avatar}>
+            <Input
+              type="file"
+              onChange={(e: any) => setSelectedFile(e.target.files[0])}
+            />
+            <Button btnContent={"upload"} onClick={handleUpload} />
+            <div className={styles.__avatar}>
+              <Image src={AvatarDefault} alt="Avatar" width={50} height={50} />
+            </div>
+          </div>
+          <hr />
           <div>
             <Input
               error={

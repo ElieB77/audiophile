@@ -7,6 +7,23 @@
     & div {
       position: relative;
     }
+    .__upload_avatar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      & input {
+        border: none;
+      }
+      .__avatar {
+        & img {
+          border-radius: 50%;
+        }
+      }
+    }
+    & hr {
+      margin: 20px 0;
+      opacity: 0.3;
+    }
   }
   .__error_message {
     color: red;

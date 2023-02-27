@@ -8,7 +8,7 @@ interface InputProps {
   isRadio?: boolean;
   onChange?: any;
   value?: any;
-  type?: "radio" | "password" | "text" | "email" | "number";
+  type?: "radio" | "password" | "text" | "email" | "number" | "file";
   error?: boolean;
   isTextArea?: boolean;
 }

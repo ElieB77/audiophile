@@ -20,7 +20,6 @@ const LeaveReview = ({ productId }: LeaveReviewProps) => {
             shallow: true,
           })
         }
-        // onClick={() => router.
       />
     </div>
   );

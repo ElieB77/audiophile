@@ -24,7 +24,7 @@ const Category = ({ products, category }: Props) => {
     <>
       <Navbar />
       <Header title={category} />
-      <div className="container">
+      <div className="container product_info_category_page">
         {data &&
           data.map((product: any, index: number) => {
             const images = product.images;

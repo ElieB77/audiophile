@@ -2,7 +2,7 @@
   border: solid 2px var(--light-color);
   border-radius: 8px;
   padding: 10px;
-  min-width: 650px !important;
+  min-width: 650px;
 
   &:not(:last-child) {
     margin-bottom: 20px;
@@ -34,6 +34,9 @@
   }
   .__content {
     margin-top: 20px;
+  }
+  @media only screen and (max-width: 1200px) {
+    min-width: 100%;
   }
 }
 .__active {

@@ -20,6 +20,12 @@
     display: flex;
     flex-direction: column !important;
   }
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+    margin-top: 0;
+    padding-top: 110px;
+    gap: 50px;
+  }
 }
 
 .__recommended_products {

@@ -21,3 +21,22 @@
 .__sticky_navbar {
   position: fixed !important;
 }
+
+.product_info_category_page {
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 160px;
+  }
+}
+
+.server_error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: var(--darkest-color);
+  border: solid 2px var(--bright-color);
+  width: 100%;
+  text-align: center;
+  color: var(--lightest-color);
+  font-size: 12px;
+}

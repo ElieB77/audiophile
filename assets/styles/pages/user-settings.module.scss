@@ -18,4 +18,9 @@
       border-radius: 8px;
     }
   }
+  @media only screen and (max-width: 768px) {
+    .__container {
+      width: 327px;
+    }
+  }
 }

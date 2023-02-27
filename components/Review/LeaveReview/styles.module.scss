@@ -6,4 +6,10 @@
   & p {
     margin: 15px 0;
   }
+  @media only screen and (max-width: 1200px) {
+    width: 100%;
+    border-right: 0;
+    padding: 0 0 50px 0;
+    border-bottom: solid 3.5px var(--light-color);
+  }
 }

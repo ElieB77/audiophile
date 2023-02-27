@@ -72,13 +72,15 @@ const ProductInfo = ({
         {showNewArticle}
         <h2>{name}</h2>
         <div className={styles.__stars}>
-          <p>{Math.floor(count)}</p>
-          <div>
-            <StarRatings count={count} />
+          <div className={styles.__rating}>
+            <p>{Math.floor(count)}</p>
+            <div>
+              <StarRatings count={count} />
+            </div>
+            <p>({reviewLength})</p>
           </div>
-          <p>({reviewLength})</p>
           {router.pathname === "/product/[id]" && (
-            <>
+            <div className={styles.__links}>
               <Link href="#customer-review" scroll={false}>
                 <Button
                   btnContent={"show all reviews"}
@@ -95,7 +97,7 @@ const ProductInfo = ({
                   })
                 }
               />
-            </>
+            </div>
           )}
         </div>
         <p>{description}</p>
