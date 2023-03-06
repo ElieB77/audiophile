@@ -76,11 +76,7 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
       },
     });
     const res = await response.json();
-    console.log(res);
   };
-
-  console.log(selectedFile);
-  console.log(values.avatar);
 
   return (
     <>
