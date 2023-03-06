@@ -14,6 +14,7 @@ import styles from "../../assets/styles/pages/product.module.scss";
 import { replaceString } from "../../utilities/replaceString";
 import LeaveReview from "../../components/Review/LeaveReview";
 import StarRatings from "../../components/Review/StarRatings";
+import AvatarDefault from "../../public/static/avatar-default.png";
 
 interface Props {
   product: any;
@@ -112,6 +113,7 @@ const Product = ({ product, products, review }: Props) => {
           {reviews.length !== 0 ? (
             dataReview &&
             dataReview.map((review: any, index: number) => {
+              console.log(review.avatar);
               return (
                 <CustomerReview
                   key={index}
@@ -119,7 +121,11 @@ const Product = ({ product, products, review }: Props) => {
                   title={review.title}
                   content={review.content}
                   rating={review.rating}
-                  avatar={review.avatar}
+                  avatar={
+                    review.avatar !== null
+                      ? `${process.env.NEXT_PUBLIC_BASE_URL}/${review.avatar}`
+                      : AvatarDefault
+                  }
                 />
               );
             })

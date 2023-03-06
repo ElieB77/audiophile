@@ -8,7 +8,7 @@ interface CustomerReviewProps {
   title?: string;
   content?: string;
   rating?: Number;
-  avatar?: string;
+  avatar?: any;
 }
 
 const CustomerReview = ({
@@ -22,12 +22,7 @@ const CustomerReview = ({
     <div className={styles.__customer_review}>
       <div className={styles.__user_info}>
         <div className={styles.__profile}>
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/${avatar}`}
-            alt="profile"
-            width={30}
-            height={30}
-          />
+          <Image src={avatar} alt="profile" width={30} height={30} />
         </div>
         <p>{name}</p>
       </div>
