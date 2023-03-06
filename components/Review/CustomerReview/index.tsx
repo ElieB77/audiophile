@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import StarRatings from "../StarRatings";
 import styles from "./styles.module.scss";
+import Image from "next/image";
 
 interface CustomerReviewProps {
   name?: string;
   title?: string;
   content?: string;
   rating?: Number;
+  avatar?: string;
 }
 
 const CustomerReview = ({
@@ -14,11 +16,19 @@ const CustomerReview = ({
   title,
   content,
   rating,
+  avatar,
 }: CustomerReviewProps) => {
   return (
     <div className={styles.__customer_review}>
       <div className={styles.__user_info}>
-        <div className={styles.__profile}></div>
+        <div className={styles.__profile}>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}/${avatar}`}
+            alt="profile"
+            width={30}
+            height={30}
+          />
+        </div>
         <p>{name}</p>
       </div>
       <div className={styles.__title}>

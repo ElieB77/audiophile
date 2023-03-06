@@ -23,12 +23,14 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
   const [values, setValues] = useState<any>({
     name: "",
     email: "",
+    avatar: "",
   });
 
   useEffect(() => {
     setValues({
       name: data && data.rows[0].name,
       email: data && data.rows[0].email,
+      avatar: data && data.rows[0].avatar,
     });
   }, [data]);
 
@@ -64,14 +66,21 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
   const handleUpload = async () => {
     const data = new FormData();
     data.append("file", selectedFile);
+    const token = localStorage.getItem("token");
 
-    await fetch("http://localhost:3001/user/upload", {
+    const response = await fetch("http://localhost:3001/user/upload", {
       method: "POST",
       body: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
+    const res = await response.json();
+    console.log(res);
   };
 
   console.log(selectedFile);
+  console.log(values.avatar);
 
   return (
     <>
@@ -84,7 +93,16 @@ const UserSettingsForm = ({ data }: UserSettingsFormProps) => {
             />
             <Button btnContent={"upload"} onClick={handleUpload} />
             <div className={styles.__avatar}>
-              <Image src={AvatarDefault} alt="Avatar" width={50} height={50} />
+              <Image
+                src={
+                  values.avatar
+                    ? `${process.env.NEXT_PUBLIC_BASE_URL}/${values.avatar}`
+                    : AvatarDefault
+                }
+                alt="Avatar"
+                width={50}
+                height={50}
+              />
             </div>
           </div>
           <hr />

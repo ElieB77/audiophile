@@ -12,10 +12,10 @@
     align-items: center;
     gap: 10px;
     .__profile {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: gray;
+      & img {
+        border-radius: 50%;
+        object-fit: cover;
+      }
     }
     & p {
       font-weight: bolder;

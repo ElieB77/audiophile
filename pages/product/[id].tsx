@@ -83,6 +83,8 @@ const Product = ({ product, products, review }: Props) => {
     );
   }, [productData, reviews, averageRating]);
 
+  console.log(dataReview);
+
   return (
     <div className="container">
       <div className={styles.__go_back_btn} onClick={() => router.back()}>
@@ -119,6 +121,7 @@ const Product = ({ product, products, review }: Props) => {
                   title={review.title}
                   content={review.content}
                   rating={review.rating}
+                  avatar={review.avatar}
                 />
               );
             })
